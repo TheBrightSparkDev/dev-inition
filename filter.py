@@ -3,12 +3,11 @@ import json
 f = open("dictionary.json")
 
 dictionary = json.load(f)
-
+i = 0
 for words in dictionary:
-    if len(words) == 4:
+    if len(words) == 8:
         if "-" not in words:
-            definition = dictionary[words]
-            print(f"'{words}':'{dictionary}',")
-
+            i = i + 1
+            print(f"'{i}':'{words}',")
 
 f.close()
