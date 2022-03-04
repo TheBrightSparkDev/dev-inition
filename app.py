@@ -31,7 +31,7 @@ def homepage():
     return render_template("homepage.html")
 
 
-#sign up section
+# sign up section
 @app.route("/signup", methods=["GET", "POST"])
 def register():
     """
@@ -91,3 +91,8 @@ def login():
             return redirect(url_for("signin"))
     return render_template("signin.html")
 
+
+if __name__ == "__main__":
+    app.run(host=os.environ.get("IP"),
+            port=int(os.environ.get("PORT")),
+            debug=True)
