@@ -1,16 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
-<h1 class="game-title">Word VS</h1>
+<h1 class="game-title">Page 404 lets get you back to safety</h1>
 <div class="home-options">
     <div class="rounded medium margin">
-        <a href="{{ url_for('signup') }}"><p>Sign Up</p></a>
+        <a href="{{ url_for('profile') }}"><p>profile</p></a>
     </div>
     <div class="rounded small margin">
-        <a href="{{ url_for('profile', username='guest') }}"><p>Guest</p></a>
+        <a href="{{ url+for('profile',session[user]) }}"><p>Guest</p></a>
     </div>
     <div class="rounded medium margin">
         <a href="{{ url_for('signin') }}"><p>Sign In</p></a>
     </div>
 </div>
 {% endblock %}
-

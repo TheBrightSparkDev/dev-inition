@@ -92,6 +92,20 @@ def signin():
     return render_template("signin.html")
 
 
+# profile section
+@app.route("/profile/<username>")
+def profile(username):
+    """
+    displays profile and controls logic on profile page
+    """
+    print(username)
+    if username == "guest":
+        session['user'] = "guest"
+    else:
+        session['user'] = username
+    return render_template("profile.html", username=username)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),

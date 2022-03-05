@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="game-title">Word VS</h1>
+<div class="profile-body">
+    <div class="profile-card rounded">
+        <a href="#"><h6>Previous Challenges</h6></a>
+    </div>
+    <div class="profile-card rounded">
+        <a href="#"><h6>Free Play (coming soon)</h6></a>
+    </div>
+    <div class="profile-card rounded">
+        {% if username == "guest" %}
+        <a href="#"><h6>sign in to challenge your friends</h6></a>
+        {% else %}
+        <a href="#"><h6>Challenges</h6></a>
+        {% endif %}
+    </div>
+    <div class="profile-card rounded">
+        {% if username == "guest" %}
+        <a href="#"><h6>sign in to see your challenges</h6></a>
+        {% else %}
+        <a href="#"><h6>Challenge a Friend</h6></a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
