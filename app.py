@@ -33,7 +33,7 @@ def homepage():
 
 # sign up section
 @app.route("/signup", methods=["GET", "POST"])
-def register():
+def signup():
     """
     displays signup page and controls logic on the page
     """
@@ -44,7 +44,7 @@ def register():
             {"username": request.form.get("username").lower()})
         if existing_user:
             flash("Username already exists")
-            return redirect(url_for("register"))
+            return redirect(url_for("signin"))
 
         register = {
             "username": request.form.get("username").lower(),
@@ -57,12 +57,12 @@ def register():
         flash("registration successful")
         return redirect(url_for("profile", username=session["user"]))
 
-    return render_template("register.html")
+    return render_template("signup.html")
 
 
 # sign in section
 @app.route("/signin", methods=["GET", "POST"])
-def login():
+def signin():
     """
     displays sign in and controls logic on sign in page
     """
@@ -88,7 +88,7 @@ def login():
         else:
             # username doesnt exist
             flash("username and/or password is incorrect")
-            return redirect(url_for("signin"))
+            return redirect(url_for("signup"))
     return render_template("signin.html")
 
 

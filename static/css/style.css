@@ -20,6 +20,9 @@ a{
     background-color: rgba(255, 255, 255, 0.2);
     border-radius: 20px;
 }
+.dark{
+    background-color:rgba(0, 0, 0, 0.2)
+}
 .small{
     width: 100px;
     height:50px;
@@ -27,6 +30,34 @@ a{
 .medium{
     width:150px;
     height:50px;
+}
+.large{
+    width:200px;
+    height:50px;
+}
+.x-large{
+    width:250px;
+    height:50px;
+}
+.responsive-small{
+    width:30%;
+    height:50px;
+}
+.responsive-medium{
+    width:50%;
+    height:50px;
+}
+.responsive-large{
+    width:90%;
+    height:50px;
+}
+.center{
+    text-align: center;
+    margin:auto;
+    vertical-align: auto;
+}
+.max-width{
+    max-width: 500px;
 }
 /* homepage specific changes */
 .game-body{
@@ -50,8 +81,69 @@ p{
     text-align: center;
     font-size: 30px;
     font-weight:500;
-    margin-top: 5px;;
+    margin-top: 5px;
 }
 .margin{
     margin-right: 30px;
+}
+/* sign in and sign up specific changes */
+.input-content-container{
+    margin-top: 10vh;
+    display: flex;
+    justify-content: center;
+}
+form{
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+#button-margins{
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+}
+button {
+    appearance:inherit;
+    text-align: center;
+    color:white;
+    font-size:20px;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0);
+    border:0px;
+    width: inherit;
+    height:inherit;
+    border-radius: inherit;
+}
+input {
+    text-align: center;
+    color:white;
+    font-size:20px;
+    font-family: 'Montserrat', sans-serif;
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    background-color: rgba(0, 0, 0, 0);
+    margin: 0em;
+    padding:0;
+    border-width:0;
+    width:inherit;
+    height:inherit;
+    border-radius: inherit;
+}
+input:focus{
+    outline: none;
+}
+label{
+    margin-top:2.5vh;
+    margin-bottom:2.5vh;
+    color:white;
+    font-size:20px;
+    font-family: 'Montserrat', sans-serif;
+}
+.form-bg{
+    width:100vw;
+    height:70wh;
+}
+.bottom-page-text{
+    margin-top:20px;
 }

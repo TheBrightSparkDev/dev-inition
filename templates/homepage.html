@@ -3,13 +3,13 @@
 <h1 class="game-title">Word VS</h1>
 <div class="home-options">
     <div class="rounded medium margin">
-        <a href="#"><p>Sign Up</p></a>
+        <a href="{{url_for('signup')}}"><p>Sign Up</p></a>
     </div>
     <div class="rounded small margin">
         <a href="#"><p>Guest</p></a>
     </div>
     <div class="rounded medium margin">
-        <a href="#"><p>Sign Out</p></a>
+        <a href="{{url_for('signin')}}"><p>Sign In</p></a>
     </div>
 </div>
 {% endblock %}
