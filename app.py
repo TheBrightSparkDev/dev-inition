@@ -92,6 +92,16 @@ def signin():
     return render_template("signin.html")
 
 
+@app.route("/signout")
+def signout():
+    """
+    logs the user out
+    """
+    flash("you have been logged out")
+    session.pop("user")
+    return redirect(url_for("homepage"))
+
+
 # profile section
 @app.route("/profile/<username>")
 def profile(username):

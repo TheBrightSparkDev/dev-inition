@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
 {% with messages = get_flashed_messages() %}
-{% if messages %}
-    {% for message in messages %}
-        <div class="rounded responsive-large center">
-            <p>{{ message }}</p>
-        </div>
-    {% endfor %}
-{% endif %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="rounded responsive-large center">
+                <h6>{{ message }}</h6>
+            </div>
+        {% endfor %}
+    {% endif %}
 {% endwith %}
 <h1 class="game-title">Word VS</h1>
 <div class="input-content-container">
@@ -31,7 +31,7 @@
         </form>
     </div>
 </div>
-<div class="responsive-large rounded center max-width">
-    <a href="{{url_for('signin')}}"><p>Already have an account?</p></a>
+<div class="responsive-large rounded top-margin max-width center">
+    <a href="{{url_for('signin')}}"><h6>Already have an account?<h6></a>
 </div>
 {% endblock %}
