@@ -48,7 +48,8 @@ def signup():
 
         register = {
             "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password"))
+            "password": generate_password_hash(request.form.get("password")),
+            "friends": []
         }
         mongo.db.users.insert_one(register)
 
@@ -108,12 +109,41 @@ def profile(username):
     """
     displays profile and controls logic on profile page
     """
-    print(username)
     if username == "guest":
         session['user'] = "guest"
     else:
         session['user'] = username
     return render_template("profile.html", username=username)
+
+
+@app.route("/friend_picker/<username>")
+def friend_picker(username):
+    """
+    displays friend picker page and controls logic for page
+    """
+    user = mongo.db.users.find_one({"username": username.lower()})
+    friends = user["friends"]
+
+    return render_template('friend_picker.html', friends=friends)
+
+
+
+@app.route("/add_friend", methods=["GET", "POST"])
+def add_friend():
+    """
+    displays friend picker page and controls logic for page
+    """
+    username= request.form.get("username")
+    user = mongo.db.users.find_one( {"username": session['user'].lower() })
+    user_id = user["_id"]
+    friends = user["friends"]
+    if request.method == "POST":
+        if request.form.get("username") not in friends:
+            friends.append(username)
+            mongo.db.users.update_one({"_id": ObjectId(user_id)}, friends)
+        else:
+            flash("You are already friends")
+    return render_template('add_friend.html', friends=friends)
 
 
 if __name__ == "__main__":

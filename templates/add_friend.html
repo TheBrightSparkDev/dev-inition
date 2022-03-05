@@ -12,26 +12,21 @@
 <h1 class="game-title">Word VS</h1>
 <div class="input-content-container">
     <div class="rounded form-bg max-width">
-        <form method="POST" action="{{ url_for('signin') }}">
+        <form method="POST" action="{{ url_for('add_friend') }}">
         <label for="username">Username</label>
         <div class="center rounded responsive-large dark">
             <input class="center" id="username" type="text" name="username" 
             pattern="^[a-zA-Z0-9]{5,11}$" class="validate" required>
         </div>
-        <label class="label" for="passord">Password</label>
-        <div class="center rounded responsive-large dark">
-            <input class="center" id="password" type="password" name="password" 
-            pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-        </div>
         <div class="rounded small dark" id="button-margins">
             <button type="submit">
-                Sign in
+                Add friend
             </button>
         </div>
         </form>
     </div>
 </div>
 <div class="responsive-large rounded max-width top-margin center">
-    <a href="{{url_for('signup')}}"><h6>Don't have an account?</h6></a>
+    <a href="{{ url_for('friend_picker', username=session['user']) }}"><h6>Back</h6></a>
 </div>
 {% endblock %}

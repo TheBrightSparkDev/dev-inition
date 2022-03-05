@@ -28,7 +28,7 @@
         {% if username == "guest" %}
             <a href="{{ url_for('signin') }}"><h6>sign in to see your challenges</h6></a>
         {% else %}
-            <a href="#"><h6>Challenge a Friend</h6></a>
+            <a href="{{ url_for('friend_picker', username=session['user']) }}"><h6>Challenge a Friend</h6></a>
         {% endif %}
     </div>
     <div class="rounded responsive-medium new-line">

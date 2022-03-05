@@ -78,7 +78,7 @@ a{
 }
 /* homepage specific changes */
 .game-body{
-    height:100vh;
+    min-height:100vh;
     width:100vw;
 }
 .game-title{
@@ -197,6 +197,37 @@ h6{
     margin-right:5px;
     color:white;
 }
+/* friends list secific styles */
+.friend-list{
+    display:flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.friend-card{
+    display:flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center; 
+    width:40vw;
+    height:50px;
+    margin-top: 10px;
+    margin-bottom:10px;
+}
+h5{
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    font-size: 30px;
+    font-weight:300;
+    margin-left:5px;
+    margin-right:5px;
+    color:white;
+}
+.margin-friend{
+    margin-top: 10px;
+    margin-bottom:10px;
+}
+
 @media screen and (max-width: 600px) {
     .profile-card{
         width:80vw;
@@ -215,5 +246,14 @@ h6{
         text-align: center;
         font-size: 30px;
         font-weight:300;
+    }
+    h5{
+        font-family: 'Montserrat', sans-serif;
+        text-align: center;
+        font-size: 15px;
+        font-weight:300;
+        margin-left:5px;
+        margin-right:5px;
+        color:white;
     }
 }
