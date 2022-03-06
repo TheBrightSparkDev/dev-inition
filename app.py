@@ -9,6 +9,7 @@ from flask import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+from datetime import datetime
 
 if os.path.exists("env.py"):
     import env
@@ -133,17 +134,40 @@ def add_friend():
     """
     displays friend picker page and controls logic for page
     """
-    username= request.form.get("username")
+    add_user= request.form.get("username")
     user = mongo.db.users.find_one( {"username": session['user'].lower() })
-    user_id = user["_id"]
     friends = user["friends"]
     if request.method == "POST":
         if request.form.get("username") not in friends:
-            friends.append(username)
-            mongo.db.users.update_one({"_id": ObjectId(user_id)}, friends)
+            mongo.db.users.update_many(
+                {'username': session['user']}, {'$push': {"friends": add_user}})
+            flash("Friend added")
         else:
             flash("You are already friends")
     return render_template('add_friend.html', friends=friends)
+
+
+@app.route("/create_challenge/<friend>", methods=["GET", "POST"])
+def create_challenge(friend):
+    """
+    displays create challenge page and controls logic
+    """
+    if request.method == "POST":
+        now = datetime.now()
+        format_now = now.strftime("%d/%m/%Y %H:%M:%S")
+        word = request.form.get("word").lower()
+        letter = request.form.get("letters").lower()
+        challenge = {"word": word,
+                     "letters": letter,
+                     "for": friend,
+                     "from": session['user'],
+                     "state": "created",
+                     "created_date": format_now,
+                     "updated_date": format_now
+                     }
+        mongo.db.challenges.insert_one(challenge)
+        flash("challenge sent")
+    return render_template('create_challenge.html', friend=friend)
 
 
 if __name__ == "__main__":

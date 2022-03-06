@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="rounded responsive-large center">
+                <h6>{{ message }}</h6>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<h1 class="game-title">Word VS</h1>
+<h6>Challenge for {{friend}}</h6>
+<div class="input-content-container">
+    <div class="rounded form-bg max-width">
+        <form method="POST" action="{{ url_for('create_challenge',friend=friend) }}">
+        <label for="word">Word</label>
+        <div class="center rounded responsive-large dark">
+            <input class="center" id="word" type="text" name="word" 
+            pattern="^[a-zA-Z0-9]{4,8}$" class="validate" required>
+        </div>
+        <label class="label" for="letters">Letters</label>
+        <div class="center rounded responsive-large dark">
+            <input class="center" id="letters" type="text" name="letters" 
+            pattern="^[a-zA-Z0-9]{4,15}$" class="validate" required>
+        </div>
+        <div class="rounded small dark" id="button-margins">
+            <button type="submit">
+                Send
+            </button>
+        </div>
+        </form>
+    </div>
+</div>
+<div class="responsive-large rounded max-width top-margin center">
+    <a href="{{url_for('friend_picker', username=session['user'])}}"><h6>Back</h6></a>
+</div>
+{% endblock %}

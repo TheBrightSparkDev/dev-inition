@@ -4,7 +4,7 @@
 <div class="friend-list rounded">
     {% for friend in friends %}
         <div class="rounded friend-card dark">
-            <a href=""><h5>{{friend}}</h5></a>
+            <a href="{{ url_for('create_challenge', friend=friend ) }}"><h5>{{friend}}</h5></a>
         </div>
     {% endfor %}
     <div class="rounded responsive-large margin-friend dark">
