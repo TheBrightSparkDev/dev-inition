@@ -191,6 +191,16 @@ def sent_challenges():
     return render_template('sent_challenges.html', challenges=challenges)
 
 
+@app.route("/game/<challenge>", methods=["GET", "POST"])
+def game(challenge):
+    """
+    displays the main game and forwards the information required
+    to display the current challenge.
+    """
+    print(challenge)
+    challenge = list(mongo.db.challenges.find({"_id": challenge}))
+    return render_template(game.html, challenge=challenge)
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
