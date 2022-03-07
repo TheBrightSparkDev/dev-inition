@@ -151,15 +151,16 @@ def add_friend():
 def create_challenge(friend):
     """
     displays create challenge page and controls logic
+    also sends a challenge to the database
     """
     if request.method == "POST":
         now = datetime.now()
         format_now = now.strftime("%d/%m/%Y %H:%M:%S")
         word = request.form.get("word").lower()
         letter = request.form.get("letters").lower()
-        challenge = {"word": word,
+        challenge = {"for": friend,
+                     "word": word,
                      "letters": letter,
-                     "for": friend,
                      "from": session['user'],
                      "state": "created",
                      "created_date": format_now,
@@ -168,6 +169,26 @@ def create_challenge(friend):
         mongo.db.challenges.insert_one(challenge)
         flash("challenge sent")
     return render_template('create_challenge.html', friend=friend)
+
+
+@app.route("/challenges")
+def challenges():
+    """
+    displays the challenges for an individual
+    """
+    user = session['user']
+    challenges = list(mongo.db.challenges.find({"for": user}))
+    return render_template('challenges.html', challenges=challenges)
+
+
+@app.route("/sent_challenges")
+def sent_challenges():
+    """
+    displays the challenges sent by an individual
+    """
+    user = session['user']
+    challenges = list(mongo.db.challenges.find({"from": user}))
+    return render_template('sent_challenges.html', challenges=challenges)
 
 
 if __name__ == "__main__":

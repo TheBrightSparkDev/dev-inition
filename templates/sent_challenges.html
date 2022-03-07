@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<a href="{{ url_for('profile', username=session['user']) }}"><h1 class="game-title">Word VS</h1></a>
+<div class="friend-list rounded">
+{% if challenges|length == 0 %}
+    <div class="rounded friend-card dark">
+        <h5>No challenges found</h5>
+    </div>
+{% else %}
+    {% for challenge in challenges %}
+        <div class="rounded challenge-card dark">
+            <a href="#"><h5>Challenge for {{challenge.for}}</h5></a>
+            <div class="rounded dark-highlight dark new-line">
+                <a href="#"><h5>Edit</h5></a>
+            </div>
+            <div class="rounded dark-highlight dark new-line">
+                <h5>{{challenge.state}}</h5>
+                {% if challenges.status == created %}
+                    <div class="created">
+                {% elif challenges.status == started %}
+                    <div class="started">
+                {% elif challenges.status == completed %}
+                    <div class="completed">
+                {% elif challenges.status == quit %}
+                    <div class="quit">
+                {% endif %}
+                    </div>
+            </div>
+            <h4 class="new-line">last updated {{challenge.updated_date}}</h4>
+            <h4 class="new-line">Created on {{challenge.created_date}}</h4>
+        </div>
+    {% endfor %}
+{% endif %}
+    <div class="rounded responsive-large margin-friend dark">
+        <a href="{{ url_for('profile', username=session['user']) }}">
+            <h6>Back</h6>
+        </a>
+    </div>
+</div>
+{% endblock %}
