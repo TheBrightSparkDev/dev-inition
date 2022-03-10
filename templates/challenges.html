@@ -9,7 +9,7 @@
 {% else %}
     {% for challenge in challenges %}
         <div class="rounded friend-card dark">
-            <a href="{{ url_for('profile', challenge=challenge._id }}"><h5>Challenge from {{challenge.from}}</h5></a>
+            <a href="{{ url_for('game', challenge=challenge._id) }}"><h5>Challenge from {{challenge.from}}</h5></a>
         </div>
     {% endfor %}
 {% endif %}

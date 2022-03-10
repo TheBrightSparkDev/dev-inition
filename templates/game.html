@@ -1,51 +1,118 @@
 {% extends "base.html" %}
 {% block content %}
 <h1 class="game-title">Word VS</h1>
+<h6>{{ challenge.word }}</h6>
+<h6>{{ challenge.letters }}</h6>
+<div class="rounded guess-box">
 <!-- populates the guesses -->
-    {% if challenge.guess-1 %}
-        {% for letter in challenge.guess-1 %}
-            <div class="game-line">
+    {% if challenge.guess_1 %}
+    <div class="game-line">
+        {% for letter in challenge.guess_1 %}
+            <div class="game-square">
                 <h6>{{letter}}</h6>
             </div>
         {% endfor %}
-        {% if challenge.guess-2 %}
-        {% for letter in challenge.guess-2 %}
-            <div class="game-line">
-                <h6>{{letter}}</h6>
-            </div>
-        {% endfor %}
-        {% if challenge.guess-3 %}
-        {% for letter in challenge.guess-3 %}
-            <div class="game-line">
-                <h6>{{letter}}</h6>
-            </div>
-        {% endfor %}
-        {% if challenge.guess-4 %}
-        {% for letter in challenge.guess-4 %}
-            <div class="game-line">
-                <h6>{{letter}}</h6>
-            </div>
-        {% endfor %}
-        {% if challenge.guess-5 %}
-        {% for letter in challenge.guess-5 %}
-            <div class="game-line">
-                <h6>{{letter}}</h6>
-            </div>
-        {% endfor %}
-        {% if challenge.guess-6 %}
-        {% for letter in challenge.guess-6 %}
-            <div class="game-line">
-                <h6>{{letter}}</h6>
-            </div>
-        {% endfor %}
+    {% else %}
         {% for letter in challenge.word %}
-            <div class="game-line">
+            <div class="game-square">
                 <h6></h6>
             </div>
         {% endfor %}
-    {% endif %}
-    <div class="rounded responsive-medium new-line">
-        <a href="{{ url_for('profile') }}"><h6>back</h6></a>
     </div>
+    {% endif %}
+    {% if challenge.guess_2 %}
+    <div class="game-line">
+        {% for letter in challenge.guess_2 %}
+            <div class="game-square">
+                <h6>{{letter}}</h6>
+            </div>
+        {% endfor %}
+    {% else %}
+        {% for letter in challenge.word %}
+            <div class="game-square">
+                <h6></h6>
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% if challenge.guess_3 %}
+    <div class="game-line">
+        {% for letter in challenge.guess_3 %}
+            <div class="game-square">
+                <h6>{{letter}}</h6>
+            </div>
+        {% endfor %}
+    {% else %}
+        {% for letter in challenge.word %}
+            <div class="game-square">
+                <h6></h6>
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% if challenge.guess_4 %}
+    <div class="game-line">
+        {% for letter in challenge.guess_4 %}
+            <div class="game-square">
+                <h6>{{letter}}</h6>
+            </div>
+        {% endfor %}
+    {% else %}
+        {% for letter in challenge.word %}
+            <div class="game-square">
+                <h6></h6>
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% if challenge.guess_5 %}
+    <div class="game-line">
+        {% for letter in challenge.guess_5 %}
+            <div class="game-square">
+                <h6>{{letter}}</h6>
+            </div>
+        {% endfor %}
+    {% else %}
+        {% for letter in challenge.word %}
+            <div class="game-square">
+                <h6></h6>
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% if challenge.guess_6 %}
+    <div class="game-line">
+        {% for letter in challenge.guess_6 %}
+            <div class="game-square">
+                <h6>{{letter}}</h6>
+            </div>
+        {% endfor %}
+    {% else %}
+        {% for letter in challenge.word %}
+            <div class="game-square">
+                <h6></h6>
+            </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+<!-- creates a box for every letter in the word -->
+<div class="game-line">
+    {% for letter in challenge.word %}
+        <div class="game-square">
+            <h6></h6>
+        </div>
+    {% endfor %}
+</div>
+<!-- creates a box for every letter in the available letters forming a keyboard  -->
+<div class="rounded keyboard-bg">
+    {% for letter in challenge.letters %}
+        <div class="game-square">
+            <h6>{{letter}}</h6>
+        </div>
+    {% endfor %}
+</div>
+<div class="rounded responsive-medium new-line">
+    <a href="{{ url_for('profile', username=session['user']) }}"><h6>back</h6></a>
 </div>
 {% endblock %}

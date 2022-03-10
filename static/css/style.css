@@ -292,6 +292,39 @@ h4{
     align-content: center;
     align-items:center;
 }
+/* game specific styles */
+.guess-box{
+    width:80vw;
+    height:200px;
+    display:flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items:center;
+}
+.game-line{
+    width:80vw;
+    height:7.5vw;
+    display:flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items:center;
+}
+.game-square{
+    width:7.5vw;
+    height:7.5vw;
+    background-color: rgba(0, 0, 0, 0.2);
+}
+.keyboard-bg{
+    width:80vw;
+    height:200px;
+    display:flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: center;
+    align-items:center;
+}
 @media screen and (max-width: 600px) {
     .profile-card{
         width:80vw;

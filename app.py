@@ -164,7 +164,13 @@ def create_challenge(friend):
                      "from": session['user'],
                      "state": "created",
                      "created_date": format_now,
-                     "updated_date": format_now
+                     "updated_date": format_now,
+                     "guess_1":"",
+                     "guess_2":"",
+                     "guess_3":"",
+                     "guess_4":"",
+                     "guess_5":"",
+                     "guess_6":"",
                      }
         mongo.db.challenges.insert_one(challenge)
         flash("challenge sent")
@@ -197,9 +203,8 @@ def game(challenge):
     displays the main game and forwards the information required
     to display the current challenge.
     """
-    print(challenge)
-    challenge = list(mongo.db.challenges.find({"_id": challenge}))
-    return render_template(game.html, challenge=challenge)
+    cursor = list(mongo.db.challenges.find({"_id": ObjectId(challenge)}))
+    return render_template('game.html', challenge=cursor)
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
