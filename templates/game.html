@@ -1,12 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
 <h1 class="game-title">Word VS</h1>
+<div>
+    {% for key, value in challenge.items() %}
+        <dt>{{ key|e }}</dt>
+        <dd>{{ value|e }}</dd>
+    {% endfor %}
+</div>
 <h6>{{ challenge.word }}</h6>
 <h6>{{ challenge.letters }}</h6>
 <div class="rounded guess-box">
 <!-- populates the guesses -->
-    {% if challenge.guess_1 %}
     <div class="game-line">
+    {% if guess_1 %}
         {% for letter in challenge.guess_1 %}
             <div class="game-square">
                 <h6>{{letter}}</h6>
@@ -20,8 +26,8 @@
         {% endfor %}
     </div>
     {% endif %}
-    {% if challenge.guess_2 %}
     <div class="game-line">
+    {% if challenge.guess_2 %}
         {% for letter in challenge.guess_2 %}
             <div class="game-square">
                 <h6>{{letter}}</h6>
@@ -35,8 +41,9 @@
         {% endfor %}
     </div>
     {% endif %}
-    {% if challenge.guess_3 %}
     <div class="game-line">
+    {% if challenge.guess_3 %}
+    
         {% for letter in challenge.guess_3 %}
             <div class="game-square">
                 <h6>{{letter}}</h6>
@@ -50,8 +57,8 @@
         {% endfor %}
     </div>
     {% endif %}
-    {% if challenge.guess_4 %}
     <div class="game-line">
+    {% if challenge.guess_4 %}
         {% for letter in challenge.guess_4 %}
             <div class="game-square">
                 <h6>{{letter}}</h6>
@@ -65,8 +72,8 @@
         {% endfor %}
     </div>
     {% endif %}
-    {% if challenge.guess_5 %}
     <div class="game-line">
+    {% if challenge.guess_5 %}
         {% for letter in challenge.guess_5 %}
             <div class="game-square">
                 <h6>{{letter}}</h6>
@@ -80,8 +87,8 @@
         {% endfor %}
     </div>
     {% endif %}
-    {% if challenge.guess_6 %}
     <div class="game-line">
+    {% if challenge.guess_6 %}
         {% for letter in challenge.guess_6 %}
             <div class="game-square">
                 <h6>{{letter}}</h6>

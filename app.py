@@ -165,12 +165,12 @@ def create_challenge(friend):
                      "state": "created",
                      "created_date": format_now,
                      "updated_date": format_now,
-                     "guess_1":"",
-                     "guess_2":"",
-                     "guess_3":"",
-                     "guess_4":"",
-                     "guess_5":"",
-                     "guess_6":"",
+                     "guess_1": "",
+                     "guess_2": "",
+                     "guess_3": "",
+                     "guess_4": "",
+                     "guess_5": "",
+                     "guess_6": "",
                      }
         mongo.db.challenges.insert_one(challenge)
         flash("challenge sent")
@@ -204,7 +204,17 @@ def game(challenge):
     to display the current challenge.
     """
     cursor = list(mongo.db.challenges.find({"_id": ObjectId(challenge)}))
-    return render_template('game.html', challenge=cursor)
+    challenge = {
+                    "word": cursor['word'],
+                    "letters": cursor.get('letters'),
+                    "guess_1": cursor.get('guess_1'),
+                    "guess_2": cursor.get('guess_2'),
+                    "guess_3": cursor.get('guess_3'),
+                    "guess_4": cursor.get('guess_4'),
+                    "guess_5": cursor.get('guess_5'),
+                    "guess_6": cursor.get('guess_6'),
+    }
+    return render_template('game.html', challenge=challenge)
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
