@@ -3,13 +3,13 @@ controls the flow through the dev inition website and displays pages and
 controls logic
 """
 import os
+from datetime import datetime
 from flask import (
      Flask, flash, render_template,
      redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
-from datetime import datetime
 
 if os.path.exists("env.py"):
     import env
@@ -28,7 +28,6 @@ def homepage():
     """
     displays the homepage
     """
-    
     return render_template("homepage.html")
 
 
@@ -128,19 +127,19 @@ def friend_picker(username):
     return render_template('friend_picker.html', friends=friends)
 
 
-
 @app.route("/add_friend", methods=["GET", "POST"])
 def add_friend():
     """
     displays friend picker page and controls logic for page
     """
-    add_user= request.form.get("username")
-    user = mongo.db.users.find_one( {"username": session['user'].lower() })
+    add_user = request.form.get("username")
+    user = mongo.db.users.find_one({"username": session['user'].lower()})
     friends = user["friends"]
     if request.method == "POST":
         if request.form.get("username") not in friends:
             mongo.db.users.update_many(
-                {'username': session['user']}, {'$push': {"friends": add_user}})
+                {'username': session['user']},
+                {'$push': {"friends": add_user}})
             flash("Friend added")
         else:
             flash("You are already friends")
@@ -204,12 +203,11 @@ def game(challenge):
     to display the current challenge.
     """
     cursor = list(mongo.db.challenges.find({"_id": ObjectId(challenge)}))
-    print(cursor)
     challenge = {}
     for i in cursor:
         challenge.update(i)
-    print(challenge)
     return render_template('game.html', challenge=challenge)
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

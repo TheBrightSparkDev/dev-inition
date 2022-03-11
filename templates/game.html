@@ -112,10 +112,12 @@
     <!-- creates a box for every letter in the available letters forming a keyboard  -->
     <div class="rounded keyboard-bg">
         {% for letter in challenge.letters %}
-            <div class="keyboard-square">
+            <div class="keyboard-square" letter="{{ letter }}" onclick="keyboardClick(this.getAttribute('letter'))">
                 <h3>{{letter}}</h3>
             </div>
         {% endfor %}
     </div>
+    <!-- scripts -->
+    <script type="text/javascript" src="{{url_for('static', filename='js/script.js')}}"></script>
 </div>
 {% endblock %}

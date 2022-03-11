@@ -294,7 +294,7 @@ h4{
 }
 /* game specific styles */
 .guess-box{
-    width:50vw;
+    width:45vw;
     display:flex;
     flex-wrap:wrap;
     justify-content: center;
@@ -321,27 +321,26 @@ h4{
     width:3.75vw;
     height:3.75vw;
     background-color: rgba(0, 0, 0, 0.2);
-    margin:1.25vw;
+    margin:0.75vw;
     border-radius: 20px;
 }
 .keyboard-square{
-    width:5vw;
-    height:5vw;
+    width:3.75vw;
+    height:3.75vw;
     background-color: rgba(0, 0, 0, 0.2);
-    margin:1.25vw;
+    margin:0.75vw;
     border-radius: 20px;
 }
 h3{
     font-family: 'Montserrat', sans-serif;
     text-align: center;
-    font-size: 3vw;
     font-weight:300;
     margin-left:5px;
     margin-right:5px;
     color:white;
 }
 .keyboard-square > h3{
-    font-size:4vw;
+    font-size:3vw;
 }
 .keyboard-bg{
     width:80vw;
@@ -352,7 +351,7 @@ h3{
     align-items:center;
 }
 .margin-bottom{
-    margin-bottom:2.5vw;
+    margin-bottom:1vw;
 }
 @media screen and (max-width: 1000px) {
             /* game specific styles */
@@ -365,7 +364,6 @@ h3{
                 align-items:center;
             }
             .game-area{
-                height:100vh;
                 display:flex;
                 flex-wrap: wrap;
                 justify-content: center;
@@ -389,8 +387,8 @@ h3{
                 border-radius: 20px;
             }
             .keyboard-square{
-                width:15vw;
-                height:15vw;
+                width:12.5vw;
+                height:12.5vw;
                 background-color: rgba(0, 0, 0, 0.2);
                 margin:1.25vw;
                 border-radius: 20px;
@@ -419,7 +417,7 @@ h3{
                 margin-bottom:2.5vw;
             }
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 539px) {
     .profile-card{
         width:80vw;
         height:15vh;
