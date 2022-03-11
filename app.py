@@ -204,16 +204,11 @@ def game(challenge):
     to display the current challenge.
     """
     cursor = list(mongo.db.challenges.find({"_id": ObjectId(challenge)}))
-    challenge = {
-                    "word": cursor['word'],
-                    "letters": cursor.get('letters'),
-                    "guess_1": cursor.get('guess_1'),
-                    "guess_2": cursor.get('guess_2'),
-                    "guess_3": cursor.get('guess_3'),
-                    "guess_4": cursor.get('guess_4'),
-                    "guess_5": cursor.get('guess_5'),
-                    "guess_6": cursor.get('guess_6'),
-    }
+    print(cursor)
+    challenge = {}
+    for i in cursor:
+        challenge.update(i)
+    print(challenge)
     return render_template('game.html', challenge=challenge)
 
 if __name__ == "__main__":

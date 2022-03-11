@@ -294,17 +294,23 @@ h4{
 }
 /* game specific styles */
 .guess-box{
-    width:80vw;
-    height:200px;
+    width:50vw;
     display:flex;
-    flex-wrap: nowrap;
+    flex-wrap:wrap;
+    justify-content: center;
+    align-content: center;
+    align-items:center;
+}
+.game-area{
+    display:flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-content: center;
     align-items:center;
 }
 .game-line{
-    width:80vw;
-    height:7.5vw;
+    width:60vw;
+    height:5vw;
     display:flex;
     flex-wrap: nowrap;
     justify-content: center;
@@ -312,18 +318,106 @@ h4{
     align-items:center;
 }
 .game-square{
-    width:7.5vw;
-    height:7.5vw;
+    width:3.75vw;
+    height:3.75vw;
     background-color: rgba(0, 0, 0, 0.2);
+    margin:1.25vw;
+    border-radius: 20px;
+}
+.keyboard-square{
+    width:5vw;
+    height:5vw;
+    background-color: rgba(0, 0, 0, 0.2);
+    margin:1.25vw;
+    border-radius: 20px;
+}
+h3{
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    font-size: 3vw;
+    font-weight:300;
+    margin-left:5px;
+    margin-right:5px;
+    color:white;
+}
+.keyboard-square > h3{
+    font-size:4vw;
 }
 .keyboard-bg{
     width:80vw;
-    height:200px;
     display:flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     justify-content: center;
     align-content: center;
     align-items:center;
+}
+.margin-bottom{
+    margin-bottom:2.5vw;
+}
+@media screen and (max-width: 1000px) {
+            /* game specific styles */
+            .guess-box{
+                width:80vw;
+                display:flex;
+                flex-wrap:wrap;
+                justify-content: center;
+                align-content: center;
+                align-items:center;
+            }
+            .game-area{
+                height:100vh;
+                display:flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-content: center;
+                align-items:center;
+            }
+            .game-line{
+                width:80vw;
+                height:10vw;
+                display:flex;
+                flex-wrap: nowrap;
+                justify-content: center;
+                align-content: center;
+                align-items:center;
+            }
+            .game-square{
+                width:7.5vw;
+                height:7.5vw;
+                background-color: rgba(0, 0, 0, 0.2);
+                margin:1.25vw;
+                border-radius: 20px;
+            }
+            .keyboard-square{
+                width:15vw;
+                height:15vw;
+                background-color: rgba(0, 0, 0, 0.2);
+                margin:1.25vw;
+                border-radius: 20px;
+            }
+            h3{
+                font-family: 'Montserrat', sans-serif;
+                text-align: center;
+                font-size: 5vw;
+                font-weight:300;
+                margin-left:5px;
+                margin-right:5px;
+                color:white;
+            }
+            .keyboard-square > h3{
+                font-size:10vw;
+            }
+            .keyboard-bg{
+                width:80vw;
+                display:flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-content: center;
+                align-items:center;
+            }
+            .margin-bottom{
+                margin-bottom:2.5vw;
+            }
 }
 @media screen and (max-width: 600px) {
     .profile-card{
@@ -360,5 +454,68 @@ h4{
         flex-wrap: nowrap;
         justify-content: center;
         align-content: center;
+    }
+        /* game specific styles */
+    .guess-box{
+        width:80vw;
+        display:flex;
+        flex-wrap:wrap;
+        justify-content: center;
+        align-content: center;
+        align-items:center;
+    }
+    .game-area{
+        height:100vh;
+        display:flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: center;
+        align-items:center;
+    }
+    .game-line{
+        width:80vw;
+        height:10vw;
+        display:flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-content: center;
+        align-items:center;
+    }
+    .game-square{
+        width:7.5vw;
+        height:7.5vw;
+        background-color: rgba(0, 0, 0, 0.2);
+        margin:1.25vw;
+        border-radius: 20px;
+    }
+    .keyboard-square{
+        width:15vw;
+        height:15vw;
+        background-color: rgba(0, 0, 0, 0.2);
+        margin:1.25vw;
+        border-radius: 20px;
+    }
+    h3{
+        font-family: 'Montserrat', sans-serif;
+        text-align: center;
+        font-size: 5vw;
+        font-weight:300;
+        margin-left:5px;
+        margin-right:5px;
+        color:white;
+    }
+    .keyboard-square > h3{
+        font-size:10vw;
+    }
+    .keyboard-bg{
+        width:80vw;
+        display:flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: center;
+        align-items:center;
+    }
+    .margin-bottom{
+        margin-bottom:2.5vw;
     }
 }
