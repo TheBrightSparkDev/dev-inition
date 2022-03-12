@@ -1,5 +1,13 @@
 {% extends "base.html" %}
+{% block styles %}
+{% endblock %}
 {% block content %}
+<div class="hidden-off-screen-container">
+    <form method="POST" id="submit" class="hidden-off-screen-element" action="{{ url_for('game', challenge=challenge._id) }}">
+        <label for="answer">answer</label>
+            <input id="answer" type="text" name="answer" class="validate" value="" required>
+    </form>
+</div>
 <div class="game-area">
     <div class="responsive-large margin-bottom">
         <h6>{{ challenge.from }}'s challenge</h6>
@@ -7,14 +15,25 @@
             <a href="{{ url_for('profile', username=session['user']) }}"><h6>back</h6></a>
         </div>
     </div>
-    <div class="rounded guess-box margin-bottom">
+    <!-- this id and length attribute is solely so javascript knows how long the length of the word is -->
+    <div class="rounded guess-box margin-bottom" id="length" length="{{challenge.word|length}}">
     <!-- populates the guesses -->
         <div class="game-line">
-        {% if guess_1 %}
+        {% if challenge.guess_1|length != 0  %}
             {% for letter in challenge.guess_1 %}
-                <div class="game-square">
+                {% if letter == challenge.word[loop.index0] %}
+                <div class="game-square correct">
                     <h3>{{letter}}</h3>
                 </div>
+                {% elif letter is in challenge.word %}
+                <div class="game-square nearly">
+                    <h3>{{letter}}</h3>
+                </div>
+                {% else %}
+                <div class="game-square wrong">
+                    <h3>{{letter}}</h3>
+                </div>
+                {% endif %}
             {% endfor %}
         {% else %}
             {% for letter in challenge.word %}
@@ -22,30 +41,49 @@
                     <h3></h3>
                 </div>
             {% endfor %}
-        </div>
         {% endif %}
+        </div>
         <div class="game-line">
-        {% if challenge.guess_2 %}
+        {% if challenge.guess_2 != ""  %}
             {% for letter in challenge.guess_2 %}
-                <div class="game-square">
-                    <h3>{{letter}}</h3>
-                </div>
+            {% if letter == challenge.word[loop.index0] %}
+            <div class="game-square correct">
+                <h3>{{letter}}</h3>
+            </div>
+            {% elif letter is in challenge.word %}
+            <div class="game-square nearly">
+                <h3>{{letter}}</h3>
+            </div>
+            {% else %}
+            <div class="game-square wrong">
+                <h3>{{letter}}</h3>
+            </div>
+            {% endif %}
             {% endfor %}
         {% else %}
             {% for letter in challenge.word %}
-                <div class="game-square">
+                <div class="game-square" id="2-{{loop.index}}">
                     <h3></h3>
                 </div>
             {% endfor %}
-        </div>
         {% endif %}
+        </div>
         <div class="game-line">
-        {% if challenge.guess_3 %}
-        
+        {% if challenge.guess_3 != ""  %}
             {% for letter in challenge.guess_3 %}
-                <div class="game-square">
-                    <h3>{{letter}}</h3>
-                </div>
+            {% if letter == challenge.word[loop.index0] %}
+            <div class="game-square correct">
+                <h3>{{letter}}</h3>
+            </div>
+            {% elif letter is in challenge.word %}
+            <div class="game-square nearly">
+                <h3>{{letter}}</h3>
+            </div>
+            {% else %}
+            <div class="game-square wrong">
+                <h3>{{letter}}</h3>
+            </div>
+            {% endif %}
             {% endfor %}
         {% else %}
             {% for letter in challenge.word %}
@@ -53,14 +91,24 @@
                     <h3></h3>
                 </div>
             {% endfor %}
-        </div>
         {% endif %}
+        </div>
         <div class="game-line">
-        {% if challenge.guess_4 %}
+        {% if challenge.guess_4 != ""  %}
             {% for letter in challenge.guess_4 %}
-                <div class="game-square">
-                    <h3>{{letter}}</h3>
-                </div>
+            {% if letter == challenge.word[loop.index0] %}
+            <div class="game-square correct">
+                <h3>{{letter}}</h3>
+            </div>
+            {% elif letter is in challenge.word %}
+            <div class="game-square nearly">
+                <h3>{{letter}}</h3>
+            </div>
+            {% else %}
+            <div class="game-square wrong">
+                <h3>{{letter}}</h3>
+            </div>
+            {% endif %}
             {% endfor %}
         {% else %}
             {% for letter in challenge.word %}
@@ -68,14 +116,24 @@
                     <h3></h3>
                 </div>
             {% endfor %}
-        </div>
         {% endif %}
+        </div>
         <div class="game-line">
-        {% if challenge.guess_5 %}
+        {% if challenge.guess_5 != ""  %}
             {% for letter in challenge.guess_5 %}
-                <div class="game-square">
-                    <h3>{{letter}}</h3>
-                </div>
+            {% if letter == challenge.word[loop.index0] %}
+            <div class="game-square correct">
+                <h3>{{letter}}</h3>
+            </div>
+            {% elif letter is in challenge.word %}
+            <div class="game-square nearly">
+                <h3>{{letter}}</h3>
+            </div>
+            {% else %}
+            <div class="game-square wrong">
+                <h3>{{letter}}</h3>
+            </div>
+            {% endif %}
             {% endfor %}
         {% else %}
             {% for letter in challenge.word %}
@@ -83,14 +141,24 @@
                     <h3></h3>
                 </div>
             {% endfor %}
-        </div>
         {% endif %}
+        </div>
         <div class="game-line">
-        {% if challenge.guess_6 %}
+        {% if challenge.guess_6 != "" %}
             {% for letter in challenge.guess_6 %}
-                <div class="game-square">
-                    <h3>{{letter}}</h3>
-                </div>
+            {% if letter == challenge.word[loop.index0] %}
+            <div class="game-square correct">
+                <h3>{{letter}}</h3>
+            </div>
+            {% elif letter is in challenge.word %}
+            <div class="game-square nearly">
+                <h3>{{letter}}</h3>
+            </div>
+            {% else %}
+            <div class="game-square wrong">
+                <h3>{{letter}}</h3>
+            </div>
+            {% endif %}
             {% endfor %}
         {% else %}
             {% for letter in challenge.word %}
@@ -98,13 +166,23 @@
                     <h3></h3>
                 </div>
             {% endfor %}
-        </div>
         {% endif %}
+        </div>
     </div>
+    <!-- flashed messages -->
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="rounded responsive-large center">
+                <h6>{{ message }}</h6>
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
     <!-- creates a box for every letter in the word -->
     <div class="game-line margin-bottom">
         {% for letter in challenge.word %}
-            <div class="input-square">
+            <div class="input-square" id="{{loop.index}}">
                 <h3></h3>
             </div>
         {% endfor %}

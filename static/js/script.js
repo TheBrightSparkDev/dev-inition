@@ -1,15 +1,47 @@
 // declaring global variables
-let letters = []
-let keyBoardItems = document.getElementsByClassName("keyboard-square")
-let inputSquares = document.getElementsByClassName("input-square")
+let letters = [];
+let currentInputBox = "1";
+let inputBoxes = [];
+let length = document.getElementById("length").getAttribute("length");
+let currentWord = [];
+let currentGuess = [];
+let keyBoardItems = document.getElementsByClassName("keyboard-square");
+let inputSquares = document.getElementsByClassName("input-square");
+// submits and checks answer
+function refresh(){
+    
+}
+timeout = setTimeout(refresh,1000);
+function submitAnswer(){
+    console.log(currentWord)
+    document.getElementById("answer").value = currentWord
+    document.getElementById("submit").submit()
+}
 // puts the letter in the correct box
 function typeLetter(content){
-    console.log(content)
+    // increments the current input box
+    if (currentInputBox < length){
+        let box = document.getElementById(currentInputBox)
+        box.children[0].innerText=content
+        parseInt(currentInputBox)
+        currentInputBox++ 
+        toString(currentInputBox)
+        console.log(currentInputBox)
+    } else if (currentInputBox == length){
+        let box = document.getElementById(currentInputBox)
+        box.children[0].innerText=content
+        parseInt(currentInputBox)
+        currentInputBox = 0
+        toString(currentInputBox)
+        console.log(currentInputBox)
+        submitAnswer()
+    }   
 }
 // determines what was clicked and if it's valid
 function clicked(letter){
     if (letters.includes(letter)){
-        typeLetter(letter) 
+        currentWord += letter
+        typeLetter(letter)
     }   
 }
 function keyboardClick(event){

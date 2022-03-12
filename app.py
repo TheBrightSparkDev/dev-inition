@@ -202,11 +202,55 @@ def game(challenge):
     displays the main game and forwards the information required
     to display the current challenge.
     """
+
     cursor = list(mongo.db.challenges.find({"_id": ObjectId(challenge)}))
-    challenge = {}
+    data = {}
     for i in cursor:
-        challenge.update(i)
-    return render_template('game.html', challenge=challenge)
+        data.update(i)
+    print(data)
+    correct = data.get("word")
+    print(correct)
+
+    if request.method == "POST":
+        word = request.form.get("answer")
+        check = mongo.db.wordlist.find_one({"word" : word})
+        try:
+            wordCheck = check.get("word")
+            if wordCheck == word:
+                query = {"_id": ObjectId(challenge)}
+                if word == correct:
+                    challenge_to_update = mongo.db.challenges.find_one({"_id": ObjectId(challenge)})
+                    if challenge_to_update.get("guess_1") == "":
+                        submit = {"$set": {"guess_1": word}}
+                    elif challenge_to_update.get("guess_2") == "":
+                        submit = {"$set": {"guess_2": word}}
+                    elif challenge_to_update.get("guess_3") == "":
+                        submit = {"$set": {"guess_3": word}}
+                    elif challenge_to_update.get("guess_4") == "":
+                        submit = {"$set": {"guess_4": word}}
+                    elif challenge_to_update.get("guess_5") == "":
+                        submit = {"$set": {"guess_5": word}}
+                    elif challenge_to_update.get("guess_6") == "":
+                        submit = {"$set": {"guess_6": word}}
+                    mongo.db.challenges.update_one(query, submit)
+                else:
+                    if challenge_to_update.get("guess_1") == "":
+                        submit = {"guess_1": word}
+                    elif challenge_to_update.get("guess_2") == "":
+                        submit = {"guess_2": word}
+                    elif challenge_to_update.get("guess_3") == "":
+                        submit = {"guess_3": word}
+                    elif challenge_to_update.get("guess_4") == "":
+                        submit = {"guess_4": word}
+                    elif challenge_to_update.get("guess_5") == "":
+                        submit = {"guess_5": word}
+                    elif challenge_to_update.get("guess_6") == "":
+                        submit = {"guess_6": word}
+                    challenge_to_update.update_one(query, submit)
+        except:
+            flash("Invalid Word")
+            print("invalid Word")
+    return render_template('game.html', challenge=data)
 
 
 if __name__ == "__main__":

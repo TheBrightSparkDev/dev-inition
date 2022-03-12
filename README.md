@@ -393,3 +393,6 @@ Below are the sources of all the media and content
   - then there the tips function that displays a message in the blank spaces to tell the user why that answer is the correct answer.
   - when the tutorial is over I origionally planned for it to refresh the page but due to it creating a dialog box saying are you sure you want to refresh i decided upon setting the html to its origional state allowing me to also keep the colorblind setting intact.
   - I could of hidden the colorblind tags but decided not to as it doesnt benefit anyone.
+
+  to do 
+  make sure sign in and sign up pages have a way of going back to the meain menu

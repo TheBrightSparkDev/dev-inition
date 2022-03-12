@@ -17,13 +17,12 @@ f = open("dictionary.json")
 
 dictionary = json.load(f)
 for words in dictionary:
-    if len(words) < 8:
-        if len(words) > 3:
-            if "-" not in words:
-                print(words)
-                sent = {"word": words, "meaning": dictionary[words]}
-                print(sent)
-                mongo.db.wordlist.insert_one(sent)
+    if len(words) == 8:
+        if "-" not in words:
+            print(words)
+            sent = {"word": words, "meaning": dictionary[words]}
+            print(sent)
+            mongo.db.wordlist.insert_one(sent)
                 
 
 f.close()
