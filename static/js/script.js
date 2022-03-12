@@ -6,9 +6,14 @@ function typeLetter(content){
     console.log(content)
 }
 // determines what was clicked and if it's valid
-function keyboardClick(letter){
-    console.log(letter)
-    typeLetter(letter)    
+function clicked(letter){
+    if (letters.includes(letter)){
+        typeLetter(letter) 
+    }   
+}
+function keyboardClick(event){
+    let letter = event.key
+    clicked(letter)
 }
 
 // creates a string that includes available letters
@@ -20,4 +25,4 @@ for (let item in keyBoardItems){
     }
 }
 // creates event listener for keyboard presses and calls the keyboardClick function
-
+document.addEventListener("keydown", function(){keyboardClick(event)})
