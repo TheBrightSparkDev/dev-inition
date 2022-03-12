@@ -1,6 +1,7 @@
 // declaring global variables
 let letters = []
 let keyBoardItems = document.getElementsByClassName("keyboard-square")
+let inputSquares = document.getElementsByClassName("input-square")
 // puts the letter in the correct box
 function typeLetter(content){
     console.log(content)
