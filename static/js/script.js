@@ -13,7 +13,7 @@ function refresh(){
 }
 timeout = setTimeout(refresh,1000);
 function submitAnswer(){
-    console.log(currentWord)
+    
     document.getElementById("answer").value = currentWord
     document.getElementById("submit").submit()
 }

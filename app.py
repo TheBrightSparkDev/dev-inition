@@ -214,39 +214,24 @@ def game(challenge):
     if request.method == "POST":
         word = request.form.get("answer")
         check = mongo.db.wordlist.find_one({"word" : word})
+        guesses = ["guess_1","guess_2","guess_3","guess_4","guess_5","guess_6",]
         try:
             wordCheck = check.get("word")
             if wordCheck == word:
                 query = {"_id": ObjectId(challenge)}
                 if word == correct:
                     challenge_to_update = mongo.db.challenges.find_one({"_id": ObjectId(challenge)})
-                    if challenge_to_update.get("guess_1") == "":
-                        submit = {"$set": {"guess_1": word}}
-                    elif challenge_to_update.get("guess_2") == "":
-                        submit = {"$set": {"guess_2": word}}
-                    elif challenge_to_update.get("guess_3") == "":
-                        submit = {"$set": {"guess_3": word}}
-                    elif challenge_to_update.get("guess_4") == "":
-                        submit = {"$set": {"guess_4": word}}
-                    elif challenge_to_update.get("guess_5") == "":
-                        submit = {"$set": {"guess_5": word}}
-                    elif challenge_to_update.get("guess_6") == "":
-                        submit = {"$set": {"guess_6": word}}
-                    mongo.db.challenges.update_one(query, submit)
+                    for guess in guesses:
+                        if challenge_to_update.get(guess) == "":
+                            submit = {"$set": {guess: word}}
+                        elif challenge_to_update.get(guess) == word:
+                            flash("You already tried this word")
+                        mongo.db.challenges.update_one(query, submit)
                 else:
-                    if challenge_to_update.get("guess_1") == "":
-                        submit = {"guess_1": word}
-                    elif challenge_to_update.get("guess_2") == "":
-                        submit = {"guess_2": word}
-                    elif challenge_to_update.get("guess_3") == "":
-                        submit = {"guess_3": word}
-                    elif challenge_to_update.get("guess_4") == "":
-                        submit = {"guess_4": word}
-                    elif challenge_to_update.get("guess_5") == "":
-                        submit = {"guess_5": word}
-                    elif challenge_to_update.get("guess_6") == "":
-                        submit = {"guess_6": word}
-                    challenge_to_update.update_one(query, submit)
+                    for guess in guesses:
+                        if challenge_to_update.get(guess) == "":
+                            submit = {"$set": {guess: word}}
+                        challenge_to_update.update_one(query, submit)
         except:
             flash("Invalid Word")
             print("invalid Word")

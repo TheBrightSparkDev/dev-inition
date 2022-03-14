@@ -1,13 +1,12 @@
-`python3 -m http.server`
-# [Dan says](https://thebrightsparkdev.github.io/Dan-says/)
+# [Word VS]()
 
-Link to site [Dan says](https://thebrightsparkdev.github.io/Dan-says/)
+Link to site [Word VS]()
 
-Dan Says is a fun Simon says game with a comedic twist I tried to add as much of my own personality and humour into this game in order to help people feel
-connected to the developer this game stands as an example that sometimes even a simple concept can be made fun by more than just the gameplay but with funny
-quips and messages. It also incorporates a contact page where people can let me know how to improve the game and let me know of any bugs. I created the game so it can be used on multiple devices.
+Word Vs is basically wordle with friends you challenge your friends to guess your word very simple lots of fun.
+The inspiration for this mostly came from the idea behind wordle one man wanted to challenge his wife everyday.
+So with the app anyone can challenge anyone everyday or even more than once everyday!
 
-<img src="assets/images/responsive-readme.png" alt= "image of the website on various devices to show responsiveness" width="100%">
+<img src="responsive image" alt= "image of the website on various devices to show responsiveness" width="100%">
 
 desktop and background credit: [pixabay](https://pixabay.com/photos/apple-computer-desk-workspace-1868496/)
 
@@ -17,59 +16,67 @@ desktop and background credit: [pixabay](https://pixabay.com/photos/apple-comput
 
 - __Main menu__
 
-  - The main menu contains a few options for the user to change the theme (colorblind), make suggestions and access the tutorial.
-  - These are to make the user feel more comfortable, make the game better and be involved and finally to show the user how to play the game.
+  - The main menu contains a few links to sign in sign up or guest mode.
+  - This allows people to sign up sign in or just try out the game to see if they like it
 
 ![Main menu](assets/images/main-menu.PNG)
 
-- __Game screen__
+- __Sign in/sign up page__
+ - Both pages are extremely similar one adds a new user to the database if they dont already exist the other
+ checks username and password match an already existing user.
+ - This is to allow users to get into the advanced features of the game like challenging friends and seeing challenges
+ that hae been sent your way.
 
-  -  This is where users will be most of the time unless they dont do so well... It's the main game! 
-  -  Users will hopefully find this fun and repeatable and will hopefully look forward to seeing the funny messages that pop up at the end as they vary depending on how well you do.
 
-![Game screen](assets/images/game-screen.PNG)
+![Sign in](assets/images/game-screen.PNG)
+![Sign up](assets/images/game-screen.PNG)
 
-- __Tutorial__
+- __Profile__
 
-  - This is where users will be able to learn to play the game it works by darkening the background and highlighting the correct answer and explaining why it's the right answer.
-  - I wanted this to be short and sweet so that users don't get bored before actually playing the game I spent alot of time making sure I could explain the game in as little time as I could. 
+- This is the first page you see when youre logged in, it looks different based on whether youre logged in or not.
+To users that are logged in it will display all the available options: challenges, sent challenges, challenge a friend 
+and freeplay. For users that are logged in as guest the only option they will have is freeplay.
+- Freeplay gives users the opportunity to try before they sign up if they arent sure about whether they will like the game.
+![Profile](assets/images/tutorial.PNG)
 
-![Tutorial](assets/images/tutorial.PNG)
+- __Challenge a friend__
 
-- __Pause menu__
+- this is where you go to send your friends a challenge the first page you get to when you click the link off the profile is a friend picker. You first choose what friend you want to send the challenge to. Then you set the challenge the word needs to be valid and part of my database I've gathered of 48000 + words. This stops people from using bad words and making up words as that would ruin the game.
 
-  - I wanted this to be very easy to access so made it so that the user can activate the pause menu by clicking the message above the gamezone.
-  - This allows users to either change themes (colorblind) during the game or quit or just take a break if they are on a highscore they don't want to lose.
+![Friend picker](assets/images/pause.PNG)
+![Challenge set page](assets/images/pause.PNG)
 
-![Pause menu](assets/images/pause.PNG)
+- __Challenges Page__ 
 
-- __Game over!__ 
+- This is where you see challenges you've recieved from others.
+- This allows users to complete challenges other users have sent them.
 
-  - This is the page you see whenever you lose it includes options for users to look at other highscores set by either myself during development or fictional characters or play again also shows the score they obtained during the last playthrough it also includes a funny message to say how well or not so well the user has done. 
-  - This will hopefully drive the user to want to do better and beat the fictional characters or just play again whatever motivates them!.
+![Challenges](assets/images/game-over.PNG)
 
-![Game Over](assets/images/game-over.PNG)
+- __Sent challenges__
 
-- __Highscores__
+- This page allows you to view and edit challenges you've sent to others and see if the person managed to complete the challenge or fail.
+- This allows a user to edit the challenge they've sent if they arent happy with the word they sent off origionally it however doesnt allow the word to be edited if the challenge has been started. You may also delete challenges sent aswell.
 
-  - This is a self explanatory section really just shows the highscores and shows the users score on the board if they did well enough to make it up there.
-  - This is to motivate users to push to beat the playtesters. 
+![Sent challenges](assets/images/highscore.PNG)
 
-![Highscores](assets/images/highscore.PNG)
-
-- __Suggestions__
+- __Freeplay__
   
-  - This is a form where users can add their thoughts about the game and let me know what they would change or tell me about any bugs that I may have missed. It also allows me to reply to them and interact with them afterwards if they leave their email.
-  - This is in my opinion essential for every game as sometimes the developer doesn't realise the real reason their game is used. 
+ - This is a few levels that I have created this allows players to get an idea of what the game is like and wither they like it.
 
-![Suggestions](assets/images/suggestions.PNG)
+![Freeplay](assets/images/suggestions.PNG)
 
-- __ColorBlind Mode__
+- __Add friend__
   
-  - This is for users that are colorblind it basically adds text to the different options so that users who are colorblind know whats what.
-  - This is my way of making sure the game is accessible to as many users as possible. 
+- This is where users go to add friends. If youre only just signing in please feel free to add thebrightspark which is my profile and challenge me! 
+- Users will be able to add eachother here. It only allows you to add users that exist.
 
-![ColorBlind Mode](assets/images/colorblind.PNG)
+![Add friend](assets/images/colorblind.PNG)
+
+- __Game page__
+
+- This is the main game where users will guess the words and they will display above the inout line in a grid you only have six guesses so mak sure they are good ones! Once you hit the guess limit its game over.
+- Users will be able to complete challenges their friends sent them here or complete the freeplay levels.
 
 # Wireframes
 
@@ -77,36 +84,71 @@ desktop and background credit: [pixabay](https://pixabay.com/photos/apple-comput
 
 [interactive wireframe](https://xd.adobe.com/view/5fb66345-d813-4c0c-a24d-a927b8edc2d9-0ae5/)
 
-This is the best way to get a good idea of how the game plays and was the first thing I made when designing the webpage.
+This is the best way other than using the site to get an idea of how everything works
 
-## Javaplanning
+# Challenges overcome 
 
-### images of JavaPlanning! 
+# Goal
 
-I started on a piece of paper when I first thought of what idea I would like to go with
+Displaying the correct amount of boxes on the game screen and the guesses to display and change the box background if the letter was in the right spot
 
-![Initial sketches](assets/images/javaplanning-sketch-1.jpg)
+# Issue
 
-I then continued in my code planning book which allowed to sketch next to the actual code in a more ordered fashion.
+The correct amount of boxes relies on the html page knowing how many letters are in the word getting that info wasnt straight forward initially as I had no idea how to do it. 
 
-![Code book sketches](assets/images/javaplanning-sketch-2.jpg)
-![Code book sketches](assets/images/javaplanning-sketch-3.jpg)
-![Code book sketches](assets/images/javaplanning-sketch-4.jpg)
+It also relied on the html page knowing that the letter was in the right place and what the correct answer was without displaying it to the user
 
-I wasnt lying! I really did write java code on paper... 
+## How I did it
 
-# challenges overcome 
-- timer(){} this was a tough one to figure out and googling didnt help much since most places said about Thread.sleep which was throwing an error at me! I did find a site where someone had created a stopwatch and spotted they used timeout to call the function again and this is what inspired me to try it myself as origionally it was a for loop which was running through instantly nomatter what I did.
-- I needed to change what the middle button does when clicked so had to remove the eventListener to start the game.
-- One of the play testers said that sometimes the game would give the same question twice and that it felt like it was a bug as if she hadnt clicked anything due to there being no feedback so created a div that is is green with a high opacity and toggled an invisible class on and off for 0.1 seconds everytime a correct answer is pressed.
-- Suggestions not diplaying correctly this was picked up by another playtester on a mobile I fixed the issue by changing the widths of the boxes to 100%.
-- more details on each of these challenges are found below in the bug section
-- Anti cheat mecnanism the way I was making sure the scores were correct is by double checking the message to see if it lined up with the screenshot of their highscore if the message didnt add up the score wasnt added.
+After looking back at previous mini project: task manager I noticed we used |length to find the length of a word which solved the first problem
+
+next was the conditional formatting of the box it sits in the way I implemented this was by using loop.index0 to check the letters of both the guess and the answer match and then also used the in keyword in jinja to check if the letter was part of the word string. If the letter was in the correct place it adds the class correct if not it moves on to checking if its in the word if it is a letter included in the word it adds the class nearly otherwise it just displays the same color as normal.
+
+## Goal
+
+To get the words onto the database
+
+## Issue
+
+I had a dictionary of 100k plus words varying in length and some even inclding special characters like "-" so the goal was to filter those out and only send over words between 5-8 letters long.
+
+I didnt have time to do this manually
+
+## How I did it
+
+I created an app to iterate over the 100k words filter out any that include "-" and only send over the words if the length is '>' 4 and '<' 9 it took about 30 mins but when it was done I had 48k words and their definitions added to the mongo db database.
+
+## Goal
+
+get the page to display the guesses correctly
+
+## Issue
+
+Upon submit the HTML page refreshes this causes the page to rebuild and send off the info at the same time...
+problem here is that the system requests the info down from the server which at this point hasnt recieved the new guess so the new guess isnt displayed... 
+
+I submit the form using javascript and the refreshing of the page means I dont need to clear all the input boxes which is ideal. Saves me creating an extra function and am not aware of a way of sending info from a html page to python without submitting
+
+Also upon manual refreshing it sends the same guess through again which means refreshing the page again after a second delay is not an option
+
+## How I did it
+
+I sent the guess back to the HTML page via python I had to first of all add some if statements to check if any of the guesses had already been guessed then I would create a new dict that included the guess at the correct line. 
+
+There is a small bug left here though if you manage to guess twice in less than 500ms it can cause and issue where the first guess is lost but doing this is very difficult and extremely unlikely.
+
+I also go the python app to check if the guess had already been guessed and blocked it if it had. 
+This lead to a lengthy function but it worked so thats all that mattered.
+
+## Goal
+
+## Issue
+
+## How I did it
 
 # Technology used
 ## wireframes
 - adobe XD
-- good old pen and paper
 ## Frameworks
 - I used github to store the repository and version management
 - I used gitpod for editing the code and for posting to github 
