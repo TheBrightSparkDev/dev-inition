@@ -244,7 +244,7 @@ def game(challenge):
                         submit = {"$set": {guess: word}}
                         break
                 print("before submit")
-                challenge_to_update.update_one(query, submit)
+                mongo.db.challenges.update_one(query, submit)
         except:
             flash("Invalid Word")
             print("invalid Word")

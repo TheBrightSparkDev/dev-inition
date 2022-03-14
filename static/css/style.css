@@ -464,7 +464,6 @@ h3 {
     .game-square {
         width: 7.5vw;
         height: 7.5vw;
-        background-color: rgba(0, 0, 0, 0.2);
         margin: 1.25vw;
         border-radius: 20px;
     }
@@ -585,7 +584,6 @@ h3 {
     .game-square {
         width: 7.5vw;
         height: 7.5vw;
-        background-color: rgba(0, 0, 0, 0.2);
         margin: 1.25vw;
         border-radius: 20px;
     }
