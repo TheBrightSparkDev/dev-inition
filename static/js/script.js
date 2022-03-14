@@ -13,7 +13,7 @@ function refresh(){
 }
 timeout = setTimeout(refresh,1000);
 function submitAnswer(){
-    
+
     document.getElementById("answer").value = currentWord
     document.getElementById("submit").submit()
 }
@@ -39,6 +39,7 @@ function typeLetter(content){
 }
 // determines what was clicked and if it's valid
 function clicked(letter){
+    letter = letter.toLowerCase()
     if (letters.includes(letter)){
         currentWord += letter
         typeLetter(letter)

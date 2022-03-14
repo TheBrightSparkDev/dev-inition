@@ -213,25 +213,38 @@ def game(challenge):
 
     if request.method == "POST":
         word = request.form.get("answer")
-        check = mongo.db.wordlist.find_one({"word" : word})
-        guesses = ["guess_1","guess_2","guess_3","guess_4","guess_5","guess_6",]
+        check = mongo.db.wordlist.find_one({"word": word})
+        guesses = [
+            "guess_1", "guess_2", "guess_3", "guess_4", "guess_5", "guess_6"]
+        challenge_to_update = mongo.db.challenges.find_one(
+                {"_id": ObjectId(challenge)})
         try:
             wordCheck = check.get("word")
-            if wordCheck == word:
-                query = {"_id": ObjectId(challenge)}
-                if word == correct:
-                    challenge_to_update = mongo.db.challenges.find_one({"_id": ObjectId(challenge)})
-                    for guess in guesses:
-                        if challenge_to_update.get(guess) == "":
-                            submit = {"$set": {guess: word}}
-                        elif challenge_to_update.get(guess) == word:
-                            flash("You already tried this word")
-                        mongo.db.challenges.update_one(query, submit)
-                else:
-                    for guess in guesses:
-                        if challenge_to_update.get(guess) == "":
-                            submit = {"$set": {guess: word}}
-                        challenge_to_update.update_one(query, submit)
+            print(wordCheck)
+            query = {"_id": ObjectId(challenge)}
+            print("before if")
+            if word == correct:
+                print("before find_one")
+                print("after find_one before loop")
+                for guess in guesses:
+                    if challenge_to_update.get(guess) == "":
+                        submit = {"$set": {guess: word}}
+                        break
+                    elif challenge_to_update.get(guess) == word:                           
+                        flash("You already tried this word")
+                        break
+                print("before post")
+                mongo.db.challenges.update_one(query, submit)
+            else:
+                print("before for in wrong answer")
+                for guess in guesses:
+                    print("before if in for " + guess)
+                    if challenge_to_update.get(guess) == "":
+                        print(guess + "before setting submit")
+                        submit = {"$set": {guess: word}}
+                        break
+                print("before submit")
+                challenge_to_update.update_one(query, submit)
         except:
             flash("Invalid Word")
             print("invalid Word")
