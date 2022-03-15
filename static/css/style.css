@@ -588,6 +588,12 @@ h3 {
         border-radius: 20px;
     }
 
+    #backspace{
+        width:5vw;
+        height:5vw;
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+
     .input-square {
         width: 7.5vw;
         height: 7.5vw;

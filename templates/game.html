@@ -18,9 +18,10 @@
     <!-- this id and length attribute is solely so javascript knows how long the length of the word is -->
     <div class="rounded guess-box margin-bottom" id="length" length="{{challenge.word|length}}">
     <!-- populates the guesses -->
+    {% for guess in guesses %}
         <div class="game-line">
-        {% if challenge.guess_1|length != 0  %}
-            {% for letter in challenge.guess_1 %}
+        {% if challenge[guess]|length != 0  %}
+            {% for letter in challenge[guess] %}
                 {% if letter == challenge.word[loop.index0] %}
                 <div class="game-square correct">
                     <h3>{{letter}}</h3>
@@ -30,144 +31,20 @@
                     <h3>{{letter}}</h3>
                 </div>
                 {% else %}
-                <div class="game-square wrong">
+                <div class="game-square">
                     <h3>{{letter}}</h3>
                 </div>
                 {% endif %}
             {% endfor %}
         {% else %}
             {% for letter in challenge.word %}
-                <div class="game-square">
-                    <h3></h3>
-                </div>
+            <div class="game-square">
+                <h3></h3>
+            </div>
             {% endfor %}
         {% endif %}
         </div>
-        <div class="game-line">
-        {% if challenge.guess_2 != ""  %}
-            {% for letter in challenge.guess_2 %}
-            {% if letter == challenge.word[loop.index0] %}
-            <div class="game-square correct">
-                <h3>{{letter}}</h3>
-            </div>
-            {% elif letter is in challenge.word %}
-            <div class="game-square nearly">
-                <h3>{{letter}}</h3>
-            </div>
-            {% else %}
-            <div class="game-square wrong">
-                <h3>{{letter}}</h3>
-            </div>
-            {% endif %}
-            {% endfor %}
-        {% else %}
-            {% for letter in challenge.word %}
-                <div class="game-square" id="2-{{loop.index}}">
-                    <h3></h3>
-                </div>
-            {% endfor %}
-        {% endif %}
-        </div>
-        <div class="game-line">
-        {% if challenge.guess_3 != ""  %}
-            {% for letter in challenge.guess_3 %}
-            {% if letter == challenge.word[loop.index0] %}
-            <div class="game-square correct">
-                <h3>{{letter}}</h3>
-            </div>
-            {% elif letter is in challenge.word %}
-            <div class="game-square nearly">
-                <h3>{{letter}}</h3>
-            </div>
-            {% else %}
-            <div class="game-square wrong">
-                <h3>{{letter}}</h3>
-            </div>
-            {% endif %}
-            {% endfor %}
-        {% else %}
-            {% for letter in challenge.word %}
-                <div class="game-square">
-                    <h3></h3>
-                </div>
-            {% endfor %}
-        {% endif %}
-        </div>
-        <div class="game-line">
-        {% if challenge.guess_4 != ""  %}
-            {% for letter in challenge.guess_4 %}
-            {% if letter == challenge.word[loop.index0] %}
-            <div class="game-square correct">
-                <h3>{{letter}}</h3>
-            </div>
-            {% elif letter is in challenge.word %}
-            <div class="game-square nearly">
-                <h3>{{letter}}</h3>
-            </div>
-            {% else %}
-            <div class="game-square wrong">
-                <h3>{{letter}}</h3>
-            </div>
-            {% endif %}
-            {% endfor %}
-        {% else %}
-            {% for letter in challenge.word %}
-                <div class="game-square">
-                    <h3></h3>
-                </div>
-            {% endfor %}
-        {% endif %}
-        </div>
-        <div class="game-line">
-        {% if challenge.guess_5 != ""  %}
-            {% for letter in challenge.guess_5 %}
-            {% if letter == challenge.word[loop.index0] %}
-            <div class="game-square correct">
-                <h3>{{letter}}</h3>
-            </div>
-            {% elif letter is in challenge.word %}
-            <div class="game-square nearly">
-                <h3>{{letter}}</h3>
-            </div>
-            {% else %}
-            <div class="game-square wrong">
-                <h3>{{letter}}</h3>
-            </div>
-            {% endif %}
-            {% endfor %}
-        {% else %}
-            {% for letter in challenge.word %}
-                <div class="game-square">
-                    <h3></h3>
-                </div>
-            {% endfor %}
-        {% endif %}
-        </div>
-        <div class="game-line">
-        {% if challenge.guess_6 != "" %}
-            {% for letter in challenge.guess_6 %}
-            {% if letter == challenge.word[loop.index0] %}
-            <div class="game-square correct">
-                <h3>{{letter}}</h3>
-            </div>
-            {% elif letter is in challenge.word %}
-            <div class="game-square nearly">
-                <h3>{{letter}}</h3>
-            </div>
-            {% else %}
-            <div class="game-square wrong">
-                <h3>{{letter}}</h3>
-            </div>
-            {% endif %}
-            {% endfor %}
-        {% else %}
-            {% for letter in challenge.word %}
-                <div class="game-square">
-                    <h3></h3>
-                </div>
-            {% endfor %}
-        {% endif %}
-        </div>
+    {% endfor %}
     </div>
     <!-- flashed messages -->
     {% with messages = get_flashed_messages() %}
@@ -186,6 +63,9 @@
                 <h3></h3>
             </div>
         {% endfor %}
+        <div id="backspace">
+            <img src="">
+        </div>
     </div>
     <!-- creates a box for every letter in the available letters forming a keyboard  -->
     <div class="rounded keyboard-bg">
@@ -196,10 +76,6 @@
         {% endfor %}
     </div>
     <!-- scripts -->
-    <!-- Jquery is only to handle the submit without refreshing the page -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" 
-    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" 
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript" src="{{url_for('static', filename='js/script.js')}}"></script>
 </div>
 {% endblock %}
