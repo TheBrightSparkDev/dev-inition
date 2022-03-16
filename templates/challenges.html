@@ -9,7 +9,9 @@
 </div>
 {% else %}
     <div class="friend-list rounded">
-        <h6>New Challenges</h6>
+        <div class="rounded responsive-large small-margin">
+            <h6>New Challenges</h6>
+        </div>
     {% for challenge in challenges %}
         {% if challenge.state == "created" %}
         <div class="rounded friend-card dark">
@@ -19,11 +21,18 @@
     {% endfor %}
     </div>
     <div class="friend-list rounded">
-        <h6>Already started</h6>
+        <div class="rounded responsive-large small-margin">
+            <h6>Already started</h6>
+        </div> 
     {% for challenge in challenges %}
         {% if challenge.state == "started" %}
-        <div class="rounded friend-card dark">
-            <a href="{{ url_for('game', challenge=challenge._id) }}"><h5>Challenge from {{challenge.from}}</h5></a>
+        <div class="rounded responsive-large dark">
+            <a href="{{ url_for('game', challenge=challenge._id) }}">
+                <h5>Challenge from {{challenge.from}}</h5>
+            </a>
+            <div class="rounded dark responsive-large small-margin">
+                <a href="#"><h5>Give up</h5></a>
+            </div>
         </div>
         {% endif %}
     {% endfor %}

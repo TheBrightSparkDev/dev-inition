@@ -233,7 +233,7 @@ def game(challenge):
                         dict_update = {guess: word}
                         data.update(dict_update)
                         mongo.db.challenges.update_one(query, submit)
-                        mongo.db.challenges.update_one(query,{'$set': {"state": "completed"}})
+                        mongo.db.challenges.update_one(query, {'$set': {"state": "completed"}})
                         flash("Correct, Well done")
                         break
                     elif challenge_to_update.get(guess) == word:                           

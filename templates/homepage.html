@@ -9,7 +9,7 @@
         {% endfor %}
     {% endif %}
 {% endwith %}
-<h1 class="game-title">Word VS</h1>
+<a href="{{ url_for('profile', username=session['user']) }}"><h1 class="game-title">Word VS</h1></a>
 <div class="home-options">
     <div class="rounded responsive-small home-buttons">
         <a href="{{ url_for('signup') }}"><p>Sign Up</p></a>

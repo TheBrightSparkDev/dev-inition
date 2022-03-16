@@ -9,7 +9,7 @@
         {% endfor %}
     {% endif %}
 {% endwith %}
-<h1 class="game-title">Word VS</h1>
+<a href="{{ url_for('homepage') }}"><h1 class="game-title">Word VS</h1></a>
 <div class="input-content-container">
     <div class="rounded form-bg max-width">
         <form method="POST" action="{{ url_for('signup') }}">

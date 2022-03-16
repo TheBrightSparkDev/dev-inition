@@ -9,20 +9,22 @@
         {% endfor %}
     {% endif %}
 {% endwith %}
-<h1 class="game-title">Word VS</h1>
+<a href="{{ url_for('profile', username=session['user']) }}"><h1 class="game-title">Word VS</h1></a>
 <div class="input-content-container">
     <div class="rounded form-bg max-width">
         <form method="POST" action="{{ url_for('add_friend') }}">
-        <label for="username">Username</label>
-        <div class="center rounded responsive-large dark">
-            <input class="center" id="username" type="text" name="username" 
-            pattern="^[a-zA-Z0-9]{5,11}$" class="validate" required>
-        </div>
-        <div class="rounded small dark" id="button-margins">
-            <button type="submit">
-                Add friend
-            </button>
-        </div>
+            <div class="new-line responsive-large">
+                <label for="username"><h5>Username</h5></label>
+            </div>
+            <div class="center rounded responsive-large dark">
+                <input class="center" id="username" type="text" name="username" 
+                pattern="^[a-zA-Z0-9]{5,11}$" class="validate" required>
+            </div>
+            <div class="rounded responsive-large dark" id="button-margins">
+                <button type="submit">
+                    <h5>Add friend</h5>
+                </button>
+            </div>
         </form>
     </div>
 </div>
