@@ -191,9 +191,11 @@ def sent_challenges():
     """
     displays the challenges sent by an individual
     """
+    guesses = [
+        "guess_1", "guess_2", "guess_3", "guess_4", "guess_5", "guess_6"]
     user = session['user']
     challenges = list(mongo.db.challenges.find({"from": user}))
-    return render_template('sent_challenges.html', challenges=challenges)
+    return render_template('sent_challenges.html', challenges=challenges, guesses=guesses)
 
 
 @app.route("/game/<challenge>", methods=["GET", "POST"])
@@ -204,6 +206,11 @@ def game(challenge):
     """
 
     cursor = list(mongo.db.challenges.find({"_id": ObjectId(challenge)}))
+    challenge_to_update = mongo.db.challenges.find_one(
+                {"_id": ObjectId(challenge)})
+    query = {"_id": ObjectId(challenge)}
+    if challenge_to_update.get("state") == "created":
+        mongo.db.challenges.update_one(query, {'$set': {"state": "started"}})
     data = {}
     for i in cursor:
         data.update(i)
@@ -216,12 +223,9 @@ def game(challenge):
     if request.method == "POST":
         word = request.form.get("answer")
         check = mongo.db.wordlist.find_one({"word": word})
-        challenge_to_update = mongo.db.challenges.find_one(
-                {"_id": ObjectId(challenge)})
         try:
             wordCheck = check.get("word")
             print(wordCheck)
-            query = {"_id": ObjectId(challenge)}
             if word == correct:
                 for guess in guesses:
                     if challenge_to_update.get(guess) == "":
@@ -229,6 +233,7 @@ def game(challenge):
                         dict_update = {guess: word}
                         data.update(dict_update)
                         mongo.db.challenges.update_one(query, submit)
+                        mongo.db.challenges.update_one(query,{'$set': {"state": "completed"}})
                         flash("Correct, Well done")
                         break
                     elif challenge_to_update.get(guess) == word:                           

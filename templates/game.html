@@ -19,7 +19,11 @@
     <div class="rounded guess-box margin-bottom" id="length" length="{{challenge.word|length}}">
     <!-- populates the guesses -->
     {% for guess in guesses %}
-        <div class="game-line">
+        {% if challenge[guess] == challenge.word %}
+            <div class="game-line complete" complete="yes">
+        {% else %}
+            <div class="game-line complete" complete="no">
+        {% endif %}
         {% if challenge[guess]|length != 0  %}
             {% for letter in challenge[guess] %}
                 {% if letter == challenge.word[loop.index0] %}

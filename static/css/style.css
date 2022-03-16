@@ -24,6 +24,10 @@ a {
     border-radius: 20px;
 }
 
+.small-margin{
+    margin:1.5vw;
+}
+
 .dark {
     background-color: rgba(0, 0, 0, 0.2)
 }
@@ -265,13 +269,17 @@ h5 {
 }
 
 /* challenge specific styles */
+
+.challenge-guess{
+    width:25vw;
+}
+
 .challenge-card {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     justify-content: center;
     width: 80vw;
-    height: 100px;
     margin-top: 10px;
     margin-bottom: 10px;
 }
@@ -545,5 +553,9 @@ img{
 
     .margin-bottom {
         margin-bottom: 2.5vw;
+    }
+
+    .challenge-guess{
+        width:60vw;
     }
 }

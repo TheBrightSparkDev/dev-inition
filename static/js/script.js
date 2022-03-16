@@ -3,10 +3,20 @@ let letters = [];
 let currentInputBox = "1";
 let inputBoxes = [];
 let length = document.getElementById("length").getAttribute("length");
+let correct = document.getElementsByClassName("complete")
 let currentWord = [];
 let currentGuess = [];
 let keyBoardItems = document.getElementsByClassName("keyboard-square");
 let inputSquares = document.getElementsByClassName("input-square");
+console.log(correct)
+for (element in correct){
+    console.log(element)
+    if (element < 6){
+    let attribute = correct[element].getAttribute("complete")
+    if (attribute == "yes"){
+        currentInputBox = "completed"
+    }}
+}
 // submits and checks answer
 function submitAnswer(){
     document.getElementById("answer").value = currentWord

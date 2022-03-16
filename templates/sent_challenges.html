@@ -8,27 +8,138 @@
     </div>
 {% else %}
     {% for challenge in challenges %}
+        {% if challenge.state == "created" %}
         <div class="rounded challenge-card dark">
-            <a href="#"><h5>Challenge for {{challenge.for}}</h5></a>
-            <div class="rounded dark-highlight dark new-line">
+            <div class="dark rounded responsive-large small-margin">
+                <a href="#"><h5>Challenge for {{challenge.for}}</h5></a>
+            </div>
+            <div class="dark rounded responsive-large">
+                <h5>word: {{challenge.word}}</h5>
+            </div>
+            <div class="dark rounded responsive-large small-margin">
+                <h5>letters: {{challenge.letters}}</h5>
+            </div>
+            <div class="rounded dark-highlight dark new-line small-margin">
                 <a href="#"><h5>Edit</h5></a>
             </div>
             <div class="rounded dark-highlight dark new-line">
                 <h5>{{challenge.state}}</h5>
-                {% if challenges.status == created %}
-                    <div class="created">
-                {% elif challenges.status == started %}
-                    <div class="started">
-                {% elif challenges.status == completed %}
-                    <div class="completed">
-                {% elif challenges.status == quit %}
-                    <div class="quit">
-                {% endif %}
-                    </div>
+                <div class="created"></div>
             </div>
-            <h4 class="new-line">last updated {{challenge.updated_date}}</h4>
-            <h4 class="new-line">Created on {{challenge.created_date}}</h4>
+            <div class="rounded responsive-large dark new-line small-margin">
+                <h4 class="new-line">last updated {{challenge.updated_date}}</h4>
+                <h4 class="new-line">Created on {{challenge.created_date}}</h4>
+            </div>
+            <div class="responsive-large dark rounded small-margin">
+                <a href="#"><h5>Delete</h5></a>
+            </div>
         </div>
+        {% endif %}
+    {% endfor %}
+    {% for challenge in challenges %}
+        {% if challenge.state == "started" %}
+        <div class="rounded challenge-card dark">
+            <div class="dark rounded responsive-large small-margin">
+                <a href="#"><h5>Challenge for {{challenge.for}}</h5></a>
+            </div>
+            <div class="dark rounded responsive-large">
+                <h5>word: {{challenge.word}}</h5>
+            </div>
+            <div class="dark rounded responsive-large small-margin">
+                <h5>letters: {{challenge.letters}}</h5>
+            </div>
+            <div class="rounded responsive-large dark">
+                <h5>{{challenge.state}}</h5>
+                <div class="started"></div>
+            </div>
+            <div class="responsive-large dark rounded small-margin">
+                <div class="dark rounded responsive-large"><h5>Guesses:</h5></div>
+                {% for guess in guesses %}
+                    {% if challenge[guess]|length > 0 %}
+                    <div class="rounded challenge-guess dark small-margin">
+                        <h5>{{challenge[guess]}}</h5>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="responsive-large dark rounded">
+                <h4 class="new-line small-margin">last updated {{challenge.updated_date}}</h4>
+                <h4 class="new-line small-margin">Created on {{challenge.created_date}}</h4>
+            </div>
+        </div>
+        {% endif %}
+    {% endfor %}
+    {% for challenge in challenges %}
+        {% if challenge.state == "completed" %}
+        <div class="rounded challenge-card dark">
+            <div class="dark rounded responsive-large small-margin">
+                <a href="#"><h5>Challenge for {{challenge.for}}</h5></a>
+            </div>
+            <div class="dark rounded responsive-large">
+                <h5>word: {{challenge.word}}</h5>
+            </div>
+            <div class="dark rounded responsive-large small-margin">
+                <h5>letters: {{challenge.letters}}</h5>
+            </div>
+            <div class="rounded responsive-large dark">
+                <h5>{{challenge.state}}</h5>
+                <div class="completed"></div>
+            </div>
+            <div class="responsive-large dark rounded small-margin">
+                <div class="dark rounded responsive-large"><h5>Guesses:</h5></div>
+                {% for guess in guesses %}
+                    {% if challenge[guess]|length > 0 %}
+                    <div class="rounded challenge-guess dark small-margin">
+                        <h5>{{challenge[guess]}}</h5>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="responsive-large dark rounded">
+                <h4 class="new-line small-margin">last updated {{challenge.updated_date}}</h4>
+                <h4 class="new-line small-margin">Created on {{challenge.created_date}}</h4>
+            </div>
+            <div class="responsive-large dark rounded small-margin">
+                <a href="#"><h5>Delete</h5></a>
+            </div>
+        </div>
+        {% endif %}
+    {% endfor %}
+    {% for challenge in challenges %}
+        {% if challenge.state == "quit" %}
+            <div class="rounded challenge-card dark">
+                <div class="dark rounded responsive-large small-margin">
+                    <a href="#"><h5>Challenge for {{challenge.for}}</h5></a>
+                </div>
+                <div class="dark rounded responsive-large">
+                    <h5>word: {{challenge.word}}</h5>
+                </div>
+                <div class="dark rounded responsive-large small-margin">
+                    <h5>letters: {{challenge.letters}}</h5>
+                </div>
+                <div class="rounded responsive-large dark">
+                    <h5>{{challenge.state}}</h5>
+                    <div class="quit"></div>
+                </div>
+                <div class="responsive-large dark rounded small-margin">
+                    <div class="dark rounded responsive-large"><h5>Guesses:</h5></div>
+                    {% for guess in guesses %}
+                        {% if challenge[guess]|length > 0 %}
+                        <div class="rounded challenge-guess dark small-margin">
+                            <h5>{{challenge[guess]}}</h5>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="responsive-large dark rounded">
+                    <h4 class="new-line small-margin">last updated {{challenge.updated_date}}</h4>
+                    <h4 class="new-line small-margin">Created on {{challenge.created_date}}</h4>
+                </div>
+                <div class="responsive-large dark rounded small-margin">
+                    <a href="#"><h5>Delete</h5></a>
+                </div>
+            </div>
+        {% endif %}
     {% endfor %}
 {% endif %}
     <div class="rounded responsive-large margin-friend dark">

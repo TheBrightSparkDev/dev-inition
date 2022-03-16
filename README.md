@@ -137,14 +137,22 @@ I sent the guess back to the HTML page via python I had to first of all add some
 
 There is a small bug left here though if you manage to guess twice in less than 500ms it can cause and issue where the first guess is lost but doing this is very difficult and extremely unlikely.
 
-I also go the python app to check if the guess had already been guessed and blocked it if it had. 
+I also got the python app to check if the guess had already been guessed and blocked it if it had. 
 This lead to a lengthy function but it worked so thats all that mattered.
 
 ## Goal
 
+get keyboard to stop functioning after the correct answer was submitted
+
 ## Issue
 
+I have to kill to javascript functions in order to do this but javascript is unaware what the correct answer is so I cant just check to see if the correct answer is displayed
+
 ## How I did it
+
+Theory: If I add some condtional formatting to the html form to check if challenge.word == challenge.guess then I should be able to add an attribute to something so java knows if the correct answer has been guessed to use this to destroy the keyboard functionality I could set currentInputBox to a word string like completed then incrementing it or decreasing it by 1 would be impossible and therefore stop the game working and most importantly stopping the user submitting more answers and triggerring a gameover event by accident.
+
+Theory above was absolutely correct and works perfectly.
 
 # Technology used
 ## wireframes
