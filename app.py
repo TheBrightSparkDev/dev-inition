@@ -157,22 +157,28 @@ def create_challenge(friend):
         format_now = now.strftime("%d/%m/%Y %H:%M:%S")
         word = request.form.get("word").lower()
         letter = request.form.get("letters").lower()
-        challenge = {"for": friend,
-                     "word": word,
-                     "letters": letter,
-                     "from": session['user'],
-                     "state": "created",
-                     "created_date": format_now,
-                     "updated_date": format_now,
-                     "guess_1": "",
-                     "guess_2": "",
-                     "guess_3": "",
-                     "guess_4": "",
-                     "guess_5": "",
-                     "guess_6": "",
-                     }
-        mongo.db.challenges.insert_one(challenge)
-        flash("challenge sent")
+        check = mongo.db.wordlist.find_one({"word": word})
+        try:
+            # this throws an error if word isnt in database forcing system to skip to except
+            wordCheck = check.get("word")
+            challenge = {"for": friend,
+                         "word": word,
+                         "letters": letter,
+                         "from": session['user'],
+                         "state": "created",
+                         "created_date": format_now,
+                         "updated_date": format_now,
+                         "guess_1": "",
+                         "guess_2": "",
+                         "guess_3": "",
+                         "guess_4": "",
+                         "guess_5": "",
+                         "guess_6": "",
+                         }
+            mongo.db.challenges.insert_one(challenge)
+            flash("challenge sent")
+        except:
+            flash("this is not a word")
     return render_template('create_challenge.html', friend=friend)
 
 
@@ -195,7 +201,8 @@ def sent_challenges():
         "guess_1", "guess_2", "guess_3", "guess_4", "guess_5", "guess_6"]
     user = session['user']
     challenges = list(mongo.db.challenges.find({"from": user}))
-    return render_template('sent_challenges.html', challenges=challenges, guesses=guesses)
+    return render_template(
+        'sent_challenges.html', challenges=challenges, guesses=guesses)
 
 
 @app.route("/game/<challenge>", methods=["GET", "POST"])
@@ -223,9 +230,11 @@ def game(challenge):
     if request.method == "POST":
         word = request.form.get("answer")
         check = mongo.db.wordlist.find_one({"word": word})
+        now = datetime.now()
+        format_now = now.strftime("%d/%m/%Y %H:%M:%S")
         try:
+            # this throws an error if word isnt in database forcing system to skip to except
             wordCheck = check.get("word")
-            print(wordCheck)
             if word == correct:
                 for guess in guesses:
                     if challenge_to_update.get(guess) == "":
@@ -233,7 +242,10 @@ def game(challenge):
                         dict_update = {guess: word}
                         data.update(dict_update)
                         mongo.db.challenges.update_one(query, submit)
-                        mongo.db.challenges.update_one(query, {'$set': {"state": "completed"}})
+                        mongo.db.challenges.update_one(
+                            query, {'$set': {"state": "completed"}})
+                        mongo.db.challenges.update_one(
+                            query, {"$set": {"updated_date": format_now}})
                         flash("Correct, Well done")
                         break
                     elif challenge_to_update.get(guess) == word:                           
@@ -246,6 +258,8 @@ def game(challenge):
                         dict_update = {guess: word}
                         data.update(dict_update)
                         mongo.db.challenges.update_one(query, submit)
+                        mongo.db.challenges.update_one(
+                            query, {"$set": {"updated_date": format_now}})
                         break
                     elif challenge_to_update.get(guess) == word:                           
                         flash("Already guessed")
