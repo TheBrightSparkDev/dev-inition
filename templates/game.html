@@ -63,9 +63,7 @@
                 <h3></h3>
             </div>
         {% endfor %}
-        <div id="backspace">
-            <img src="">
-        </div>
+            <img id="backspace" letter="backspace" onclick="clicked(this.getAttribute('letter'))" src="{{ url_for('static', filename='images/backspace.png')}}">
     </div>
     <!-- creates a box for every letter in the available letters forming a keyboard  -->
     <div class="rounded keyboard-bg">

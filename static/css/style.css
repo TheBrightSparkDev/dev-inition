@@ -420,6 +420,7 @@ h3 {
     justify-content: center;
     align-content: center;
     align-items: center;
+    cursor:pointer;
 }
 
 .margin-bottom {
@@ -431,67 +432,45 @@ h3 {
     visibility:hidden;
 }
 
+img{
+    width:5vw;
+    scale: initial;
+    cursor:pointer;
+}
+
+
 @media screen and (max-width: 1000px) {
 
     /* game specific styles */
     .guess-box {
         width: 80vw;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-content: center;
-        align-items: center;
-    }
-
-    .game-area {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-content: center;
-        align-items: center;
     }
 
     .game-line {
         width: 80vw;
         height: 10vw;
-        display: flex;
-        flex-wrap: nowrap;
-        justify-content: center;
-        align-content: center;
-        align-items: center;
     }
 
     .game-square {
         width: 7.5vw;
         height: 7.5vw;
         margin: 1.25vw;
-        border-radius: 20px;
     }
 
     .input-square {
         width: 7.5vw;
         height: 7.5vw;
-        background-color: rgba(0, 0, 0, 0.2);
         margin: 1.25vw;
-        border-radius: 20px;
     }
 
     .keyboard-square {
         width: 12.5vw;
         height: 12.5vw;
-        background-color: rgba(0, 0, 0, 0.2);
         margin: 1.25vw;
-        border-radius: 20px;
     }
 
     h3 {
-        font-family: 'Montserrat', sans-serif;
-        text-align: center;
         font-size: 5vw;
-        font-weight: 300;
-        margin-left: 5px;
-        margin-right: 5px;
-        color: white;
     }
 
     .keyboard-square>h3 {
@@ -500,11 +479,6 @@ h3 {
 
     .keyboard-bg {
         width: 80vw;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-content: center;
-        align-items: center;
     }
 
     .margin-bottom {
@@ -516,108 +490,62 @@ h3 {
     .profile-card {
         width: 80vw;
         height: 15vh;
-        background-color: rgba(255, 255, 255, 0.2);
-        color: white;
-        font-size: 20px;
-        font-family: 'Montserrat', sans-serif;
-        display: flex;
-        align-items: center;
-        flex-wrap: wrap;
-        justify-content: center;
     }
 
     h6 {
-        font-family: 'Montserrat', sans-serif;
-        text-align: center;
         font-size: 30px;
         font-weight: 300;
     }
 
     h5 {
-        font-family: 'Montserrat', sans-serif;
-        text-align: center;
         font-size: 15px;
         font-weight: 300;
         margin-left: 5px;
         margin-right: 5px;
-        color: white;
     }
 
     .dark-highlight {
         margin-left: 0px;
         width: 45%;
-        display: flex;
-        flex-wrap: nowrap;
-        justify-content: center;
-        align-content: center;
     }
 
     /* game specific styles */
     .guess-box {
         width: 80vw;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-content: center;
-        align-items: center;
     }
 
     .game-area {
         height: 100vh;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-content: center;
-        align-items: center;
     }
 
     .game-line {
         width: 80vw;
         height: 10vw;
-        display: flex;
-        flex-wrap: nowrap;
-        justify-content: center;
-        align-content: center;
-        align-items: center;
     }
 
     .game-square {
         width: 7.5vw;
         height: 7.5vw;
         margin: 1.25vw;
-        border-radius: 20px;
-    }
-
-    #backspace{
-        width:5vw;
-        height:5vw;
-        background-color: rgba(0, 0, 0, 0.2);
     }
 
     .input-square {
         width: 7.5vw;
         height: 7.5vw;
-        background-color: rgba(0, 0, 0, 0.2);
         margin: 1.25vw;
-        border-radius: 20px;
     }
 
     .keyboard-square {
         width: 15vw;
         height: 15vw;
-        background-color: rgba(0, 0, 0, 0.2);
         margin: 1.25vw;
-        border-radius: 20px;
     }
 
     h3 {
-        font-family: 'Montserrat', sans-serif;
-        text-align: center;
         font-size: 5vw;
         font-weight: 300;
         margin-left: 5px;
         margin-right: 5px;
-        color: white;
     }
 
     .keyboard-square>h3 {
@@ -626,11 +554,6 @@ h3 {
 
     .keyboard-bg {
         width: 80vw;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-content: center;
-        align-items: center;
     }
 
     .margin-bottom {
