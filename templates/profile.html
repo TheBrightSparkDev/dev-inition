@@ -13,26 +13,26 @@
 <div class="profile-body">
     <div class="profile-card rounded">
         {% if username == "guest" %}
-            <a href="{{ url_for('signin') }}"><h6>sign in to view challenges sent to friends</h6></a>
+            <a href="{{ url_for('signin') }}"><h5>sign in to view challenges sent to friends</h5></a>
         {% else %}
-            <a href="{{ url_for('sent_challenges') }}"><h6>Sent Challenges</h6></a>
+            <a href="{{ url_for('sent_challenges') }}"><h5>Sent Challenges</h5></a>
         {% endif %}
     </div>
     <div class="profile-card rounded">
-        <a href="#"><h6>Free Play (coming soon)</h6></a>
+        <a href="#"><h5>Free Play (coming soon)</h5></a>
     </div>
     <div class="profile-card rounded">
         {% if username == "guest" %}
-            <a href="{{ url_for('signin') }}"><h6>sign in to challenge your friends</h6></a>
+            <a href="{{ url_for('signin') }}"><h5>sign in to challenge your friends</h5></a>
         {% else %}
-            <a href="{{ url_for('challenges') }}"><h6>Challenges</h6></a>
+            <a href="{{ url_for('challenges') }}"><h5>Challenges</h5></a>
         {% endif %}
     </div>
     <div class="profile-card rounded">
         {% if username == "guest" %}
-            <a href="{{ url_for('signin') }}"><h6>sign in to see your challenges</h6></a>
+            <a href="{{ url_for('signin') }}"><h5>sign in to see your challenges</h5></a>
         {% else %}
-            <a href="{{ url_for('friend_picker', username=session['user']) }}"><h6>Challenge a Friend</h6></a>
+            <a href="{{ url_for('friend_picker', username=session['user']) }}"><h5>Challenge a Friend</h5></a>
         {% endif %}
     </div>
     <div class="rounded responsive-large new-line">

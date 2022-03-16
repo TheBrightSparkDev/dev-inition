@@ -14,7 +14,7 @@
         </div>
     {% for challenge in challenges %}
         {% if challenge.state == "created" %}
-        <div class="rounded friend-card dark">
+        <div class="rounded responsive-large small-margin dark">
             <a href="{{ url_for('game', challenge=challenge._id) }}"><h5>Challenge from {{challenge.from}}</h5></a>
         </div>
         {% endif %}
@@ -31,7 +31,7 @@
                 <h5>Challenge from {{challenge.from}}</h5>
             </a>
             <div class="rounded dark responsive-large small-margin">
-                <a href="#"><h5>Give up</h5></a>
+                <a href="#"><h6>Give up</h6></a>
             </div>
         </div>
         {% endif %}

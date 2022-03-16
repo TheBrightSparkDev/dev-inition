@@ -435,6 +435,22 @@ img{
 
 @media screen and (max-width: 1000px) {
 
+    .friend-card{
+        height:5vw;
+    }
+
+    h5{
+        font-size: 4vw;
+    }
+
+    .game-title{
+        font-size: 12.5vw;
+    }
+
+    .small-margin{
+        margin:1.5vw;
+    }
+
     /* game specific styles */
     .guess-box {
         width: 80vw;
@@ -482,12 +498,6 @@ img{
     .margin-bottom {
         margin-bottom: 2.5vw;
     }
-
-    /* general styles */
-
-    .small-margin{
-        margin:1.5vw;
-    }
 }
 
 @media screen and (max-width: 539px) {
@@ -496,13 +506,17 @@ img{
         height: 15vh;
     }
 
+    .game-title{
+        font-size: 15vw;
+    }
+
     h6 {
-        font-size: 30px;
+        font-size: 3vw;
         font-weight: 300;
     }
 
     h5 {
-        font-size: 15px;
+        font-size: 4vw;
     }
 
     .dark-highlight {
@@ -540,6 +554,10 @@ img{
 
     .keyboard-bg {
         width: 80vw;
+    }
+
+    .friend-card{
+        height:5vw
     }
 
     .margin-bottom {
