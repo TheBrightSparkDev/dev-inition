@@ -403,6 +403,7 @@ h4 {
 h3 {
     font-family: 'Montserrat', sans-serif;
     text-align: center;
+    font-size: 3vw;
     font-weight: 300;
     margin-left: 5px;
     margin-right: 5px;
@@ -433,7 +434,7 @@ h3 {
 }
 
 img{
-    width:5vw;
+    height:3.75vw;
     scale: initial;
     cursor:pointer;
 }
@@ -461,6 +462,10 @@ img{
         width: 7.5vw;
         height: 7.5vw;
         margin: 1.25vw;
+    }
+
+    img{
+        height:7.5vw;
     }
 
     .keyboard-square {
@@ -499,9 +504,6 @@ img{
 
     h5 {
         font-size: 15px;
-        font-weight: 300;
-        margin-left: 5px;
-        margin-right: 5px;
     }
 
     .dark-highlight {
@@ -523,18 +525,6 @@ img{
         height: 10vw;
     }
 
-    .game-square {
-        width: 7.5vw;
-        height: 7.5vw;
-        margin: 1.25vw;
-    }
-
-    .input-square {
-        width: 7.5vw;
-        height: 7.5vw;
-        margin: 1.25vw;
-    }
-
     .keyboard-square {
         width: 15vw;
         height: 15vw;
@@ -543,9 +533,6 @@ img{
 
     h3 {
         font-size: 5vw;
-        font-weight: 300;
-        margin-left: 5px;
-        margin-right: 5px;
     }
 
     .keyboard-square>h3 {

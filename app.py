@@ -222,30 +222,31 @@ def game(challenge):
             wordCheck = check.get("word")
             print(wordCheck)
             query = {"_id": ObjectId(challenge)}
-            print("before if")
             if word == correct:
-                print("before find_one")
-                print("after find_one before loop")
                 for guess in guesses:
                     if challenge_to_update.get(guess) == "":
                         submit = {"$set": {guess: word}}
                         dict_update = {guess: word}
+                        data.update(dict_update)
+                        mongo.db.challenges.update_one(query, submit)
+                        flash("Correct, Well done")
                         break
                     elif challenge_to_update.get(guess) == word:                           
-                        flash("You already tried this word")
+                        flash("Already guessed")
                         break
             else:
-                print("before for in wrong answer")
                 for guess in guesses:
                     if challenge_to_update.get(guess) == "":
                         submit = {"$set": {guess: word}}
                         dict_update = {guess: word}
+                        data.update(dict_update)
+                        mongo.db.challenges.update_one(query, submit)
                         break
-            data.update(dict_update)
-            mongo.db.challenges.update_one(query, submit)
+                    elif challenge_to_update.get(guess) == word:                           
+                        flash("Already guessed")
+                        break
         except:
             flash("Invalid Word")
-            print("invalid Word")
         finally:
             print(word)
     return render_template(

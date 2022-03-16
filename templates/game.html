@@ -51,7 +51,7 @@
     {% if messages %}
         {% for message in messages %}
             <div class="rounded responsive-large center">
-                <h6>{{ message }}</h6>
+                <h6 id="message">{{ message }}</h6>
             </div>
         {% endfor %}
     {% endif %}
@@ -63,7 +63,7 @@
                 <h3></h3>
             </div>
         {% endfor %}
-            <img id="backspace" letter="backspace" onclick="clicked(this.getAttribute('letter'))" src="{{ url_for('static', filename='images/backspace.png')}}">
+            <img id="backspace" letter="Backspace" onclick="clicked(this.getAttribute('letter'))" src="{{ url_for('static', filename='images/backspace.png')}}">
     </div>
     <!-- creates a box for every letter in the available letters forming a keyboard  -->
     <div class="rounded keyboard-bg">
