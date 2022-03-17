@@ -135,14 +135,22 @@ def add_friend():
     add_user = request.form.get("username")
     user = mongo.db.users.find_one({"username": session['user'].lower()})
     friends = user["friends"]
+    print("finding user")
+    test = mongo.db.users.find_one({"username": add_user})
     if request.method == "POST":
-        if request.form.get("username") not in friends:
-            mongo.db.users.update_many(
-                {'username': session['user']},
-                {'$push': {"friends": add_user}})
-            flash("Friend added")
+        if (test != None):
+            if request.form.get("username") != session['user']:
+                if request.form.get("username") not in friends:
+                    mongo.db.users.update_many(
+                        {'username': session['user']},
+                        {'$push': {"friends": add_user}})
+                    flash("Friend added")
+                else:
+                    flash("You are already friends")
+            else:
+                flash("You can't add yourself!")
         else:
-            flash("You are already friends")
+            flash("User doesn't exist")
     return render_template('add_friend.html', friends=friends)
 
 
@@ -156,14 +164,20 @@ def create_challenge(friend):
         now = datetime.now()
         format_now = now.strftime("%d/%m/%Y %H:%M:%S")
         word = request.form.get("word").lower()
-        letter = request.form.get("letters").lower()
+        letters = request.form.get("letters").lower()
         check = mongo.db.wordlist.find_one({"word": word})
+        for letter in word:
+            if letter not in letters:
+                letters = letters + letter
+        print("before " + letters) 
+        letters = "".join(set(letters))  
+        print("after " + letters) 
         try:
             # this throws an error if word isnt in database forcing system to skip to except
             wordCheck = check.get("word")
             challenge = {"for": friend,
                          "word": word,
-                         "letters": letter,
+                         "letters": letters,
                          "from": session['user'],
                          "state": "created",
                          "created_date": format_now,
