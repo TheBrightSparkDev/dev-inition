@@ -240,10 +240,14 @@ Below are the sources of all the media and content
 ## completed
   - make sure all pages go somewhere relevent when the title is clicked if title is present
   - create challenge needs to check if word is a word and if it is prevent it being sent
-## not done yet
-### create challenge page
   - create challenge needs to make sure all the letters from the word are in letters
   - create challenge needs to make sure that all letters are unique
+  - need to deploy page to heroku
+  - user cant add self
+  - user cant add user that doesnt exist
+  - usernames are stored as lowercase only
+  - cant use uppercase in username
+## not done yet
 ### previous challenge page
   - delete function needs to be made for previous challenges page
   - edit function needs to be made for previous challenges page 
@@ -252,5 +256,3 @@ Below are the sources of all the media and content
   - add word page needs to be created needs to send words to a suggestion database also needs to check if word exists or not
 ### admin add words page
   - add words admin needs to be created need to be able to see all suggestions and definitions and one click add to the wordlist database
-### deployment 
-  - need to deploy page to heroku
