@@ -110,14 +110,13 @@ def profile():
     """
     if "user" in session:
         name = session['user']
-        flash("welcome " + name)
     else:
         name = "guest"
         flash("It's more fun when you sign in")
     return render_template("profile.html", user=name)
 
 
-@app.route("/friend_picker/")
+@app.route("/friend_picker")
 def friend_picker():
     """
     displays friend picker page and controls logic for page
@@ -183,7 +182,20 @@ def create_challenge(friend):
             advice="Either sign in or sign up",
             links=['signin', 'signup']
             )
-
+    # if user doesn't match the "for" in the challenge redirects to oops
+    check = mongo.db.users.find_one({"username": friend})
+    checklist = check.get("friends")
+    user = session['user']
+    print(list)
+    if friend not in checklist:
+        return render_template(
+            "oops.html",
+            message=f"You're not on {friend}'s friendlist",
+            advice=f"Tell them to add your username: {user}",
+            links=['home','back']
+            )
+    
+    mongo.db.users.find_one({"username": friend})
     if request.method == "POST":
         now = datetime.now()
         format_now = now.strftime("%d/%m/%Y %H:%M:%S")
@@ -233,7 +245,6 @@ def challenges():
             advice="Either sign in or sign up",
             links=['signin', 'signup']
             )
-
     user = session['user']
     challenges = list(mongo.db.challenges.find({"for": user}))
     return render_template('challenges.html', challenges=challenges)
@@ -265,10 +276,11 @@ def game(challenge):
     displays the main game and forwards the information required
     to display the current challenge.
     """
+    # checks if user is logged in if not sends the to oops
     if "user" not in session:
         return render_template(
             "oops.html",
-            message="This challenge isn't for you",
+            message="You're not signed in",
             advice="Either sign in or sign up",
             links=['signin', 'signup']
             )
@@ -276,17 +288,24 @@ def game(challenge):
     challenge_to_update = mongo.db.challenges.find_one(
                 {"_id": ObjectId(challenge)})
     query = {"_id": ObjectId(challenge)}
-    if challenge_to_update.get("state") == "created":
-        mongo.db.challenges.update_one(query, {'$set': {"state": "started"}})
     data = {}
     for i in cursor:
         data.update(i)
-    print(data)
+    # if user doesn't match the "for" in the challenge it redirects to oops
+    user = session['user']
+    check = mongo.db.challenges.find_one({"username": user})
+    if user != data.get("for"):
+        return render_template(
+            "oops.html",
+            message="This challenge isn't for you",
+            advice="Either sign in, sign up or go back to the profile page",
+            links=['signin', 'signup', 'home']
+            )
+    if challenge_to_update.get("state") == "created":
+        mongo.db.challenges.update_one(query, {'$set': {"state": "started"}})
     correct = data.get("word")
-    print(correct)
     guesses = [
             "guess_1", "guess_2", "guess_3", "guess_4", "guess_5", "guess_6"]
-
     if request.method == "POST":
         word = request.form.get("answer")
         check = mongo.db.wordlist.find_one({"word": word})

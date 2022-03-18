@@ -12,8 +12,12 @@
 <h1 class="game-title">Word VS</h1>
 <div class="friend-list">
     <div class="responsive-large small-margin rounded">
-        <h6 class="small-margin">{{ message }}</h6>
-        <h5 class="small-margin">{{ advice }}</h5>
+        <div class="responsive-large">
+            <h6 class="small-margin">{{ message }}</h6>
+        </div>
+        <div class="responsive-large">
+            <h5 class="small-margin">{{ advice }}</h5>
+        </div>
     </div>
 </div>
 <div class="home-options">
@@ -29,7 +33,11 @@
             </a>
         {% elif link == "home" %}
             <a href="{{ url_for('profile')}}" class="rounded responsive-small home-buttons">
-                <h5>Guest</h5>
+                <h5>Home</h5>
+            </a>
+        {% elif link == "back" %}
+            <a href="{{ url_for('friend_picker') }}" class="rounded responsive-small home-buttons">
+                <h5>Back</h5>
             </a>
         {% endif %}
     {% endfor %}
