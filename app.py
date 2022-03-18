@@ -117,7 +117,7 @@ def profile():
     return render_template("profile.html", user=name)
 
 
-@app.route("/friend_picker/<username>")
+@app.route("/friend_picker/")
 def friend_picker():
     """
     displays friend picker page and controls logic for page
