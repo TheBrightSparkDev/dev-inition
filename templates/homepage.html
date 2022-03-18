@@ -9,17 +9,19 @@
         {% endfor %}
     {% endif %}
 {% endwith %}
-<a href="{{ url_for('profile', username=session['user']) }}"><h1 class="game-title">Word VS</h1></a>
+<a href="{{ url_for('profile', username=session['user']) }}">
+    <h1 class="game-title">Word VS</h1>
+</a>
 <div class="home-options">
-    <div class="rounded responsive-small home-buttons">
-        <a href="{{ url_for('signup') }}"><p>Sign Up</p></a>
-    </div>
-    <div class="rounded responsive-small home-buttons">
-        <a href="{{ url_for('signin') }}"><p>Sign In</p></a>
-    </div>
-    <div class="rounded responsive-small home-buttons">
-        <a href="{{ url_for('profile', username='guest') }}"><p>Guest</p></a>
-    </div>
+    <a href="{{ url_for('signup') }}" class="rounded responsive-small home-buttons">
+        <h5>Sign Up</h5>
+    </a>
+    <a href="{{ url_for('signin') }}" class="rounded responsive-small home-buttons">
+        <h5>Sign In</h5>
+    </a>
+    <a href="{{ url_for('profile', username='guest') }}" class="rounded responsive-small home-buttons">
+        <h5>Guest</h5>
+    </a>
 </div>
 {% endblock %}
 

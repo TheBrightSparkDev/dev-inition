@@ -11,13 +11,11 @@
 {% endwith %}
 <a href="{{ url_for('profile', username=session['user']) }}"><h1 class="game-title">Word VS</h1></a>
 <div class="profile-body">
-    <div class="profile-card rounded">
-        {% if username == "guest" %}
-            <a href="{{ url_for('signin') }}"><h5>sign in to view challenges sent to friends</h5></a>
-        {% else %}
-            <a href="{{ url_for('sent_challenges') }}"><h5>Sent Challenges</h5></a>
-        {% endif %}
-    </div>
+    {% if username == "guest" %}
+        <a href="{{ url_for('signin') }}" class="profile-card rounded"><h5>sign in to view challenges sent to friends</h5></a>
+    {% else %}
+        <a href="{{ url_for('sent_challenges') }}" class="profile-card rounded"><h5>Sent Challenges</h5></a>
+    {% endif %}
     <div class="profile-card rounded">
         <a href="#"><h5>Free Play (coming soon)</h5></a>
     </div>
