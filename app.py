@@ -118,7 +118,7 @@ def profile():
 
 
 @app.route("/friend_picker/<username>")
-def friend_picker(username):
+def friend_picker():
     """
     displays friend picker page and controls logic for page
     """
@@ -129,7 +129,7 @@ def friend_picker(username):
             advice="Either sign in or sign up",
             links=['signin', 'signup']
             )
-    user = mongo.db.users.find_one({"username": username.lower()})
+    user = mongo.db.users.find_one({"username": session["user"].lower()})
     friends = user["friends"]
 
     return render_template('friend_picker.html', friends=friends)

@@ -9,7 +9,7 @@
         {% endfor %}
     {% endif %}
 {% endwith %}
-<a href="{{ url_for('profile', username=session['user']) }}"><h1 class="game-title">Word VS</h1></a>
+<a href="{{ url_for('profile') }}"><h1 class="game-title">Word VS</h1></a>
 <div class="input-content-container">
     <div class="rounded form-bg max-width">
         <form method="POST" action="{{ url_for('add_friend') }}">
@@ -29,6 +29,6 @@
     </div>
 </div>
 <div class="responsive-large rounded max-width top-margin center">
-    <a href="{{ url_for('friend_picker', username=session['user']) }}"><h6>Back</h6></a>
+    <a href="{{ url_for('friend_picker') }}"><h6>Back</h6></a>
 </div>
 {% endblock %}

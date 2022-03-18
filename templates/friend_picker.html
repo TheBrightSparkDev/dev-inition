@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-<a href="{{ url_for('profile', username=session['user']) }}"><h1 class="game-title">Word VS</h1></a>
+<a href="{{ url_for('profile') }}"><h1 class="game-title">Word VS</h1></a>
 <div class="friend-list rounded">
     {% for friend in friends %}
         <div class="rounded friend-card dark">
@@ -13,7 +13,7 @@
         </a>
     </div>
     <div class="rounded responsive-large margin-friend dark">
-        <a href="{{ url_for('profile', username=session['user']) }}">
+        <a href="{{ url_for('profile') }}">
             <h6>Back</h6>
         </a>
     </div>
