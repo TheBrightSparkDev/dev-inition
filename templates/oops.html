@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="rounded responsive-large center">
+                <h6>{{ message }}</h6>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<h1 class="game-title">Word VS</h1>
+<div class="friend-list">
+    <div class="responsive-large small-margin rounded">
+        <h6 class="small-margin">{{ message }}</h6>
+        <h5 class="small-margin">{{ advice }}</h5>
+    </div>
+</div>
+<div class="home-options">
+    
+    {% for link in links %}
+        {% if link == "signin" %}
+            <a href="{{ url_for('signup') }}" class="rounded responsive-small home-buttons">
+                <h5>Sign Up</h5>
+            </a>
+        {% elif link == "signup" %}
+            <a href="{{ url_for('signin') }}" class="rounded responsive-small home-buttons">
+                <h5>Sign In</h5>
+            </a>
+        {% elif link == "home" %}
+            <a href="{{ url_for('profile')}}" class="rounded responsive-small home-buttons">
+                <h5>Guest</h5>
+            </a>
+        {% endif %}
+    {% endfor %}
+</div>
+{% endblock %}
+

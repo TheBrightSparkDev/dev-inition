@@ -11,7 +11,7 @@
 {% endwith %}
 <a href="{{ url_for('profile', username=session['user']) }}"><h1 class="game-title">Word VS</h1></a>
 <div class="profile-body">
-    {% if username == "guest" %}
+    {% if user == "guest" %}
         <a href="{{ url_for('signin') }}" class="profile-card rounded"><h5>sign in to view challenges sent to friends</h5></a>
     {% else %}
         <a href="{{ url_for('sent_challenges') }}" class="profile-card rounded"><h5>Sent Challenges</h5></a>
@@ -20,21 +20,21 @@
         <a href="#"><h5>Free Play (coming soon)</h5></a>
     </div>
     <div class="profile-card rounded">
-        {% if username == "guest" %}
+        {% if user == "guest" %}
             <a href="{{ url_for('signin') }}"><h5>sign in to challenge your friends</h5></a>
         {% else %}
             <a href="{{ url_for('challenges') }}"><h5>Challenges</h5></a>
         {% endif %}
     </div>
     <div class="profile-card rounded">
-        {% if username == "guest" %}
+        {% if user == "guest" %}
             <a href="{{ url_for('signin') }}"><h5>sign in to see your challenges</h5></a>
         {% else %}
             <a href="{{ url_for('friend_picker', username=session['user']) }}"><h5>Challenge a Friend</h5></a>
         {% endif %}
     </div>
     <div class="rounded responsive-large new-line">
-    {% if username == "guest" %}
+    {% if user == "guest" %}
         <a href="{{ url_for('homepage') }}"><h6>back</h6></a>
     {% else %}
         <a href="{{ url_for('signout') }}"><h6>Sign Out</h6></a>

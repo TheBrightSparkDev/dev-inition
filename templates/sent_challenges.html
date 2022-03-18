@@ -30,8 +30,8 @@
                 <h4 class="new-line">last updated {{challenge.updated_date}}</h4>
                 <h4 class="new-line">Created on {{challenge.created_date}}</h4>
             </div>
-            <div class="responsive-large dark rounded small-margin">
-                <a href="#"><h5>Delete</h5></a>
+            <div class="responsive-large dark rounded small-margin" item="{{challenge._id}}" onclick="deleteItem(this.getAttribute('item'))">
+                <h5>Delete</h5>
             </div>
         </div>
         {% endif %}
@@ -135,8 +135,8 @@
                     <h4 class="new-line small-margin">last updated {{challenge.updated_date}}</h4>
                     <h4 class="new-line small-margin">Created on {{challenge.created_date}}</h4>
                 </div>
-                <div class="responsive-large dark rounded small-margin">
-                    <a href="#"><h5>Delete</h5></a>
+                <div class="responsive-large dark rounded small-margin" item="{{challenge._id}}" onclick="deleteItem(this.getAttribute('item'))">
+                    <h5>Delete</h5>
                 </div>
             </div>
         {% endif %}
@@ -148,4 +148,6 @@
         </a>
     </div>
 </div>
+<!-- scripts -->
+<script type="text/javascript" src="{{url_for('static', filename='js/deleteitem.js')}}"></script>
 {% endblock %}

@@ -72,16 +72,15 @@ def signin():
         # check if usernmae in form element exists
         existing_user = mongo.db.users.find_one(
             {"username": request.form.get("username").lower()})
-
         if existing_user:
             # ensure hashed password matched the db
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
-                        session["user"] = request.form.get("username").lower()
-                        flash("welcome, {}".format(
-                            request.form.get("username")))
-                        return redirect(url_for(
-                            "profile", username=session["user"]))
+                session["user"] = request.form.get("username").lower()
+                flash("welcome, {}".format(
+                    request.form.get("username")))
+                return redirect(url_for(
+                    "profile", username=session["user"]))
             else:
                 # invalid password match
                 flash("username and/or password is incorrect")
@@ -104,16 +103,18 @@ def signout():
 
 
 # profile section
-@app.route("/profile/<username>")
-def profile(username):
+@app.route("/profile/")
+def profile():
     """
     displays profile and controls logic on profile page
     """
-    if username == "guest":
-        session['user'] = "guest"
+    if "user" in session:
+        name = session['user']
+        flash("welcome " + name)
     else:
-        session['user'] = username
-    return render_template("profile.html", username=username)
+        name = "guest"
+        flash("It's more fun when you sign in")
+    return render_template("profile.html", user=name)
 
 
 @app.route("/friend_picker/<username>")
@@ -121,6 +122,13 @@ def friend_picker(username):
     """
     displays friend picker page and controls logic for page
     """
+    if "user" not in session:
+        return render_template(
+            "oops.html",
+            message="You can't create a challenge without being logged in!",
+            advice="Either sign in or sign up",
+            links=['signin', 'signup']
+            )
     user = mongo.db.users.find_one({"username": username.lower()})
     friends = user["friends"]
 
@@ -132,13 +140,20 @@ def add_friend():
     """
     displays friend picker page and controls logic for page
     """
+    if "user" not in session:
+        return render_template(
+            "oops.html",
+            message="You can't adda friend without being logged in!",
+            advice="Either sign in or sign up",
+            links=['signin', 'signup']
+            )
     add_user = request.form.get("username")
     user = mongo.db.users.find_one({"username": session['user'].lower()})
     friends = user["friends"]
     print("finding user")
     test = mongo.db.users.find_one({"username": add_user})
     if request.method == "POST":
-        if (test != None):
+        if test is not None:
             if request.form.get("username") != session['user']:
                 if request.form.get("username") not in friends:
                     mongo.db.users.update_many(
@@ -160,6 +175,15 @@ def create_challenge(friend):
     displays create challenge page and controls logic
     also sends a challenge to the database
     """
+    # defensive programming to check if user is logged in
+    if "user" not in session:
+        return render_template(
+            "oops.html",
+            message="You can't create a challenge without being logged in!",
+            advice="Either sign in or sign up",
+            links=['signin', 'signup']
+            )
+
     if request.method == "POST":
         now = datetime.now()
         format_now = now.strftime("%d/%m/%Y %H:%M:%S")
@@ -169,11 +193,12 @@ def create_challenge(friend):
         for letter in word:
             if letter not in letters:
                 letters = letters + letter
-        print("before " + letters) 
-        letters = "".join(set(letters))  
-        print("after " + letters) 
+        print("before " + letters)
+        letters = "".join(set(letters))
+        print("after " + letters)
         try:
-            # this throws an error if word isnt in database forcing system to skip to except
+            # this throws an error if word isnt in database forcing system to
+            # skip to except
             wordCheck = check.get("word")
             challenge = {"for": friend,
                          "word": word,
@@ -201,6 +226,14 @@ def challenges():
     """
     displays the challenges for an individual
     """
+    if "user" not in session:
+        return render_template(
+            "oops.html",
+            message="You can only see challenges if logged in",
+            advice="Either sign in or sign up",
+            links=['signin', 'signup']
+            )
+
     user = session['user']
     challenges = list(mongo.db.challenges.find({"for": user}))
     return render_template('challenges.html', challenges=challenges)
@@ -211,6 +244,13 @@ def sent_challenges():
     """
     displays the challenges sent by an individual
     """
+    if "user" not in session:
+        return render_template(
+            "oops.html",
+            message="You can't check sent challenges without being logged in!",
+            advice="Either sign in or sign up",
+            links=['signin', 'signup']
+            )
     guesses = [
         "guess_1", "guess_2", "guess_3", "guess_4", "guess_5", "guess_6"]
     user = session['user']
@@ -225,7 +265,13 @@ def game(challenge):
     displays the main game and forwards the information required
     to display the current challenge.
     """
-
+    if "user" not in session:
+        return render_template(
+            "oops.html",
+            message="This challenge isn't for you",
+            advice="Either sign in or sign up",
+            links=['signin', 'signup']
+            )
     cursor = list(mongo.db.challenges.find({"_id": ObjectId(challenge)}))
     challenge_to_update = mongo.db.challenges.find_one(
                 {"_id": ObjectId(challenge)})
@@ -247,7 +293,8 @@ def game(challenge):
         now = datetime.now()
         format_now = now.strftime("%d/%m/%Y %H:%M:%S")
         try:
-            # this throws an error if word isnt in database forcing system to skip to except
+            # this throws an error if word isnt in database forcing system to
+            # skip to except
             wordCheck = check.get("word")
             if word == correct:
                 for guess in guesses:
@@ -262,7 +309,7 @@ def game(challenge):
                             query, {"$set": {"updated_date": format_now}})
                         flash("Correct, Well done")
                         break
-                    elif challenge_to_update.get(guess) == word:                           
+                    elif challenge_to_update.get(guess) == word:
                         flash("Already guessed")
                         break
             else:
@@ -275,7 +322,7 @@ def game(challenge):
                         mongo.db.challenges.update_one(
                             query, {"$set": {"updated_date": format_now}})
                         break
-                    elif challenge_to_update.get(guess) == word:                           
+                    elif challenge_to_update.get(guess) == word:
                         flash("Already guessed")
                         break
         except:
