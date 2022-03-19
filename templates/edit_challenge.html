@@ -10,10 +10,10 @@
     {% endif %}
 {% endwith %}
 <a href="{{ url_for('profile') }}"><h1 class="game-title">Word VS</h1></a>
-<h6>Challenge for {{friend}}</h6>
+<h6>Editing challenge for {{friend}}</h6>
 <div class="input-content-container">
     <div class="rounded form-bg max-width">
-        <form method="POST" action="{{ url_for('create_challenge',friend=friend) }}">
+        <form method="POST" action="{{ url_for('edit_challenge', challenge_id=challenge, friend=friend) }}">
             <div class="responsive-large">
                 <label for="word"><h5>Word</h5></label>
             </div>
@@ -35,6 +35,6 @@
     </div>
 </div>
 <div class="responsive-large rounded max-width top-margin center">
-    <a href="{{url_for('friend_picker')}}"><h6>Back</h6></a>
+    <a href="{{url_for('sent_challenges')}}"><h6>Back</h6></a>
 </div>
 {% endblock %}

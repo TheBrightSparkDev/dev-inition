@@ -198,7 +198,7 @@ def create_challenge(friend):
     print(i)
     if i == 0:
         return render_template(
-            "oops.html", 
+            "oops.html",
             message=f"You're not on {friend}'s friendlist",
             advice=f"Tell them to add your username: {user}",
             links=['home', 'back']
@@ -274,9 +274,105 @@ def sent_challenges():
     guesses = [
         "guess_1", "guess_2", "guess_3", "guess_4", "guess_5", "guess_6"]
     user = session['user']
+    challenges = mongo.db.challenges.find({"from": user})
+    for challenge in challenges:
+        print(challenge.get("state"))
+
+        if challenge.get("state") == "editing":
+            query = {"_id": ObjectId(challenge.get("_id"))}
+            mongo.db.challenges.update_one(query, {"$set": {"state": "created"}})
     challenges = list(mongo.db.challenges.find({"from": user}))
     return render_template(
         'sent_challenges.html', challenges=challenges, guesses=guesses)
+
+
+@app.route("/edit_challenge/<friend>/<challenge_id>", methods=["GET", "POST"])
+def edit_challenge(friend, challenge_id):
+    """
+    displays edit challenge page and controls logic
+    also sends a challenge to the database
+    """
+    # defensive programming to check if user is logged in
+    if "user" not in session:
+        return render_template(
+            "oops.html",
+            message="You can't create a challenge without being logged in!",
+            advice="Either sign in or sign up",
+            links=['signin', 'signup']
+            )
+    # if user doesn't match the "for" in the challenge redirects to oops
+    check = mongo.db.users.find_one({"username": friend})
+    checklist = check.get("friends")
+    user = session['user']
+    print(checklist)
+    i = 0
+    for name in checklist:
+        print(name)
+        print(session['user'])
+        if name == session['user']:
+            i = i + 1
+            print(i)
+            break
+    print(i)
+    if i == 0:
+        return render_template(
+            "oops.html",
+            message=f"You're not on {friend}'s friendlist",
+            advice=f"Tell them to add your username: {user}",
+            links=['home', 'back']
+            )
+    
+    mongo.db.users.find_one({"username": friend})
+    challenge = mongo.db.challenges.find_one({"_id": ObjectId(challenge_id)})
+    query = {"_id": ObjectId(challenge_id)}
+    mongo.db.challenges.update_one(query, {"$set": {"state": "editing"}})
+    if request.method == "POST":
+        now = datetime.now()
+        format_now = now.strftime("%d/%m/%Y %H:%M:%S")
+        word = request.form.get("word").lower()
+        letters = request.form.get("letters").lower()
+        check = mongo.db.wordlist.find_one({"word": word})
+        query = {"_id": ObjectId(challenge_id)}
+        for letter in word:
+            if letter not in letters:
+                letters = letters + letter
+        print("before " + letters)
+        letters = "".join(set(letters))
+        print("after " + letters)
+        try:
+            # this throws an error if word isnt in database forcing system to
+            # skip to except
+            wordCheck = check.get("word")
+            challenge = {"$set":{
+                         "for": friend,
+                         "word": word,
+                         "letters": letters,
+                         "from": session['user'],
+                         "state": "created",
+                         "updated_date": format_now
+                         }}
+            mongo.db.challenges.update_one(query, challenge)
+            flash("challenge edited")
+        except:
+            flash("this is not a word")
+    return render_template('edit_challenge.html', challenge=challenge_id, friend=friend)
+
+
+
+@app.route("/delete_challenge/<challenge_id>")
+def delete_challenge(challenge_id):
+    """
+    deletes a challenge when delete button is pressed
+    """
+    if request.method == "GET":
+        mongo.db.challenges.delete_one({"_id": ObjectId(challenge_id)})
+        flash("deleted challenge")
+    guesses = [
+        "guess_1", "guess_2", "guess_3", "guess_4", "guess_5", "guess_6"]
+    user = session['user']
+    challenges = list(mongo.db.challenges.find({"from": user}))
+    return render_template(
+        "sent_challenges.html", challenges=challenges, guesses=guesses)
 
 
 @app.route("/game/<challenge>", methods=["GET", "POST"])

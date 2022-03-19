@@ -1,5 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="rounded responsive-large center">
+                <h6>{{ message }}</h6>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
 <a href="{{ url_for('profile') }}"><h1 class="game-title">Word VS</h1></a>
 <div class="friend-list rounded">
 {% if challenges|length == 0 %}
@@ -20,7 +29,7 @@
                 <h5>letters: {{challenge.letters}}</h5>
             </div>
             <div class="rounded dark-highlight dark new-line small-margin">
-                <a href="#"><h5>Edit</h5></a>
+                <a href="{{ url_for('edit_challenge', challenge_id=challenge._id, friend=challenge.for ) }}"><h5>Edit</h5></a>
             </div>
             <div class="rounded dark-highlight dark new-line">
                 <h5>{{challenge.state}}</h5>
@@ -30,9 +39,9 @@
                 <h4 class="new-line">last updated {{challenge.updated_date}}</h4>
                 <h4 class="new-line">Created on {{challenge.created_date}}</h4>
             </div>
-            <div class="responsive-large dark rounded small-margin" item="{{challenge._id}}" onclick="deleteItem(this.getAttribute('item'))">
+            <a href="{{ url_for('delete_challenge', challenge_id=challenge._id ) }}" class="responsive-large dark rounded small-margin">
                 <h5>Delete</h5>
-            </div>
+            </a>
         </div>
         {% endif %}
     {% endfor %}
@@ -99,9 +108,9 @@
                 <h4 class="new-line small-margin">last updated {{challenge.updated_date}}</h4>
                 <h4 class="new-line small-margin">Created on {{challenge.created_date}}</h4>
             </div>
-            <div class="responsive-large dark rounded small-margin">
-                <a href="#"><h5>Delete</h5></a>
-            </div>
+            <a href="{{ url_for('delete_challenge', challenge_id=challenge._id ) }}" class="responsive-large dark rounded small-margin">
+                <h5>Delete</h5>
+            </a>
         </div>
         {% endif %}
     {% endfor %}
@@ -135,9 +144,9 @@
                     <h4 class="new-line small-margin">last updated {{challenge.updated_date}}</h4>
                     <h4 class="new-line small-margin">Created on {{challenge.created_date}}</h4>
                 </div>
-                <div class="responsive-large dark rounded small-margin" item="{{challenge._id}}" onclick="deleteItem(this.getAttribute('item'))">
+                <a href="{{ url_for('delete_challenge', challenge_id=challenge._id ) }}" class="responsive-large dark rounded small-margin">
                     <h5>Delete</h5>
-                </div>
+                </a>
             </div>
         {% endif %}
     {% endfor %}
