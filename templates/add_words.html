@@ -3,23 +3,14 @@
 {% with messages = get_flashed_messages() %}
     {% if messages %}
         {% for message in messages %}
-            {% if message == "Invalid word" %}
             <div class="rounded responsive-large center">
                 <h6>{{ message }}</h6>
             </div>
-            <div class="rounded responsive-large center">
-                <a href="{{ url_for('add_words',referrer='create', key=friend) }}"><h6>click here to suggest word</h6></a>
-            </div>
-            {% else %}
-            <div class="rounded responsive-large center">
-                <h6>{{ message }}</h6>
-            </div>
-            {% endif %}
         {% endfor %}
     {% endif %}
 {% endwith %}
 <a href="{{ url_for('profile') }}"><h1 class="game-title">Word VS</h1></a>
-<h6>Challenge for {{friend}}</h6>
+<h6>Sorry the word wasn't in the database hopefully it will be soon!</h6>
 <div class="input-content-container">
     <div class="rounded form-bg max-width">
         <form method="POST" action="{{ url_for('create_challenge',friend=friend) }}">
@@ -28,18 +19,19 @@
             </div>
             <div class="center rounded responsive-large dark">
                 <input class="center" id="word" type="text" name="word" 
-                pattern="^[A-Z,a-z]{4,8}$" class="validate" required>
-                <h4 class="rules responsive-large">Word needs to be in database</h4>
-                <h4 class="rules responsive-large">Word also needs to be between 4-8 characters</h4>
+                pattern="^[A-Za-z]{4,8}$" class="validate" required>
+                <h4 class="rules responsive-large">Word won't be added straight away I have to review it first to stop the naughty ones!</h4>
+                <h4 class="rules responsive-large">Word also needs to be between 4-8 characters long</h4>
             </div>
             <div class="responsive-large">
-                <label class="label" for="letters"><h5>Letters</h5></label>
+                <label class="label" for="letters"><h5>definition</h5></label>
             </div>
             <div class="center rounded responsive-large dark">
-                <input class="center" id="letters" type="text" name="letters" 
-                pattern="^[A-Z,a-z]{4,15}$" class="validate" required>
-                <h4 class="rules responsive-large">Letters in the word are automatically added, so all letters you type are to confuse {{friend}}</h4>
-                <h4 class="rules responsive-large">Duplicate letters will be deleted</h4>
+                <input class="center" id="definition" type="text" name="definition" 
+                pattern="^[A-Za-z]{0,100}$" class="validate">
+                <h4 class="rules responsive-large">It would be a massive help if you could define the word</h4>
+                <h4 class="rules responsive-large">max charecters 100</h4>
+                <h4 class="rules responsive-large">no special characters</h4>
             </div>
             <div class="rounded responsive-large dark" id="button-margins">
                 <button type="submit"><h5>Send</h5></button>
@@ -47,7 +39,13 @@
         </form>
     </div>
 </div>
+{% if referrer == "game" %}
 <div class="responsive-large rounded max-width top-margin center">
-    <a href="{{url_for('friend_picker')}}"><h6>Back</h6></a>
+    <a href="{{url_for('game', challenge=key)}}"><h6>Back</h6></a>
 </div>
+{% elif referrer == "create_challenge" %}
+<div class="responsive-large rounded max-width top-margin center">
+    <a href="{{url_for('create_challenge', friend=key)}}"><h6>Back</h6></a>
+</div>
+{% endif %}
 {% endblock %}

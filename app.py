@@ -238,7 +238,7 @@ def create_challenge(friend):
             mongo.db.challenges.insert_one(challenge)
             flash("challenge sent")
         except:
-            flash("this is not a word")
+            flash("Invalid word")
     return render_template('create_challenge.html', friend=friend)
 
 
@@ -469,11 +469,33 @@ def game(challenge):
                         flash("Already guessed")
                         break
         except:
-            flash("Invalid Word")
+            flash("Invalid word")
         finally:
             print(word)
     return render_template(
         'game.html', challenge=data, guesses=guesses)
+
+
+@app.route("/add_words/<referrer>/<key>", methods=["GET", "POST"])
+def add_words(referrer,key):
+    """
+    Allows users to add words to the word database
+    """
+    if request.method == "POST":
+        # check if word in form element exists already in the database
+        existing_word = mongo.db.new_words.find_one(
+            {"word": request.form.get("word").lower()})
+        if existing_word:
+            flash("This word is already in the database")
+        else:
+            new_word = {
+                "word": request.form.get("word"),
+                "definition": request.form.get("definition")
+                }
+            mongo.db.new_words.insert_one(new_word)
+
+    return render_template("add_words.html", referrer=referrer, key=key)
+
 
 
 if __name__ == "__main__":
