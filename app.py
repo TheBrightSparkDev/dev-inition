@@ -186,13 +186,22 @@ def create_challenge(friend):
     check = mongo.db.users.find_one({"username": friend})
     checklist = check.get("friends")
     user = session['user']
-    print(list)
-    if friend not in checklist:
+    print(checklist)
+    i = 0
+    for name in checklist:
+        print(name)
+        print(session['user'])
+        if name == session['user']:
+            i = i + 1
+            print(i)
+            break
+    print(i)
+    if i == 0:
         return render_template(
-            "oops.html",
+            "oops.html", 
             message=f"You're not on {friend}'s friendlist",
             advice=f"Tell them to add your username: {user}",
-            links=['home','back']
+            links=['home', 'back']
             )
     
     mongo.db.users.find_one({"username": friend})
