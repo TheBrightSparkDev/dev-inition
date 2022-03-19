@@ -31,7 +31,7 @@
                 <h5>Challenge from {{challenge.from}}</h5>
             </a>
             <div class="rounded dark responsive-large small-margin">
-                <a href="#"><h6>Give up</h6></a>
+                <a href="{{ url_for('give_up', challenge_id=challenge._id) }}"><h6>Give up</h6></a>
             </div>
         </div>
         {% endif %}

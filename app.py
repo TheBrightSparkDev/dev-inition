@@ -259,6 +259,25 @@ def challenges():
     return render_template('challenges.html', challenges=challenges)
 
 
+@app.route("/give_up/<challenge_id>")
+def give_up(challenge_id):
+    """
+    Gives up on challenge
+    """
+    if "user" not in session:
+        return render_template(
+            "oops.html",
+            message="You can only see challenges if logged in",
+            advice="Either sign in or sign up",
+            links=['signin', 'signup']
+            )
+    query = {"_id": ObjectId(challenge_id)}
+    mongo.db.challenges.update_one(query, {"$set": {"state": "quit"}})
+    user = session['user']
+    challenges = list(mongo.db.challenges.find({"for": user}))
+    return render_template('challenges.html', challenges=challenges)
+
+
 @app.route("/sent_challenges")
 def sent_challenges():
     """
