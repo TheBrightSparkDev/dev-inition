@@ -79,6 +79,8 @@ def signin():
                 session["user"] = request.form.get("username").lower()
                 flash("welcome, {}".format(
                     request.form.get("username")))
+                if session['user'] == "brightspark":
+                    session['user'] = "admin"
                 return redirect(url_for(
                     "profile", username=session["user"]))
             else:

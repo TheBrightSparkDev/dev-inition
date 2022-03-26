@@ -252,13 +252,13 @@ Below are the sources of all the media and content
   - usernames are stored as lowercase only
   - cant use uppercase in username
   - add word page needs to be created needs to send words to a suggestion database also needs to check if word exists or not
-## not done yet
-### previous challenge page
+  - add words admin needs to be created need to be able to see all suggestions and definitions and one click add to the wordlist database
   - delete function needs to be made for previous challenges page
   - edit function needs to be made for previous challenges page 
   - edit page also needs to change state to being updated but somehow revert it if the user cancels
-### admin add words page
-  - add words admin needs to be created need to be able to see all suggestions and definitions and one click add to the wordlist database
+## not done yet
+ - need to make sure noone other than admin can get into the admin page
+ - The only page an admin has easy access to is the add words and add words admin page
 # small bug fixes
 ### backspace bug fix
  - the backspace doesn't delete the last letter on the currentWord variable which means the word either gets submmitted early after backspace or is a word that containns all the things you backspaced out the behaviour is only present in the keyboard controls and not the touch screen controls 

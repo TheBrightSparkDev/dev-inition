@@ -9,36 +9,60 @@
         {% endfor %}
     {% endif %}
 {% endwith %}
-<a href="{{ url_for('profile') }}"><h1 class="game-title">Word VS</h1></a>
+<a href="{{ url_for('profile') }}">
+    <h1 class="game-title">Word VS</h1>
+</a>
 <div class="profile-body">
     {% if user == "guest" %}
-        <a href="{{ url_for('signin') }}" class="profile-card rounded"><h5>sign in to view challenges sent to friends</h5></a>
+    <a href="{{ url_for('signin') }}" class="profile-card rounded">
+        <h5>sign in to view challenges sent to friends</h5>
+    </a>
+    {% elif user == "admin" %}
+    <a href="{{ url_for('add_words_admin') }}" class="profile-card rounded">
+        <h5>Admin add words page</h5>
+    </a>
     {% else %}
-        <a href="{{ url_for('sent_challenges') }}" class="profile-card rounded"><h5>Sent Challenges</h5></a>
+    <a href="{{ url_for('sent_challenges') }}" class="profile-card rounded">
+        <h5>Sent Challenges</h5>
+    </a>
     {% endif %}
-    <div class="profile-card rounded">
-        <a href="#"><h5>Free Play (coming soon)</h5></a>
-    </div>
-    <div class="profile-card rounded">
-        {% if user == "guest" %}
-            <a href="{{ url_for('signin') }}"><h5>sign in to challenge your friends</h5></a>
-        {% else %}
-            <a href="{{ url_for('challenges') }}"><h5>Challenges</h5></a>
-        {% endif %}
-    </div>
-    <div class="profile-card rounded">
-        {% if user == "guest" %}
-            <a href="{{ url_for('signin') }}"><h5>sign in to see your challenges</h5></a>
-        {% else %}
-            <a href="{{ url_for('friend_picker') }}"><h5>Challenge a Friend</h5></a>
-        {% endif %}
-    </div>
-    <div class="rounded responsive-large new-line">
+    <a href="#" class="profile-card rounded">
+        <h5>Free Play (coming soon)</h5>
+    </a>
     {% if user == "guest" %}
-        <a href="{{ url_for('homepage') }}"><h6>back</h6></a>
+    <a href="{{ url_for('signin') }}" class="profile-card rounded">
+        <h5>sign in to challenge your friends</h5>
+    </a>
+    {% elif user == "admin" %}
+    <a href="{{ url_for('add_words',referrer='profile', key='none') }}" class="profile-card rounded">
+        <h5>User add words page</h5>
+    </a>
     {% else %}
-        <a href="{{ url_for('signout') }}"><h6>Sign Out</h6></a>
+    <a href="{{ url_for('challenges') }}" class="profile-card rounded">
+        <h5>Challenges</h5>
+    </a>
     {% endif %}
-    </div>
+        {% if user == "guest" %}
+        <a href="{{ url_for('signin') }}" class="profile-card rounded">
+            <h5>sign in to see your challenges</h5>
+        </a>
+        {% elif user == "admin" %}
+
+        {% else %}
+        <a href="{{ url_for('friend_picker') }}" class="profile-card rounded">
+            <h5>Challenge a Friend</h5>
+        </a>
+        {% endif %}
+        </div>
+        <div class="rounded responsive-large new-line">
+        {% if user == "guest" %}
+        <a href="{{ url_for('homepage') }}">
+            <h6>back</h6>
+        </a>
+        {% else %}
+        <a href="{{ url_for('signout') }}">
+            <h6>Sign Out</h6>
+        </a>
+        {% endif %}
 </div>
 {% endblock %}
