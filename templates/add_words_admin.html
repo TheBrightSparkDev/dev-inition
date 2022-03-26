@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="rounded responsive-large center">
+                <h6>{{ message }}</h6>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+<a href="{{ url_for('profile') }}"><h1 class="game-title">Word VS</h1></a>
+{% if amount == 0 %}
+    <h6>No new suggestions</h6>
+{% else %}
+    <h6>You have {{amount}} new suggestions</h6>
+    {% for word in words %}
+        <div class="input-content-container">
+            <div class="rounded form-bg max-width">
+                <form method="POST" action="{{ url_for('add_words_admin') }}">
+                    <div class="responsive-large">
+                        <label for="word"><h5>Word</h5></label>
+                    </div>
+                    <div class="center rounded responsive-large dark">
+                        <input class="center" id="word" value="{{ word.word }}" type="text" name="word" 
+                        pattern="^[A-Za-z]{4,8}$" class="validate" required>
+                    </div>
+                    <div class="responsive-large">
+                        <label class="label" for="letters"><h5>definition</h5></label>
+                    </div>
+                    <div class="center rounded responsive-large dark">
+                        <input class="center" id="definition" value="{{word.meaning}}" type="text" name="definition" 
+                        maxlength="100" minlength="4" class="validate">
+                    </div>
+                    <div class="rounded responsive-large dark" id="button-margins">
+                        <button type="submit"><h5>Send</h5></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    {% endfor %}
+{% endif %}
+{% endblock %}

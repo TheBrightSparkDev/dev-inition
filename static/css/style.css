@@ -59,7 +59,6 @@ a {
 
 .responsive-small {
     width: 30%;
-    height: 50px;
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -371,17 +370,6 @@ h4 {
     background-color: rgba(0, 0, 0, 0.2);
 }
 
-.wrong{
-    background-color: rgba(0, 0, 0, 0.2);
-}
-
-.correct{
-    background-color: rgba(22, 255, 1, 0.2);
-}
-
-.nearly{
-    background-color: rgba(255, 251, 1, 0.2);
-}
 .input-square {
     width: 3.75vw;
     height: 3.75vw;
@@ -393,9 +381,21 @@ h4 {
 .keyboard-square {
     width: 3.75vw;
     height: 3.75vw;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.2);
     margin: 0.75vw;
     border-radius: 20px;
+}
+
+.wrong{
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+.correct{
+    background-color: rgba(22, 255, 1, 0.2);
+}
+
+.nearly{
+    background-color: rgba(255, 251, 1, 0.2);
 }
 
 h3 {

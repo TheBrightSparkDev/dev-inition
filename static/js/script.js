@@ -30,6 +30,8 @@ function backspace(){
         toString(currentInputBox)
         let box = document.getElementById(currentInputBox)
         box.children[0].innerText=""
+        currentWord = currentWord.slice(0,-1)
+        console.log(currentWord)
     }
 }
 // puts the letter in the correct box
@@ -41,13 +43,16 @@ function typeLetter(content){
         parseInt(currentInputBox)
         currentInputBox++ 
         toString(currentInputBox)
-    } else if (currentInputBox == length){
+        console.log(currentWord)
+    }
+    else {
         let box = document.getElementById(currentInputBox)
         box.children[0].innerText=content
         parseInt(currentInputBox)
         currentInputBox = 0
         toString(currentInputBox)
         submitAnswer()
+        console.log(currentWord)
     }   
 }
 // determines what was clicked and if it's valid

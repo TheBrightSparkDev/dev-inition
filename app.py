@@ -214,9 +214,7 @@ def create_challenge(friend):
         for letter in word:
             if letter not in letters:
                 letters = letters + letter
-        print("before " + letters)
         letters = "".join(set(letters))
-        print("after " + letters)
         try:
             # this throws an error if word isnt in database forcing system to
             # skip to except
@@ -400,7 +398,7 @@ def game(challenge):
     displays the main game and forwards the information required
     to display the current challenge.
     """
-    # checks if user is logged in if not sends the to oops
+    # checks if user is logged in if not sends the to the oops page
     if "user" not in session:
         return render_template(
             "oops.html",
@@ -472,30 +470,69 @@ def game(challenge):
             flash("Invalid word")
         finally:
             print(word)
+    print(data)
+    letters = ""
+    for guess in guesses:
+        guess_check = data[guess]
+        for letter in guess_check:
+            letters = letters + letter
+    print(letters)
+    used = "".join(set(letters))
+    print(used)
+    
     return render_template(
-        'game.html', challenge=data, guesses=guesses)
+        'game.html', challenge=data, guesses=guesses, used=used)
 
 
 @app.route("/add_words/<referrer>/<key>", methods=["GET", "POST"])
-def add_words(referrer,key):
+def add_words(referrer, key):
     """
     Allows users to add words to the word database
     """
     if request.method == "POST":
         # check if word in form element exists already in the database
-        existing_word = mongo.db.new_words.find_one(
+        existing_word = mongo.db.wordlist.find_one(
             {"word": request.form.get("word").lower()})
         if existing_word:
             flash("This word is already in the database")
         else:
-            new_word = {
-                "word": request.form.get("word"),
-                "definition": request.form.get("definition")
-                }
-            mongo.db.new_words.insert_one(new_word)
+            existing_word = mongo.db.new_words.find_one(
+                {"word": request.form.get("word").lower()})
+            if existing_word:
+                flash("This word has already been suggested")
+            else:
+                new_word = {
+                    "word": request.form.get("word"),
+                    "meaning": request.form.get("definition")
+                    }
+                mongo.db.new_words.insert_one(new_word)
 
     return render_template("add_words.html", referrer=referrer, key=key)
 
+@app.route("/add_words_admin", methods=["GET", "POST"])
+def add_words_admin():
+    """
+    Allows admin to add words to the in use database
+    """
+    if request.method == "POST":
+        # check if word in form element exists already in the database
+        existing_word = mongo.db.wordlist.find_one(
+            {"word": request.form.get("word").lower()})
+        if existing_word:
+            flash("This word is already in the database")
+        else:
+            word = request.form.get("word")
+            new_word = {
+                "word": word,
+                "meaning": request.form.get("definition")
+                }
+            mongo.db.wordlist.insert_one(new_word)
+            mongo.db.new_words.delete_one({"word": word})
+            flash("Updated database")
+    words = mongo.db.new_words.find()
+    amount = len(list(mongo.db.new_words.find()))
+
+    return render_template("add_words_admin.html", words=words, amount=amount)
 
 
 if __name__ == "__main__":

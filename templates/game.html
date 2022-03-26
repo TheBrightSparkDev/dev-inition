@@ -54,9 +54,18 @@
     {% with messages = get_flashed_messages() %}
     {% if messages %}
         {% for message in messages %}
+            {% if message == "Invalid word" %}
             <div class="rounded responsive-large center">
-                <h6 id="message">{{ message }}</h6>
+                <h6>{{ message }}</h6>
             </div>
+            <div class="rounded responsive-large center">
+                <a href="{{ url_for('add_words',referrer='game', key=challenge._id) }}"><h6>click here to suggest word</h6></a>
+            </div>
+            {% else %}
+                <div class="rounded responsive-large center">
+                    <h6 id="message">{{ message }}</h6>
+                </div>
+            {% endif %}
         {% endfor %}
     {% endif %}
     {% endwith %}
@@ -72,9 +81,21 @@
     <!-- creates a box for every letter in the available letters forming a keyboard  -->
     <div class="rounded keyboard-bg">
         {% for letter in challenge.letters %}
-            <div class="keyboard-square" letter="{{ letter }}" onclick="clicked(this.getAttribute('letter'))">
-                <h3>{{letter}}</h3>
-            </div>
+            {% if letter is in used %}
+                {% if letter is in challenge.word %}
+                    <div class="keyboard-square correct" letter="{{ letter }}" onclick="clicked(this.getAttribute('letter'))">
+                        <h3>{{letter}}</h3>
+                    </div>
+                {% else %}
+                    <div class="keyboard-square wrong" letter="{{ letter }}" onclick="clicked(this.getAttribute('letter'))">
+                        <h3>{{letter}}</h3>
+                    </div>
+                    {% endif %}
+            {% else %}
+                <div class="keyboard-square" letter="{{ letter }}" onclick="clicked(this.getAttribute('letter'))">
+                    <h3>{{letter}}</h3>
+                </div>
+            {% endif %}
         {% endfor %}
     </div>
     <!-- scripts -->
