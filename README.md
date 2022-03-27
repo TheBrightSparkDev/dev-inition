@@ -26,7 +26,7 @@ So with the app anyone can challenge anyone everyday or even more than once ever
  - [How many guess boxes?](#challenge1)
  - [Database troubles](#challenge2)
  - [Last guess gone!](#challenge3)
- - [Why won't you break?(#challenge4)
+ - [Why won't you break?](#challenge4)
 4.
 desktop and background credit: [pixabay](https://pixabay.com/photos/apple-computer-desk-workspace-1868496/)
 
@@ -164,7 +164,7 @@ There is a small bug left here though if you manage to guess twice in less than 
 I also got the python app to check if the guess had already been guessed and blocked it if it had. 
 This lead to a lengthy function but it worked so thats all that mattered.
 
-## Why won't you break!🤣<a href name="challenge4">
+## Why won't you break!<a href name="challenge4">
 
 ### Goal
 
