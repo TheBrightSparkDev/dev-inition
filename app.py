@@ -19,7 +19,8 @@ app = Flask(__name__)
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
-
+ADMIN_REAL = os.environ.get("ADMIN_REAL")
+print(ADMIN_REAL)
 mongo = PyMongo(app)
 
 
@@ -79,7 +80,7 @@ def signin():
                 session["user"] = request.form.get("username").lower()
                 flash("welcome, {}".format(
                     request.form.get("username")))
-                if session['user'] == "brightspark":
+                if session['user'] == ADMIN_REAL:
                     session['user'] = "admin"
                 return redirect(url_for(
                     "profile", username=session["user"]))
@@ -516,6 +517,21 @@ def add_words_admin():
     """
     Allows admin to add words to the in use database
     """
+    if "user" not in session:
+        return render_template(
+            "oops.html",
+            message="You're not signed in",
+            advice="Either sign in or sign up",
+            links=['signin', 'signup']
+            )
+    if session['USER'] != "admin":
+        return render_template(
+            "oops.html",
+            message=(
+                "This page is not for users"),
+            advice="Please don't try this again",
+            links=['home']
+            )
     if request.method == "POST":
         # check if word in form element exists already in the database
         existing_word = mongo.db.wordlist.find_one(

@@ -53,7 +53,7 @@
             <h5>Challenge a Friend</h5>
         </a>
         {% endif %}
-        </div>
+
         <div class="rounded responsive-large new-line">
         {% if user == "guest" %}
         <a href="{{ url_for('homepage') }}">
@@ -64,5 +64,6 @@
             <h6>Sign Out</h6>
         </a>
         {% endif %}
+        </div>
 </div>
 {% endblock %}
