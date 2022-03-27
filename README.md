@@ -203,8 +203,14 @@ The users will be people just looking to relax and play something simple and fun
 
 ### big bugs
 
+## bug tester Sharron
+ - found a bug where you cannot add users that have a number in their name simply by creating a user name with a number in it that I couldnt add via app
 
 ### small bugs
+
+## bug tester Rhi found:
+ - display bug on challenges page back and no challenges found were displaying badly on the page
+ - also spotted a spelling mistake on the add words page
 
 
 ### lighthouse Testing 
