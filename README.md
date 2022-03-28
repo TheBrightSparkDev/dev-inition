@@ -297,6 +297,16 @@ Below are the sources of all the media and content
    - The only page an admin has easy access to is the add words and add words admin page
 ## not done yet
  - Create working .404 page
+## freeplay mode
+### words to note for potential freeplay levels
+   - lashed
+   - thyme
+   - field
+   - welded
+   - phony
+   - pushy
+   - icycle
+   
 # small bug fixes
 ### backspace bug fix
  - the backspace doesn't delete the last letter on the currentWord variable which means the word either gets submmitted early after backspace or is a word that containns all the things you backspaced out the behaviour is only present in the keyboard controls and not the touch screen controls 

@@ -54,16 +54,14 @@
         </a>
         {% endif %}
 
-        <div class="rounded responsive-large new-line">
-        {% if user == "guest" %}
-        <a href="{{ url_for('homepage') }}">
-            <h6>back</h6>
-        </a>
-        {% else %}
-        <a href="{{ url_for('signout') }}">
-            <h6>Sign Out</h6>
-        </a>
-        {% endif %}
-        </div>
+    {% if user == "guest" %}
+    <a href="{{ url_for('homepage') }}" class="rounded responsive-large new-line">
+        <h6>back</h6>
+    </a>
+    {% else %}
+    <a href="{{ url_for('signout') }}" class="rounded responsive-large new-line">
+        <h6>Sign Out</h6>
+    </a>
+    {% endif %}
 </div>
 {% endblock %}
