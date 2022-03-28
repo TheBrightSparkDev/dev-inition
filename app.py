@@ -20,7 +20,6 @@ app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
 ADMIN_REAL = os.environ.get("ADMIN_REAL")
-print(ADMIN_REAL)
 mongo = PyMongo(app)
 
 
@@ -124,6 +123,7 @@ def friend_picker():
     """
     displays friend picker page and controls logic for page
     """
+    # checks if user is in session if not displays custom error message
     if "user" not in session:
         return render_template(
             "oops.html",
@@ -131,11 +131,13 @@ def friend_picker():
             advice="Either sign in or sign up",
             links=['signin', 'signup']
             )
+    # creates relevant variables
     current_user = session["user"].lower()
     requests = mongo.db.users.find({"friends": current_user})
     user = mongo.db.users.find_one({"username": current_user})
     friends = user["friends"]
     displayed_requests = []
+    # removes users already on friendslist
     for user in requests:
         if user["username"] not in friends:
             displayed_requests += [user["username"]]
@@ -148,17 +150,20 @@ def add_button(username):
     """
     displays friend picker page and controls logic for page
     """
+    # checks if user is in session
     if "user" not in session:
         return render_template(
             "oops.html",
-            message="You can't adda friend without being logged in!",
+            message="You can't add a friend without being logged in!",
             advice="Either sign in or sign up",
             links=['signin', 'signup']
             )
+    # creates relevant variables
     add_user = username
     current_user = session["user"].lower()
     user = mongo.db.users.find_one({"username": current_user})
     friends = user["friends"]
+    # adds user to friends list
     if username not in friends:
         mongo.db.users.update_many(
             {'username': session['user']},
@@ -168,6 +173,10 @@ def add_button(username):
         flash("You are already friends")
     requests = mongo.db.users.find({"friends": current_user})
     displayed_requests = []
+    # this is so page displays correctly when just refreshed
+    real_friends = friends
+    # removes the users that you already have on your friendslist
+    # also corrects the friends and displayed requests to display correctly
     for user in requests:
         if user["username"] not in friends:
             displayed_requests += [user["username"]]
@@ -175,7 +184,9 @@ def add_button(username):
                 displayed_requests.remove(username)
                 real_friends = friends + [username]
     return render_template(
-        'friend_picker.html', friends=real_friends, requests=displayed_requests)
+        'friend_picker.html',
+        friends=real_friends,
+        requests=displayed_requests)
 
 
 @app.route("/add_friend", methods=["GET", "POST"])
@@ -183,6 +194,7 @@ def add_friend():
     """
     displays friend picker page and controls logic for page
     """
+    # Checks user is in session if not displays custom error message
     if "user" not in session:
         return render_template(
             "oops.html",
@@ -190,11 +202,12 @@ def add_friend():
             advice="Either sign in or sign up",
             links=['signin', 'signup']
             )
+    # creates relevent variables
     add_user = request.form.get("username")
     user = mongo.db.users.find_one({"username": session['user'].lower()})
     friends = user["friends"]
-    print("finding user")
     test = mongo.db.users.find_one({"username": add_user})
+    # handles post method and displays feedback
     if request.method == "POST":
         if test is not None:
             if request.form.get("username") != session['user']:
@@ -230,16 +243,11 @@ def create_challenge(friend):
     check = mongo.db.users.find_one({"username": friend})
     checklist = check.get("friends")
     user = session['user']
-    print(checklist)
     i = 0
     for name in checklist:
-        print(name)
-        print(session['user'])
         if name == session['user']:
             i = i + 1
-            print(i)
             break
-    print(i)
     if i == 0:
         return render_template(
             "oops.html",
@@ -337,8 +345,6 @@ def sent_challenges():
     user = session['user']
     challenges = mongo.db.challenges.find({"from": user})
     for challenge in challenges:
-        print(challenge.get("state"))
-
         if challenge.get("state") == "editing":
             query = {"_id": ObjectId(challenge.get("_id"))}
             mongo.db.challenges.update_one(query, {"$set": {"state": "created"}})
@@ -365,16 +371,11 @@ def edit_challenge(friend, challenge_id):
     check = mongo.db.users.find_one({"username": friend})
     checklist = check.get("friends")
     user = session['user']
-    print(checklist)
     i = 0
     for name in checklist:
-        print(name)
-        print(session['user'])
         if name == session['user']:
             i = i + 1
-            print(i)
             break
-    print(i)
     if i == 0:
         return render_template(
             "oops.html",
@@ -397,9 +398,7 @@ def edit_challenge(friend, challenge_id):
         for letter in word:
             if letter not in letters:
                 letters = letters + letter
-        print("before " + letters)
         letters = "".join(set(letters))
-        print("after " + letters)
         try:
             # this throws an error if word isnt in database forcing system to
             # skip to except
@@ -512,17 +511,12 @@ def game(challenge):
                         break
         except:
             flash("Invalid word")
-        finally:
-            print(word)
-    print(data)
     letters = ""
     for guess in guesses:
         guess_check = data[guess]
         for letter in guess_check:
             letters = letters + letter
-    print(letters)
     used = "".join(set(letters))
-    print(used)
     
     return render_template(
         'game.html', challenge=data, guesses=guesses, used=used)

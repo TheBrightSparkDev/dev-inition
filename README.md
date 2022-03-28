@@ -31,16 +31,16 @@ So with the app anyone can challenge anyone everyday or even more than once ever
 
 desktop and background credit: [pixabay](https://pixabay.com/photos/apple-computer-desk-workspace-1868496/)
 
-## User stories<a name="Features">
+## User stories<a name="Features"></a>
 
-- __Main menu__<a name="main_menu">
+- __Main menu__<a name="main_menu"></a>
 
  - The main menu contains a few links to sign in sign up or guest mode.
  - This allows people to sign up sign in or just try out the game to see if they like it
 
 ![Main menu](assets/images/main-menu.PNG)
 
-- __Sign in/sign up page__<a name="signin">
+- __Sign in/sign up page__<a name="signin"></a>
  - Both pages are extremely similar one adds a new user to the database if they dont already exist the other
  checks username and password match an already existing user.
  - This is to allow users to get into the advanced features of the game like challenging friends and seeing challenges
@@ -50,7 +50,7 @@ desktop and background credit: [pixabay](https://pixabay.com/photos/apple-comput
 ![Sign in](assets/images/game-screen.PNG)
 ![Sign up](assets/images/game-screen.PNG)
 
-- __Profile__<a name="profile">
+- __Profile__<a name="profile"></a>
 
 - This is the first page you see when youre logged in, it looks different based on whether youre logged in or not.
 To users that are logged in it will display all the available options: challenges, sent challenges, challenge a friend 
@@ -58,48 +58,48 @@ and freeplay. For users that are logged in as guest the only option they will ha
 - Freeplay gives users the opportunity to try before they sign up if they arent sure about whether they will like the game.
 ![Profile](assets/images/tutorial.PNG)
 
-- __Challenge a friend__<a name="challenge_a_friend">
+- __Challenge a friend__<a name="challenge_a_friend"></a>
 
 - this is where you go to send your friends a challenge the first page you get to when you click the link off the profile is a friend picker. You first choose what friend you want to send the challenge to. Then you set the challenge the word needs to be valid and part of my database I've gathered of 48000 + words. This stops people from using bad words and making up words as that would ruin the game.
 
 ![Friend picker](assets/images/pause.PNG)
 ![Challenge set page](assets/images/pause.PNG)
 
-- __Challenges Page__<a name="challenges_page">
+- __Challenges Page__<a name="challenges_page"></a>
 
 - This is where you see challenges you've recieved from others.
 - This allows users to complete challenges other users have sent them.
 
 ![Challenges](assets/images/game-over.PNG)
 
-- __Sent challenges__<a name="sent_challenges">
+- __Sent challenges__<a name="sent_challenges"></a>
 
 - This page allows you to view and edit challenges you've sent to others and see if the person managed to complete the challenge or fail.
 - This allows a user to edit the challenge they've sent if they arent happy with the word they sent off origionally it however doesnt allow the word to be edited if the challenge has been started. You may also delete challenges sent aswell.
 
 ![Sent challenges](assets/images/highscore.PNG)
 
-- __Freeplay__<a name="freeplay">
+- __Freeplay__<a name="freeplay"></a>
   
  - This is a few levels that I have created this allows players to get an idea of what the game is like and wither they like it.
 
 ![Freeplay](assets/images/suggestions.PNG)
 
-- __Add friend__<a name="add_friend">
+- __Add friend__<a name="add_friend"></a>
   
 - This is where users go to add friends. If youre only just signing in please feel free to add thebrightspark which is my profile and challenge me! 
 - Users will be able to add eachother here. It only allows you to add users that exist.
 
 ![Add friend](assets/images/colorblind.PNG)
 
-- __Game page__<a name="game_page">
+- __Game page__<a name="game_page"></a>
 
 - This is the main game where users will guess the words and they will display above the inout line in a grid you only have six guesses so mak sure they are good ones! Once you hit the guess limit its game over.
 - Users will be able to complete challenges their friends sent them here or complete the freeplay levels.
 
-# Wireframes<a name="wireframes">
+# Wireframes<a name="wireframes"></a>
 
-### adobe XD<a name="interactive">
+### adobe XD<a name="interactive"></a>
 
 [interactive wireframe](https://xd.adobe.com/view/5fb66345-d813-4c0c-a24d-a927b8edc2d9-0ae5/)
 
@@ -107,7 +107,7 @@ This is the best way other than using the site to get an idea of how everything 
 
 # Challenges overcome 
 
-## How many game boxes??<a name="challenge1">
+## How many game boxes??<a name="challenge1"></a>
 
 ### Goal
 
@@ -125,7 +125,7 @@ After looking back at previous mini project: task manager I noticed we used |len
 
 next was the conditional formatting of the box it sits in the way I implemented this was by using loop.index0 to check the letters of both the guess and the answer match and then also used the in keyword in jinja to check if the letter was part of the word string. If the letter was in the correct place it adds the class correct if not it moves on to checking if its in the word if it is a letter included in the word it adds the class nearly otherwise it just displays the same color as normal.
 
-## Database troubles<a name="challenge2">
+## Database troubles<a name="challenge2"></a>
 
 ### Goal
 
@@ -141,7 +141,7 @@ I didnt have time to do this manually
 
 I created an app to iterate over the 100k words filter out any that include "-" and only send over the words if the length is '>' 4 and '<' 9 it took about 30 mins but when it was done I had 48k words and their definitions added to the mongo db database.
 
-## Last guess gone!<a name="challenge3">
+## Last guess gone!<a name="challenge3"></a>
 
 ### Goal
 
@@ -165,7 +165,7 @@ There is a small bug left here though if you manage to guess twice in less than 
 I also got the python app to check if the guess had already been guessed and blocked it if it had. 
 This lead to a lengthy function but it worked so thats all that mattered.
 
-## Why won't you break!<a name="challenge4">
+## Why won't you break!<a name="challenge4"></a>
 
 ### Goal
 
@@ -181,7 +181,7 @@ Theory: If I add some condtional formatting to the html form to check if challen
 
 Theory above was absolutely correct and works perfectly.
 
-# Technology used<a name="technology_used">
+# Technology used<a name="technology_used"></a>
 ## wireframes
 - adobe XD
 ## Frameworks
@@ -285,9 +285,10 @@ Below are the sources of all the media and content
   - delete function needs to be made for previous challenges page
   - edit function needs to be made for previous challenges page 
   - edit page also needs to change state to being updated but somehow revert it if the user cancels
+  - need to make sure noone other than admin can get into the admin page
+   - The only page an admin has easy access to is the add words and add words admin page
 ## not done yet
- - need to make sure noone other than admin can get into the admin page
- - The only page an admin has easy access to is the add words and add words admin page
+ - Create working .404 page
 # small bug fixes
 ### backspace bug fix
  - the backspace doesn't delete the last letter on the currentWord variable which means the word either gets submmitted early after backspace or is a word that containns all the things you backspaced out the behaviour is only present in the keyboard controls and not the touch screen controls 

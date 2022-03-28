@@ -28,7 +28,7 @@
             </div>
             <div class="center rounded responsive-large dark">
                 <input class="center" id="word" type="text" name="word" 
-                pattern="^[A-Z,a-z]{4,8}$" class="validate" required>
+                pattern="^[A-Za-z]{4,8}$" class="validate" required>
                 <h4 class="rules responsive-large">Word needs to be in database</h4>
                 <h4 class="rules responsive-large">Word also needs to be between 4-8 characters</h4>
             </div>
@@ -37,17 +37,16 @@
             </div>
             <div class="center rounded responsive-large dark">
                 <input class="center" id="letters" type="text" name="letters" 
-                pattern="^[A-Z,a-z]{4,15}$" class="validate" required>
+                pattern="^[A-Za-z]{4,15}$" class="validate" required>
                 <h4 class="rules responsive-large">Letters in the word are automatically added, so all letters you type are to confuse {{friend}}</h4>
-                <h4 class="rules responsive-large">Duplicate letters will be deleted</h4>
             </div>
-            <div class="rounded responsive-large dark" id="button-margins">
-                <button type="submit"><h5>Send</h5></button>
-            </div>
+            <button class="rounded responsive-large dark" id="button-margins" type="submit">
+                <h5>Send</h5>
+            </button>    
         </form>
     </div>
 </div>
-<div class="responsive-large rounded max-width top-margin center">
-    <a href="{{url_for('friend_picker')}}"><h6>Back</h6></a>
-</div>
+<a class="responsive-large rounded max-width top-margin center" href="{{url_for('friend_picker')}}">
+    <h6>Back</h6>
+</a>
 {% endblock %}

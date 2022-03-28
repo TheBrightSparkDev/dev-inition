@@ -30,15 +30,11 @@
             <a class="rounded responsive-large dark small-margin" href="{{ url_for('add_button', username=request ) }}"><h5>Add User?</h5></a>
         </div>
     {% endfor %}
-    <div class="rounded responsive-large margin-friend dark">
-        <a href="{{ url_for('add_friend') }}">
+        <a href="{{ url_for('add_friend') }}" class="rounded responsive-large margin-friend dark">
             <h6>Add Friend</h6>
         </a>
-    </div>
-    <div class="rounded responsive-large margin-friend dark">
-        <a href="{{ url_for('profile') }}">
-            <h6>Back</h6>
-        </a>
-    </div>
+    <a class="rounded responsive-large margin-friend dark" href="{{ url_for('profile') }}">
+        <h6>Back</h6>
+    </a>
 </div>
 {% endblock %}
