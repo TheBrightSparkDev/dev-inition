@@ -151,11 +151,9 @@
         {% endif %}
     {% endfor %}
 {% endif %}
-    <div class="rounded responsive-large margin-friend dark">
-        <a href="{{ url_for('profile', username=session['user']) }}">
-            <h6>Back</h6>
-        </a>
-    </div>
+    <a href="{{ url_for('profile', username=session['user']) }}" class="rounded responsive-large margin-friend dark">
+        <h6>Back</h6>
+    </a>
 </div>
 <!-- scripts -->
 <script type="text/javascript" src="{{url_for('static', filename='js/deleteitem.js')}}"></script>

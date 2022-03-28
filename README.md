@@ -203,14 +203,22 @@ The users will be people just looking to relax and play something simple and fun
 
 ### big bugs
 
+## bug tester Rachel 
+ - found a bug where if you add a space to the end of the create challenge page it doesnt allow you to send and reason is unclear
+ - pointed out the rules are too small to see on a small screen
+  - made font responsive
+
 ## bug tester Sharron
  - found a bug where you cannot add users that have a number in their name simply by creating a user name with a number in it that I couldnt add via app
+  - removed validation rule to block numbers form add friends HTML page
 
 ### small bugs
 
 ## bug tester Rhi found:
  - display bug on challenges page back and no challenges found were displaying badly on the page
+  - corrected by making div responsive (flexbox) and centered the back button by removing a misplaced div end tag
  - also spotted a spelling mistake on the add words page
+  - characters was spelled charecters
 
 
 ### lighthouse Testing 
