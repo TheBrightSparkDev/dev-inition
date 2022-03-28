@@ -524,7 +524,7 @@ def add_words_admin():
             advice="Either sign in or sign up",
             links=['signin', 'signup']
             )
-    if session['USER'] != "admin":
+    if session['user'] != "admin":
         return render_template(
             "oops.html",
             message=(
@@ -541,7 +541,7 @@ def add_words_admin():
         else:
             word = request.form.get("word")
             new_word = {
-                "word": word,
+                "word": word.lower(),
                 "meaning": request.form.get("definition")
                 }
             mongo.db.wordlist.insert_one(new_word)
