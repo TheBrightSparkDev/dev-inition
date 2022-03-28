@@ -1,10 +1,33 @@
 {% extends "base.html" %}
 {% block content %}
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+            <div class="rounded responsive-large center">
+                <h6>{{ message }}</h6>
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
 <a href="{{ url_for('profile') }}"><h1 class="game-title">Word VS</h1></a>
-<div class="friend-list rounded">
+<div class="friend-list rounded small-margin">
+    <div class="rounded responsive-large dark small-margin">
+        <h5>Friends</h5>
+    </div>
     {% for friend in friends %}
         <div class="rounded friend-card dark">
             <a href="{{ url_for('create_challenge', friend=friend ) }}"><h5>{{friend}}</h5></a>
+        </div>
+    {% endfor %}
+</div>
+<div class="friend-list rounded small-margin">
+    <div class="rounded responsive-large dark small-margin">
+        <h5>Friend Requests</h5>
+    </div>
+    {% for request in requests %}
+        <div class="rounded responsive-small dark">
+            <h5 class="responsive-large">{{request}}</h5>
+            <a class="rounded responsive-large dark small-margin" href="{{ url_for('add_button', username=request ) }}"><h5>Add User?</h5></a>
         </div>
     {% endfor %}
     <div class="rounded responsive-large margin-friend dark">

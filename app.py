@@ -131,10 +131,51 @@ def friend_picker():
             advice="Either sign in or sign up",
             links=['signin', 'signup']
             )
-    user = mongo.db.users.find_one({"username": session["user"].lower()})
+    current_user = session["user"].lower()
+    requests = mongo.db.users.find({"friends": current_user})
+    user = mongo.db.users.find_one({"username": current_user})
     friends = user["friends"]
+    displayed_requests = []
+    for user in requests:
+        if user["username"] not in friends:
+            displayed_requests += [user["username"]]
+    return render_template(
+        'friend_picker.html', friends=friends, requests=displayed_requests)
 
-    return render_template('friend_picker.html', friends=friends)
+
+@app.route("/add_button/<username>")
+def add_button(username):
+    """
+    displays friend picker page and controls logic for page
+    """
+    if "user" not in session:
+        return render_template(
+            "oops.html",
+            message="You can't adda friend without being logged in!",
+            advice="Either sign in or sign up",
+            links=['signin', 'signup']
+            )
+    add_user = username
+    current_user = session["user"].lower()
+    user = mongo.db.users.find_one({"username": current_user})
+    friends = user["friends"]
+    if username not in friends:
+        mongo.db.users.update_many(
+            {'username': session['user']},
+            {'$push': {"friends": add_user}})
+        flash("Friend added")
+    else:
+        flash("You are already friends")
+    requests = mongo.db.users.find({"friends": current_user})
+    displayed_requests = []
+    for user in requests:
+        if user["username"] not in friends:
+            displayed_requests += [user["username"]]
+            if username in displayed_requests:
+                displayed_requests.remove(username)
+                real_friends = friends + [username]
+    return render_template(
+        'friend_picker.html', friends=real_friends, requests=displayed_requests)
 
 
 @app.route("/add_friend", methods=["GET", "POST"])
