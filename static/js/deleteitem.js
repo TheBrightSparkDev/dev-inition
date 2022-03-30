@@ -1,4 +1,5 @@
 // checks user is sure
-function check(item){
-    
+function check(challenge){
+    dropdown = document.getElementById(challenge)
+    dropdown.classList.toggle("hide");   
 }

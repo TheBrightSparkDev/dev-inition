@@ -19,6 +19,9 @@ a {
 }
 
 /* Personal css file with unused bits removed */
+.clickable{
+    cursor: pointer;
+}
 .rules{
     color:green;
     font-weight:500;
@@ -95,7 +98,9 @@ a {
 .top-margin {
     margin-top: 5vh;
 }
-
+.hide{
+    display:none;
+}
 /* homepage specific changes */
 .game-body {
     min-height: 100vh;

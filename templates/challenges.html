@@ -30,8 +30,17 @@
             <a href="{{ url_for('game', challenge=challenge._id) }}">
                 <h5>Challenge from {{challenge.from}}</h5>
             </a>
-            <div class="rounded dark responsive-large small-margin">
-                <a href="{{ url_for('give_up', challenge_id=challenge._id) }}"><h6>Give up</h6></a>
+            <div class="rounded dark responsive-large small-margin clickable" 
+            onclick="check(this.getAttribute('challenge'))" 
+            challenge="{{challenge._id}}">
+                <h6>Give up</h6>
+            </div>
+            <div id="{{challenge._id}}" class="rounded responsive-large small-margin clickable hide">
+                <h6>Are you sure?</h6>
+                <a class="responsive-large" href="{{ url_for('give_up', challenge_id=challenge._id) }}"><h6>Yes</h6></a>
+                <h6 class="responsive-large" 
+                onclick="check(this.getAttribute('challenge'))" 
+                challenge="{{challenge._id}}">No</h6>
             </div>
         </div>
         {% endif %}
@@ -41,4 +50,5 @@
         <h6>Back</h6>
     </a>
 </div>
+<script type="text/javascript" src="{{url_for('static', filename='js/deleteitem.js')}}"></script>
 {% endblock %}

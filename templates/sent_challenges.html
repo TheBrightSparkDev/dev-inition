@@ -39,9 +39,15 @@
                 <h4 class="new-line">last updated {{challenge.updated_date}}</h4>
                 <h4 class="new-line">Created on {{challenge.created_date}}</h4>
             </div>
-            <a href="{{ url_for('delete_challenge', challenge_id=challenge._id ) }}" class="responsive-large dark rounded small-margin">
+            <div onclick="check(this.getAttribute('challenge'))" challenge="{{challenge._id}}" 
+            class="responsive-large dark rounded small-margin clickable">
                 <h5>Delete</h5>
-            </a>
+            </div>
+            <div id="{{challenge._id}}" class="rounded responsive-large small-margin clickable hide">
+                <h6>Are you sure?</h6>
+                <a class="responsive-large" href="{{ url_for('delete_challenge', challenge_id=challenge._id ) }}"><h6>Yes</h6></a>
+                <h6 class="responsive-large" onclick="check(this.getAttribute('challenge'))" challenge="{{challenge._id}}">No</h6>
+            </div>
         </div>
         {% endif %}
     {% endfor %}
@@ -108,9 +114,15 @@
                 <h4 class="new-line small-margin">last updated {{challenge.updated_date}}</h4>
                 <h4 class="new-line small-margin">Created on {{challenge.created_date}}</h4>
             </div>
-            <a href="{{ url_for('delete_challenge', challenge_id=challenge._id ) }}" class="responsive-large dark rounded small-margin">
+            <div onclick="check(this.getAttribute('challenge'))" challenge="{{challenge._id}}" 
+            class="responsive-large dark rounded small-margin clickable">
                 <h5>Delete</h5>
-            </a>
+            </div>
+            <div id="{{challenge._id}}" class="rounded responsive-large small-margin clickable hide">
+                <h6>Are you sure?</h6>
+                <a class="responsive-large" href="{{ url_for('delete_challenge', challenge_id=challenge._id ) }}"><h6>Yes</h6></a>
+                <h6 class="responsive-large" onclick="check(this.getAttribute('challenge'))" challenge="{{challenge._id}}">No</h6>
+            </div>
         </div>
         {% endif %}
     {% endfor %}
@@ -144,9 +156,15 @@
                     <h4 class="new-line small-margin">last updated {{challenge.updated_date}}</h4>
                     <h4 class="new-line small-margin">Created on {{challenge.created_date}}</h4>
                 </div>
-                <a href="{{ url_for('delete_challenge', challenge_id=challenge._id ) }}" class="responsive-large dark rounded small-margin">
+                <div onclick="check(this.getAttribute('challenge'))" challenge="{{challenge._id}}" 
+                class="responsive-large dark rounded small-margin clickable">
                     <h5>Delete</h5>
-                </a>
+                </div>
+                <div id="{{challenge._id}}" class="rounded responsive-large small-margin clickable hide">
+                    <h6>Are you sure?</h6>
+                    <a class="responsive-large" href="{{ url_for('delete_challenge', challenge_id=challenge._id ) }}"><h6>Yes</h6></a>
+                    <h6 class="responsive-large" onclick="check(this.getAttribute('challenge'))" challenge="{{challenge._id}}">No</h6>
+                </div>
             </div>
         {% endif %}
     {% endfor %}

@@ -259,11 +259,21 @@ The live link can be found here - [Word Vs]()
 
 Below are the sources of all the media and content 
 
+Backspace button image created by me using adobe illustrator.
+
 ### Almost no parts of the code on this website are copy and pasted 
 
 - If I was struggling with anything I would simply go to website that I have linked below and read up on how to use the specific code and then I would simply use the code correctly. 
-- all websites used are linked below:
+- websites I copy and pasted from:
 - [google fonts](https://fonts.google.com/)
+- all websites used are linked below nothing was copy and pasted just checked:
+- [Werkzeug security](https://werkzeug.palletsprojects.com/en/2.0.x/utils/)
+- [Jinja cheatsheet](https://jinja.palletsprojects.com/en/3.0.x/templates/#variables)
+- [Converting cursor to dict](https://stackoverflow.com/questions/28968660/how-to-convert-a-pymongo-cursor-cursor-into-a-dict)
+- [How to add item to dict python](https://www.w3schools.com/python/python_dictionaries_add.asp)
+- [Best way to make responsive text](https://www.w3schools.com/howto/howto_css_responsive_text.asp)
+- [Changing the value of a form element](https://www.w3schools.com/howto/howto_css_responsive_text.asp)
+- [How to get length of cursor](https://stackoverflow.com/questions/35692719/how-to-get-the-length-of-a-cursor-from-mongodb-using-python)
 - Code Institute mentor also sent me a link to a template of a README.md to create a structure I changed everything and kept structure apart from the steps to deploy as there isn't anything to change added a bit about making sure it was root as docs brings up an error message for me saying failed to build.
 
 ### Content 
