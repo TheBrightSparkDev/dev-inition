@@ -23,7 +23,7 @@ for words in dictionary:
                 print(words)
                 sent = {"word": words, "meaning": dictionary[words]}
                 print(sent)
-                mongo.db.wordlist.insert_one(sent)
-                
+                mongo.db.wordlist.insert_one(sent)              
+
 
 f.close()

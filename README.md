@@ -9,8 +9,8 @@ So with the app anyone can challenge anyone everyday or even more than once ever
 <img src="responsive image" alt= "image of the website on various devices to show responsiveness" width="100%">
 
 # Table of contents
-
-1. [User stories](#Features)
+1. [User stories](#user_stories)
+2. [Features](#Features)
  - [Main menu](#main_menu)
  - [Sign-in/Sign-up](#signin)
  - [Profile](#profile)
@@ -20,18 +20,20 @@ So with the app anyone can challenge anyone everyday or even more than once ever
  - [Freeplay](#freeplay)
  - [Add friend](#add_friend)
  - [Game page](#game_page)
-2. [Wireframes](#wireframes)
+3. [Wireframes](#wireframes)
  - [interactive](#interactive)
-3. [Challenges](#challenges)
+4. [Challenges](#challenges)
  - [How many guess boxes?](#challenge1)
  - [Database troubles](#challenge2)
  - [Last guess gone!](#challenge3)
  - [Why won't you break?](#challenge4)
-4. [Technology used](#technology_used)
+5. [Technology used](#technology_used)
 
 desktop and background credit: [pixabay](https://pixabay.com/photos/apple-computer-desk-workspace-1868496/)
 
-## User stories<a name="Features"></a>
+## User stories <a name="user_stories">
+
+## Features<a name="Features"></a>
 
 - __Main menu__<a name="main_menu"></a>
 
@@ -244,15 +246,17 @@ The users will be people just looking to relax and play something simple and fun
 
 I was using github as the repository for the whole project so when I wanted to create a live page it was very easy to do.
 
-- The site was deployed to GitHub pages. The steps to deploy are as follows:
-  - In the GitHub repository, navigate to the Settings tab
-  - From the source section drop-down menu, select the Master Branch
-  - Once the master branch has been selected, the page will be automatically refreshed with a detailed ribbon display to indicate the successful deployment.
-  - Make sure to select root before saving.
+- The site was deployed to Heroku. The steps to deploy are as follows:
 
-- The site was deployed to GitHub pages. 
 
-The live link can be found here - [Word Vs]()
+## How to clone repository:
+ - Go to my github repository [Word VS](https://github.com/TheBrightSparkDev/word-vs)
+ -  Click the code option and then copy the link
+ - if you have git installed on your pc you can use git clone followed by the URL 
+
+- The site was deployed to heroku pages. 
+
+The live link can be found here - [Word Vs](http://word-vs.herokuapp.com/)
 
 
 ## Credits 
@@ -288,6 +292,7 @@ Backspace button image created by me using adobe illustrator.
  
  # To do 
  only started noting things when I noticed I started forgetting things
+ - talk about the defensive programming of delete and give up return confirm("are you sure") worked but was an error in readme
 ## completed
   - make sure all pages go somewhere relevent when the title is clicked if title is present
   - create challenge needs to check if word is a word and if it is prevent it being sent

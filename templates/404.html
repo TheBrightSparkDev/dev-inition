@@ -1,15 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-<h1 class="game-title">Page 404 lets get you back to safety</h1>
+<h6>Oops seems we have gotten a little lost!</h6>
 <div class="home-options">
-    <div class="rounded medium margin">
-        <a href="{{ url_for('profile') }}"><p>profile</p></a>
-    </div>
-    <div class="rounded small margin">
-        <a href="{{ url+for('profile',session[user]) }}"><p>Guest</p></a>
-    </div>
-    <div class="rounded medium margin">
-        <a href="{{ url_for('signin') }}"><p>Sign In</p></a>
+    <div class="rounded responsive-large margin">
+        <a href="{{ url_for('homepage') }}"><h6>Click here to get back to safety!</h6></a>
     </div>
 </div>
 {% endblock %}

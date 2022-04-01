@@ -29,7 +29,12 @@ mongo = PyMongo(app)
 def homepage():
     """
     displays the homepage allows users to sign in sign up or log in as guest
+    This is also where you get sent if you page 404 and click the link to
+    get back to safety so it does an additional check to make sure if the
+    user is already signed in to direct them to their profile page instead.
     """
+    if 'user' in session:
+        return render_template("profile.html")
     return render_template("homepage.html")
 
 
@@ -410,6 +415,14 @@ def edit_challenge(friend, challenge_id):
             advice="Either sign in or sign up",
             links=['signin', 'signup']
             )
+    # Checks if the challenge has been started
+    # if "started" == data.get("state"):
+    #     return render_template(
+    #         "oops.html",
+    #         message="You already gave up on this challenge!",
+    #         advice="go back to the profile page",
+    #         links=['home']
+    #         )
     # if user doesn't match the "for" in the challenge redirects to oops
     check = mongo.db.users.find_one({"username": friend})
     checklist = check.get("friends")
@@ -514,6 +527,7 @@ def game(challenge):
     data = {}
     for i in cursor:
         data.update(i)
+    print(data)
     # This is relevant later on it is here as to keep code DRY
     query = {"_id": ObjectId(challenge)}
     # if user doesn't match the "for" in the challenge it redirects to oops
@@ -523,9 +537,25 @@ def game(challenge):
     if user != data.get("for"):
         return render_template(
             "oops.html",
-            message="This challenge isn't for you",
+            message="This challenge isn't for you or has been deleted",
             advice="Either sign in, sign up or go back to the profile page",
             links=['signin', 'signup', 'home']
+            )
+    # Checks if the challenge has been quit
+    if "quit" == data.get("state"):
+        return render_template(
+            "oops.html",
+            message="You already gave up on this challenge!",
+            advice="go back to the profile page",
+            links=['home']
+            )
+    # Checks if challenger is editing
+    if "editing" == data.get("state"):
+        return render_template(
+            "oops.html",
+            message="The person that sent this challenge is editing it please wait",
+            advice="go back to the profile page",
+            links=['home']
             )
     # This sets the state to created so that the creator cannot edit it
     if challenge_to_update.get("state") == "created":
@@ -609,6 +639,14 @@ def add_words(referrer, key):
     database only to a suggestions database where an admin can review
     the word and definition
     """
+    # checks if user is in session
+    if "user" not in session:
+        return render_template(
+            "oops.html",
+            message="You're not signed in",
+            advice="Either sign in or sign up",
+            links=['signin', 'signup']
+            )
     if request.method == "POST":
         # check if word in form element exists already in the database
         existing_word = mongo.db.wordlist.find_one(
@@ -680,6 +718,14 @@ def add_words_admin():
     amount = len(list(mongo.db.new_words.find()))
 
     return render_template("add_words_admin.html", words=words, amount=amount)
+
+
+@app.errorhandler(404)
+def page_not_found(e):
+    """
+    note that we set the 404 status explicitly
+    """
+    return render_template('404.html')
 
 
 if __name__ == "__main__":
