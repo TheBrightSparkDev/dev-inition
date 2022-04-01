@@ -311,7 +311,11 @@ Backspace button image created by me using adobe illustrator.
   - need to make sure noone other than admin can get into the admin page
    - The only page an admin has easy access to is the add words and add words admin page
 ## not done yet
- - Create working .404 page
+- change test cases on readme to this format:
+  - how it should work 
+  - how you can push it to see if it breaks 
+- change code comments to this format
+  - [Correct code docstring formats](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html)
 ## freeplay mode
 ### words to note for potential freeplay levels
    - lashed

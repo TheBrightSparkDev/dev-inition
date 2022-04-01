@@ -450,7 +450,7 @@ def edit_challenge(friend, challenge_id):
             )
     query = {"_id": ObjectId(challenge_id)}
     mongo.db.challenges.update_one(query, {"$set": {"state": "editing"}})
-    # handles te post method
+    # handles the post method
     if request.method == "POST":
         # declares important variables
         now = datetime.now()
