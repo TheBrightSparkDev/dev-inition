@@ -415,14 +415,6 @@ def edit_challenge(friend, challenge_id):
             advice="Either sign in or sign up",
             links=['signin', 'signup']
             )
-    # Checks if the challenge has been started
-    # if "started" == data.get("state"):
-    #     return render_template(
-    #         "oops.html",
-    #         message="You already gave up on this challenge!",
-    #         advice="go back to the profile page",
-    #         links=['home']
-    #         )
     # if user doesn't match the "for" in the challenge redirects to oops
     check = mongo.db.users.find_one({"username": friend})
     checklist = check.get("friends")
@@ -448,6 +440,14 @@ def edit_challenge(friend, challenge_id):
 
     mongo.db.users.find_one({"username": friend})
     challenge = mongo.db.challenges.find_one({"_id": ObjectId(challenge_id)})
+    # Checks if the challenge has been started
+    if "started" == challenge.get("state"):
+        return render_template(
+            "oops.html",
+            message="The challenge has been started already",
+            advice="go back to the profile page",
+            links=['home']
+            )
     query = {"_id": ObjectId(challenge_id)}
     mongo.db.challenges.update_one(query, {"$set": {"state": "editing"}})
     # handles te post method
