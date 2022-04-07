@@ -202,7 +202,112 @@ The users will be people just looking to relax and play something simple and fun
 
 ## Testing 
 
+## individual pages
 
+### Homepage.html
+
+The correct function is just a page for users to decide if they need to sign in or out has no other functionality other than that.
+
+#### test cases
+
+- Check all links
+  - sign in, sign up and guest mode
+
+### Signin.html 
+
+The correct function for this site is to allow the user to sign in if the user doesn't have log ins then there is a link to go to the signup page
+
+#### test cases
+
+- Check all links
+  - word vs links to the homepage
+  - signup page
+- The page should allow only users with extisting account to log in.
+- If the user doesnt exist it will redirect users to the sign up page
+- If the user exists it will allow them to log in if the password is incorrect 
+- The flash message should display the same message regardless of whether the password or the log in is incorrect
+
+### signup.html
+
+- The function of this page is to allow users to signup it doesnt differ much from the sign in page apart from the link at the bottom of the page is slightly different so the test cases are the same
+
+#### test cases
+
+
+- Check all links
+  - word vs links to the homepage
+  - signup page
+- The page should allow only users without an extisting account to log in.
+- If the user does exist it will redirect users to the sign in page
+- Once the user submits it should load the profile page
+- The flash message should display the same message regardless of whether the password or the log in is incorrect
+
+### profile.html
+
+- Usual functionality would be to display three different versions of itself one version for logged in users, one version to users that chose the guest option and another for the admin.
+
+#### test cases
+
+- Links to check 
+  - Sent-challenges
+  - Challenges
+  - Challenge a friend
+  - The word vs is also a link but links to profile
+  - sign out - removes the user cookie and send user to the homepage
+
+Ways to check all versions is to log in as admin/ a regular user and also clicking the guest option.
+
+Unfortunately freeplay mode has not been added yet so that link is not active.
+
+### sent_challenges.html
+
+Normal functionality of this site is only to allow logged in users to use this site. Once a logged in user logs in it uses the session cookie's content to determine what challenges will be displayed. It should only display challenges that have been sent out by the current user. There are 4 different states that can be seen on this page created, started, completed and quit
+
+#### test cases
+
+- The links to check:
+  - Back goes back to profile
+  - Word vs links to profile
+  - Each challenge has a link depending on it's state
+  - Completed and quit have links to delete
+  - Created challenges have a link to edit the challenge.
+  - Started challenges shouldn't have any links.
+
+### add_friends.html
+
+Normal functionality of this page would be for a logged in user only to be able to add users that exist adding a user that doesnt exist should not be possible.
+
+#### Test cases
+
+- Links to check
+  - add friend
+  - back
+
+The add friends button is a sumbit and it sends the username value to python to be checked if that user exists within the MongoDB database. This will display an error message if you add someone that doesnt exist.    
+
+### add_words_admin.html
+
+This page should not be accessible to regular users only one account has access 
+
+### add_words.html
+### base.html
+### challenges.html
+### create_challenges.html
+### edit_challenges.html
+### friend_picker.html
+### game.html
+### oops.html
+
+
+### 404.html
+
+The function of this page is to catch people who have manually typed in a bad address
+
+#### Test cases
+
+- type in a bad link 
+- if the 404 page displays then it's working correctly
+- 
 ### big bugs
 
 ## bug tester Rachel 
@@ -316,6 +421,7 @@ Backspace button image created by me using adobe illustrator.
   - how you can push it to see if it breaks 
 - change code comments to this format
   - [Correct code docstring formats](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html)
+- How to deploy via Heroku instructions including what variables you need to mention (not their values)
 ## freeplay mode
 ### words to note for potential freeplay levels
    - lashed
