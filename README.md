@@ -287,9 +287,28 @@ The add friends button is a sumbit and it sends the username value to python to 
 
 ### add_words_admin.html
 
-This page should not be accessible to regular users only one account has access 
+This page should not be accessible to regular users only one account has access to this so testing is impossible outside of development.
+Regardless one way it can still be tested is by trying to access the page. Usual functionality would be to display all of the suggstions that users have made and allow you to accept them.
+
+#### Test cases
+
+links to check
+- Word VS takes you back to the admin homepage
+- Send button sends a suggestion to the mongoDB
+
+The normal functionality is to send the word and definition from the word suggestion database to the word database. You can also add to the word or description currently there is no way to delete the suggestion other than on mongoDB currently so thats not a bug it's just yet to be implemented.
 
 ### add_words.html
+
+Normal functionality should be that this page should only be accessible by logged in users the users. The link to this page should only display when the user inputs a word that doesn't exist on either the challenge creation page or the game page. Depending on where you came from the back button will send you exactly where you came from. This is my way of making it easier for people to help out in developing the word base.
+
+#### Test cases
+
+links to check
+- Word vs should take you to the profile page
+- The back button should take you back where you came from.
+
+
 ### base.html
 ### challenges.html
 ### create_challenges.html
