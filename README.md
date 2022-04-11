@@ -336,15 +336,32 @@ This simply acts as a placeholder for the content of each site it also holds the
 
 ### challenges.html <a name="challenges.html"></a>
 
-usual behaviour is to display challenges that the current user has been sent by their friends 
+Usual behaviour is to display challenges that the current user has been sent by their friends. It displays differently depending on the state of the challenge. If the state is created it will go into the New challenges box. As soon as the challenge is started the challenge state changes to started. While the state is started the challenge goes into the already started box. The reason they are seperated is because the started state allows you to give up on the challenge. Whereas the challenges that haven't been attempted cannot be given up on. 
 
 #### test cases
+
+- links to test
+  - Each challenge when clicked should take you to the game page for that particular challenge
+  - Each challenge when started should allow you to press on a give up button. The give up button will remove the challenge from the list and the person who sent the challenge will be able to see you gave up or "quit" 
+  - The word vs title should take you back to the profile.
+  - The back button should also take you to the profile page.
+
+- Try accessing the page while not logged in it should send you to oops.html
+- Try to access a challenge that is currently being edited by the creator of the challenge it should stop the user from clicking on it.
 
 ### create_challenges.html <a name="create-challenges.html"></a>
 
-usual behaviour
+Usual behaviour is to allow a user to send a challenge. Each create challenge page will be for a specific user. If there is no user selected the page will go through to the 404 page. If the user isn't in the database for example if you changed the name at the top of the page after create_challenges then it would send users to the oops.html page with a custom message. This is caught by a try except catch which if it is unable to find the user instead of crashing and saying it doesn't have a get method it instead displays the oops.html page.
 
 #### test cases
+
+- links to check
+ - Send will send the challenge if the word is valid if not it will tell the user the word is invalid and give them the option to suggest the word
+ - Back will go back to the friends list
+ - word vs will as usual send you back to the profile page.
+
+- Another way to try and challenge the page is to change the name in the web address to something different, change the name to a user thats not on the current users friends list and lastly removing the name altogether. The first two will give you oops.html the third will send you to 404.html.
+- The last way to test the page is to click the link to suggest a word then on that page press back and it should send you back to create_challenge with the correct name in the address and any challenges sent should go to the intended user.
 
 ### edit_challenges.html <a name="edit-challenges.html"></a>
 
@@ -369,8 +386,6 @@ usual behaviour
 usual behaviour
 
 #### test cases
-
-
 
 ### 404.html <a name="404.html"></a>
 

@@ -262,9 +262,18 @@ def create_challenge(friend):
             advice="Either sign in or sign up",
             links=['signin', 'signup']
             )
-    # if user doesn't match the "for" in the challenge redirects to oops
+    # If user doesn't match the "for" in the challenge redirects to oops
     check = mongo.db.users.find_one({"username": friend})
-    checklist = check.get("friends")
+    # Makes sure user exists 
+    try:
+        checklist = check.get("friends")
+    except AttributeError:
+            return render_template(
+                "oops.html",
+                message="You can't create a challenge for someone who doesn't exist!",
+                advice="If you think the user exists double check their username or click their name on your friendslist",
+                links=['home']
+                )
     user = session['user']
     i = 0
     for name in checklist:
