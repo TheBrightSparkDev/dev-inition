@@ -28,6 +28,26 @@ So with the app anyone can challenge anyone everyday or even more than once ever
  - [Last guess gone!](#challenge3)
  - [Why won't you break?](#challenge4)
 5. [Technology used](#technology_used)
+ - [wireframe](#wireframe)
+ - [frameworks](#frameworks)
+ - [libraries](#libraries)
+6. [features left to implement](#features-left-to-implement)
+6. [testing](#testing)
+ - [homepage.html](#homepage.html)
+ - [signin.html](#signin.html)
+ - [signup.html](#signup.html)
+ - [profile.html](#profile.html)
+ - [sent_challenges.html](#sent-challenges.html)
+ - [add_friends.html](#add-friends.html)
+ - [add_words admin.html](#add-words-admin.html)
+ - [add_words.html](#add-words.html)
+ - [base.html](#base.html)
+ - [challenges.html](#cahllenges.html)
+ - [create_challenges.html](#create-challenges.html)
+ - [edit_challenges.html](#edit-challenges.html)
+ - [friend_picker.html](#friend-picker.html)
+ - [game.html](#game.html)
+ - [oops.html](#oops.html)
 
 desktop and background credit: [pixabay](https://pixabay.com/photos/apple-computer-desk-workspace-1868496/)
 
@@ -184,27 +204,23 @@ Theory: If I add some condtional formatting to the html form to check if challen
 Theory above was absolutely correct and works perfectly.
 
 # Technology used<a name="technology_used"></a>
-## wireframes
+## wireframes<a name="wireframes"></a>
 - adobe XD
-## Frameworks
+## Frameworks<a name="frameworks"></a>
 - I used github to store the repository and version management
 - I used gitpod for editing the code and for posting to github 
-## Libraries
+## Libraries<a name="libraries"></a>
 - no libraries used
 
-# user story 
-
-The users will be people just looking to relax and play something simple and fun. No minimum requirements and accessible from all devices too so users will be all kinds of people on all kinds of devices.
-
-### Features Left to Implement
+### Features Left to Implement<a name="features-left-to-implement"></a>
 
 - free play mode
 
-## Testing 
+## Testing <a name="testing"></a>
 
 ## individual pages
 
-### Homepage.html
+### Homepage.html <a name="homepage.html"></a>
 
 The correct function is just a page for users to decide if they need to sign in or out has no other functionality other than that.
 
@@ -213,7 +229,7 @@ The correct function is just a page for users to decide if they need to sign in 
 - Check all links
   - sign in, sign up and guest mode
 
-### Signin.html 
+### Signin.html <a name="signin.html"></a>
 
 The correct function for this site is to allow the user to sign in if the user doesn't have log ins then there is a link to go to the signup page
 
@@ -227,12 +243,11 @@ The correct function for this site is to allow the user to sign in if the user d
 - If the user exists it will allow them to log in if the password is incorrect 
 - The flash message should display the same message regardless of whether the password or the log in is incorrect
 
-### signup.html
+### signup.html <a name="signup.html"></a>
 
 - The function of this page is to allow users to signup it doesnt differ much from the sign in page apart from the link at the bottom of the page is slightly different so the test cases are the same
 
 #### test cases
-
 
 - Check all links
   - word vs links to the homepage
@@ -242,7 +257,7 @@ The correct function for this site is to allow the user to sign in if the user d
 - Once the user submits it should load the profile page
 - The flash message should display the same message regardless of whether the password or the log in is incorrect
 
-### profile.html
+### profile.html <a name="profile.html"></a>
 
 - Usual functionality would be to display three different versions of itself one version for logged in users, one version to users that chose the guest option and another for the admin.
 
@@ -259,7 +274,7 @@ Ways to check all versions is to log in as admin/ a regular user and also clicki
 
 Unfortunately freeplay mode has not been added yet so that link is not active.
 
-### sent_challenges.html
+### sent_challenges.html <a name="sent-challenges.html"></a>
 
 Normal functionality of this site is only to allow logged in users to use this site. Once a logged in user logs in it uses the session cookie's content to determine what challenges will be displayed. It should only display challenges that have been sent out by the current user. There are 4 different states that can be seen on this page created, started, completed and quit
 
@@ -273,7 +288,7 @@ Normal functionality of this site is only to allow logged in users to use this s
   - Created challenges have a link to edit the challenge.
   - Started challenges shouldn't have any links.
 
-### add_friends.html
+### add_friends.html <a name="add-friends.html"></a>
 
 Normal functionality of this page would be for a logged in user only to be able to add users that exist adding a user that doesnt exist should not be possible.
 
@@ -285,7 +300,7 @@ Normal functionality of this page would be for a logged in user only to be able 
 
 The add friends button is a sumbit and it sends the username value to python to be checked if that user exists within the MongoDB database. This will display an error message if you add someone that doesnt exist.    
 
-### add_words_admin.html
+### add_words_admin.html <a name="add-words-admin.html"></a>
 
 This page should not be accessible to regular users only one account has access to this so testing is impossible outside of development.
 Regardless one way it can still be tested is by trying to access the page. Usual functionality would be to display all of the suggstions that users have made and allow you to accept them.
@@ -298,7 +313,7 @@ links to check
 
 The normal functionality is to send the word and definition from the word suggestion database to the word database. You can also add to the word or description currently there is no way to delete the suggestion other than on mongoDB currently so thats not a bug it's just yet to be implemented.
 
-### add_words.html
+### add_words.html <a name="add-words.html"></a>
 
 Normal functionality should be that this page should only be accessible by logged in users the users. The link to this page should only display when the user inputs a word that doesn't exist on either the challenge creation page or the game page. Depending on where you came from the back button will send you exactly where you came from. This is my way of making it easier for people to help out in developing the word base.
 
@@ -309,16 +324,55 @@ links to check
 - The back button should take you back where you came from.
 
 
-### base.html
-### challenges.html
-### create_challenges.html
-### edit_challenges.html
-### friend_picker.html
-### game.html
-### oops.html
+### base.html <a name="base.html"></a>
+
+This simply acts as a placeholder for the content of each site it also holds the links to the css file it doesn't do an awful lot sadly and cant really be visualised apart from the background because that technically does come from the base
+
+#### test cases
+- Best way to test if the base is displaying and working correctly is if the content is centered on the screen.
+- Another way of checking it works is if anything on the screen has a style.
+- The third of many other ways of checking is if the background is coloured blue and black in a linear gradient.
+- It is very obvious if it's not working or displaying correctly
+
+### challenges.html <a name="challenges.html"></a>
+
+usual behaviour is to display challenges that the current user has been sent by their friends 
+
+#### test cases
+
+### create_challenges.html <a name="create-challenges.html"></a>
+
+usual behaviour
+
+#### test cases
+
+### edit_challenges.html <a name="edit-challenges.html"></a>
+
+usual behaviour
+
+#### test cases
+
+### friend_picker.html <a name="friend-picker.html"></a>
+
+usual behaviour
+
+#### test cases
+
+### game.html <a name="game.html"></a>
+
+usual behaviour
+
+#### test cases
+
+### oops.html <a name="oops.html"></a>
+
+usual behaviour
+
+#### test cases
 
 
-### 404.html
+
+### 404.html <a name="404.html"></a>
 
 The function of this page is to catch people who have manually typed in a bad address
 
