@@ -450,10 +450,6 @@ The function of this page is to catch people who have manually typed in a bad ad
  - also spotted a spelling mistake on the add words page
   - characters was spelled charecters
 
-
-### lighthouse Testing 
-
-
 ### Validator Testing 
 
 # HTML
@@ -495,7 +491,7 @@ The function of this page is to catch people who have manually typed in a bad ad
   - No errors were found when using the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fword-vs.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
 # JS
  ## script.js
- - No errors were found [JShint validator](https://jshint.com/)
+ - No errors were found [JShint validator](https://jshint.com/) however two warnings were found neither of which I'm concerned about.
 
 ### Unfixed Bugs
 
@@ -512,6 +508,42 @@ I was using github as the repository for the whole project so when I wanted to c
  - if you have git installed on your pc you can use git clone followed by the URL 
 
 - The site was deployed to heroku pages. 
+- To deploy to heroku you need to do the following 
+ - Go to heroku create an account or sign in 
+ - Create an app
+ - Go to the deploy tab
+ - Choose your preferred method
+ - Choose the repository and deploy.
+
+- Things you'll need to do to ensure your system deploys correctly is: 
+ - Create a procfile containing the follwoing text: web: python app.py
+ - Create a requirements.txt with the following content:
+click==8.0.4
+dnspython==2.2.0
+Flask==2.0.3
+Flask-PyMongo==2.3.0
+itsdangerous==2.1.0
+pymongo==4.0.1
+Werkzeug==2.0.3
+ - Go to the settings tab now 
+ - Reveal config vars 
+  - You'll need to add your own values to the following keys I can't for security purposes declare what mine are I will type the Key followed by a description of what it is.
+  - ADMIN_REAL = The Value of this will be the administrator account. This is important for the add_words_admin page but not essential
+  - IP = 0.0.0.0 (ACTUAL VALUE)
+  - MONGO_DBNAME = name of the mongo db collection that holds the data
+  - MONGO_URI = This is from the connect to python app tab on MONGODB site it will give you a link this is where to put that link
+  - PORT = 5000 (ACTUAL VALUE)
+  - SECRET_KEY = This allows you to display the flashed messages. For exmple the message that pops up when you type in a wrong password is a flashed message. the value can be whatever you like
+for this app to work correctly you'll also have to follow my database setup 
+inside your collection you should have 
+- users
+- challenges
+- new_words
+- wordlist 
+
+wordlist should have the following keys (if adding your own word database)
+- word
+- meaning
 
 The live link can be found here - [Word Vs](http://word-vs.herokuapp.com/)
 
@@ -549,7 +581,6 @@ Backspace button image created by me using adobe illustrator.
  
  # To do 
  only started noting things when I noticed I started forgetting things
- - talk about the defensive programming of delete and give up return confirm("are you sure") worked but was an error in readme
 ## completed
   - make sure all pages go somewhere relevent when the title is clicked if title is present
   - create challenge needs to check if word is a word and if it is prevent it being sent
@@ -566,14 +597,14 @@ Backspace button image created by me using adobe illustrator.
   - edit function needs to be made for previous challenges page 
   - edit page also needs to change state to being updated but somehow revert it if the user cancels
   - need to make sure noone other than admin can get into the admin page
-   - The only page an admin has easy access to is the add words and add words admin page
+  - The only page an admin has easy access to is the add words and add words admin page
+  - change test cases on readme to this format:
+   - how it should work 
+   - how you can push it to see if it breaks 
+  - How to deploy via Heroku instructions including what variables you need to mention (not their values)
 ## not done yet
-- change test cases on readme to this format:
-  - how it should work 
-  - how you can push it to see if it breaks 
 - change code comments to this format
   - [Correct code docstring formats](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html)
-- How to deploy via Heroku instructions including what variables you need to mention (not their values)
 ## freeplay mode
 ### words to note for potential freeplay levels
    - lashed
