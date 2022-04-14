@@ -20,15 +20,15 @@
             </div>
             <div class="center rounded responsive-large dark">
                 <input class="center" id="username" type="text" name="username" pattern="^[a-zA-Z0-9]{5,11}$"
-                    class="validate" required>
+                required>
                 <h4 class="rules responsive-large">1. Needs to be between 5-11 characters long</h4>
             </div>
             <div class="responsive-large">
-                <label class="label" for="passord">Password</label>
+                <label for="password">Password</label>
             </div>
             <div class="center rounded responsive-large dark">
                 <input class="center" id="password" type="password" name="password" pattern="^[a-zA-Z0-9]{5,15}$"
-                    class="validate" required>
+                 required>
                 <h4 class="rules responsive-large">1. Cant include special characters</h4>
                 <h4 class="rules responsive-large">2. Needs to be between 5-15 characters long</h4>
             </div>
@@ -41,6 +41,6 @@
     </div>
 </div>
 <a href="{{url_for('signin')}}" class="responsive-large rounded top-margin max-width center">
-    <h6>Already have an account?<h6>
+    <h6>Already have an account?</h6>
 </a>
 {% endblock %}

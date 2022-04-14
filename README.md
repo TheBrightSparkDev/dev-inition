@@ -486,7 +486,7 @@ The function of this page is to catch people who have manually typed in a bad ad
  ## sent_challenges.html
   - No errors were returned when using the official [W3C validator]()
  ## signin.html
-  - No errors were returned when using the official [W3C validator]()
+  - No errors were returned when using the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fword-vs.herokuapp.com%2Fsignin)
  ## signup.html
   - No errors were returned when using the official [W3C validator]()
 # CSS
