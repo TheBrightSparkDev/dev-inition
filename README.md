@@ -458,37 +458,38 @@ The function of this page is to catch people who have manually typed in a bad ad
 
 # HTML
  ## 404.html
-  - No errors were returned when using the official [W3C validator]()
+  - No errors were returned when using the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fword-vs.herokuapp.com%2Fsent_challenge)
  ## add_friends.html
-  - No errors were returned when using the official [W3C validator]()
+  - No errors were returned when using the official [W3C validator](https://validator.w3.org/nu/?doc=http%3A%2F%2Fword-vs.herokuapp.com%2Fadd_friend)
  ## add_words_admin.html
-  - No errors were returned when using the official [W3C validator]()
+  - No errors were returned when using the official [W3C validator](https://validator.w3.org/nu/?doc=http%3A%2F%2Fword-vs.herokuapp.com%2Fadd_words_admin)
  ## add_words.html
-  - No errors were returned when using the official [W3C validator]()
+  - No errors were returned when using the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fword-vs.herokuapp.com%2Fadd_words_admin)
  ## base.html
-  - No errors were returned when using the official [W3C validator]()
+  - No errors were returned when using the official w3c validator all tests include the base.html so no direct link to this on its own.
  ## challenges.html
-  - No errors were returned when using the official [W3C validator]()
+  - No errors were returned when using the official [W3C validator](https://validator.w3.org/nu/?doc=http%3A%2F%2Fword-vs.herokuapp.com%2Fchallenges)
  ## create_challenge.html
-  - No errors were returned when using the official [W3C validator]()
+  - No errors were returned when using the official [W3C validator](https://validator.w3.org/nu/?doc=http%3A%2F%2Fword-vs.herokuapp.com%2Fcreate_challenge%2Fstuart)
  ## edit_challenge.html
   - No errors were returned when using the official [W3C validator]()
  ## friend_picker.html
-  - No errors were returned when using the official [W3C validator]()
+  - No errors were returned when using the official [W3C validator](https://validator.w3.org/nu/?doc=http%3A%2F%2Fword-vs.herokuapp.com%2Ffriend_picker)
  ## game.html
-  - No errors were returned when using the official [W3C validator]()
+  - No errors were returned when using the official [W3C validator](https://validator.w3.org/nu/?doc=http%3A%2F%2Fword-vs.herokuapp.com%2Fgame%2F6257ed0a29f7a799a025bcfa)
  ## homepage.html
   - No errors were returned when using the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fword-vs.herokuapp.com%2F)
  ## oops.html
-  - No errors were returned when using the official [W3C validator]()
+  - No errors were returned when using the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fword-vs.herokuapp.com%2Fadd_words_admin) 
+  - The link here says add_words_admin but it's just becuase I triggered the oops page from that link is all. You can see what I mean here [admin add words page](https://word-vs.herokuapp.com/add_words_admin)
  ## profile.html
-  - No errors were returned when using the official [W3C validator]()
+  - No errors were returned when using the official [W3C validator](https://validator.w3.org/nu/?doc=http%3A%2F%2Fword-vs.herokuapp.com%2Fprofile%2F%3Fusername%3Dstuart)
  ## sent_challenges.html
-  - No errors were returned when using the official [W3C validator]()
+  - No errors were returned when using the official [W3C validator](https://validator.w3.org/nu/?doc=http%3A%2F%2Fword-vs.herokuapp.com%2Fsent_challenges)
  ## signin.html
   - No errors were returned when using the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fword-vs.herokuapp.com%2Fsignin)
  ## signup.html
-  - No errors were returned when using the official [W3C validator]()
+  - No errors were returned when using the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fword-vs.herokuapp.com%2Fsignup)
 # CSS
  ## style.css
   - No errors were found when using the official [(Jigsaw) validator]()
