@@ -618,6 +618,8 @@ def game(challenge):
                             query, {"$set": {"updated_date": format_now}})
                         if guess == "guess_6":
                             flash("Game over no more guesses left")
+                            mongo.db.challenges.update_one(
+                            query, {'$set': {"state": "game over"}})
                         break
                     # this checks if guess has already been guessed
                     elif challenge_to_update.get(guess) == word:

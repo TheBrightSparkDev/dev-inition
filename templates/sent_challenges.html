@@ -168,6 +168,48 @@
             </div>
         {% endif %}
     {% endfor %}
+    {% for challenge in challenges %}
+    {% if challenge.state == "game over" %}
+        <div class="rounded challenge-card dark">
+            <div class="dark rounded responsive-large small-margin">
+                <a href="#"><h5>Challenge for {{challenge.for}}</h5></a>
+            </div>
+            <div class="dark rounded responsive-large">
+                <h5>word: {{challenge.word}}</h5>
+            </div>
+            <div class="dark rounded responsive-large small-margin">
+                <h5>letters: {{challenge.letters}}</h5>
+            </div>
+            <div class="rounded responsive-large dark">
+                <h5>{{challenge.state}}</h5>
+                <div class="quit"></div>
+            </div>
+            <div class="responsive-large dark rounded small-margin">
+                <div class="dark rounded responsive-large"><h5>Guesses:</h5></div>
+                {% for guess in guesses %}
+                    {% if challenge[guess]|length > 0 %}
+                    <div class="rounded challenge-guess dark small-margin">
+                        <h5>{{challenge[guess]}}</h5>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="responsive-large dark rounded">
+                <h4 class="new-line small-margin">last updated {{challenge.updated_date}}</h4>
+                <h4 class="new-line small-margin">Created on {{challenge.created_date}}</h4>
+            </div>
+            <div onclick="check(this.getAttribute('challenge'))" challenge="{{challenge._id}}" 
+            class="responsive-large dark rounded small-margin clickable">
+                <h5>Delete</h5>
+            </div>
+            <div id="{{challenge._id}}" class="rounded responsive-large small-margin clickable hide">
+                <h6>Are you sure?</h6>
+                <a class="responsive-large" href="{{ url_for('delete_challenge', challenge_id=challenge._id ) }}"><h6>Yes</h6></a>
+                <h6 class="responsive-large" onclick="check(this.getAttribute('challenge'))" challenge="{{challenge._id}}">No</h6>
+            </div>
+        </div>
+    {% endif %}
+{% endfor %}
 {% endif %}
     <a href="{{ url_for('profile', username=session['user']) }}" class="rounded responsive-large margin-friend dark">
         <h6>Back</h6>
