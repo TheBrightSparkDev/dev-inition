@@ -430,6 +430,7 @@ The function of this page is to catch people who have manually typed in a bad ad
 - Ff the 404 page displays then it's working correctly
 - Click the link to see if it takes you to the homepage. 
 - Due to the logic on the homepage backend if you are already logged in it will send you through to the profile page instead. 
+
 ### big bugs
 
 ## bug tester Rachel 
@@ -456,9 +457,23 @@ The function of this page is to catch people who have manually typed in a bad ad
 ### Validator Testing 
 
 # HTML
- ## index.html
+ ## 404.html
   - No errors were returned when using the official [W3C validator]()
- ## suggestions.html
+ ## add_friends.html
+  - No errors were returned when using the official [W3C validator]()
+  ## add_words_admin.html
+  - No errors were returned when using the official [W3C validator]()
+   ## add_words.html
+  - No errors were returned when using the official [W3C validator]()
+   ## base.html
+  - No errors were returned when using the official [W3C validator]()
+   ## challenges.html
+  - No errors were returned when using the official [W3C validator]()
+   ## create_challenge.html
+  - No errors were returned when using the official [W3C validator]()
+   ## edit_challenge.html
+  - No errors were returned when using the official [W3C validator]()
+   ## friend_picker.html
   - No errors were returned when using the official [W3C validator]()
 # CSS
  ## style.css
