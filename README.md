@@ -492,7 +492,7 @@ The function of this page is to catch people who have manually typed in a bad ad
   - No errors were returned when using the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fword-vs.herokuapp.com%2Fsignup)
 # CSS
  ## style.css
-  - No errors were found when using the official [(Jigsaw) validator]()
+  - No errors were found when using the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fword-vs.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
 # JS
  ## script.js
  - No errors were found [JShint validator](https://jshint.com/)
