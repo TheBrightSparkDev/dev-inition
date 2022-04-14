@@ -562,7 +562,7 @@ def game(challenge):
     if "editing" == data.get("state"):
         return render_template(
             "oops.html",
-            message="The person that sent this challenge is editing it please wait",
+            message="The person that sent this challenge is editing it",
             advice="go back to the profile page",
             links=['home']
             )
@@ -616,6 +616,8 @@ def game(challenge):
                         # this updates the updated date
                         mongo.db.challenges.update_one(
                             query, {"$set": {"updated_date": format_now}})
+                        if guess == "guess_6":
+                            flash("Game over no more guesses left")
                         break
                     # this checks if guess has already been guessed
                     elif challenge_to_update.get(guess) == word:

@@ -21,6 +21,12 @@
     {% for guess in guesses %}
         {% if challenge[guess] == challenge.word %}
             <div class="game-line complete" complete="yes">
+        {% elif loop.index == 6 %}
+            {% if challenge[guess]|length != 0  %}   
+                <div class="game-line complete" complete="yes">
+            {% else %}
+                <div class="game-line complete" complete="no">
+            {% endif %}
         {% else %}
             <div class="game-line complete" complete="no">
         {% endif %}

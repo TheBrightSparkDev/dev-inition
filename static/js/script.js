@@ -8,7 +8,6 @@ let currentWord = [];
 let currentGuess = [];
 let keyBoardItems = document.getElementsByClassName("keyboard-square");
 let inputSquares = document.getElementsByClassName("input-square");
-console.log(correct)
 for (element in correct){
     console.log(element)
     if (element < 6){

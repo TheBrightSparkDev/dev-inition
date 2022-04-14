@@ -365,19 +365,35 @@ Usual behaviour is to allow a user to send a challenge. Each create challenge pa
 
 ### edit_challenges.html <a name="edit-challenges.html"></a>
 
-usual behaviour
+usual behaviour would be to allow users to edit the challenge they sent their friend is maybe theyve changes their mind about the letters they want to send their friend or the word itself. There are some restrictions on what you can edit though. If the friend has already started the challenge then the person who made the challenge will be unable to edit it. 
 
 #### test cases
+
+- links to check
+ - the word vs title will as usual send you back to the profile page
+ - back will send you back to the sent challenges page 
+ - send will update the the challenge
+
+- other ways to check is to see if you can access without being logged in
+- to see if you can edit a challenge that has already been started
+- to see if you can edit a challenge with a word that isn't valid or with letters that dont have the words letters in it 
 
 ### friend_picker.html <a name="friend-picker.html"></a>
 
-usual behaviour
+usual behaviour for the friend picker page would be a list of friends you have previously added all with links that take you through to create a challenge. Underneath this is another section called requests. Adding one of these will add them to your friends list. The way the computer differentiates the two lists is it checks friends on your friends list first which is the friendslist it then checks other users that have your name mentioned on their friends list but arent present on yours. The other usual behaviour of this page is to have a link to add new friends to your friends list 
 
 #### test cases
 
+- links to check 
+ - add friends link should take you to the add friends page 
+ - each friend should when clicked take you to the create challenge page 
+ - each request link will have a link to add the request clicking this will add them to your friendslist.
+ - back should take you to the profile page
+ - word vs title will take you as usual to the profile page
+
 ### game.html <a name="game.html"></a>
 
-usual behaviour
+usual behaviour of this page would be to display a challenge you clicked on. It should then allow you to see previous guesses if any and also allow you to make new guesses. The page should only allow you (if using a keyboard) to type valid letters. It should also only allow valid word guesses if the guess is invalid it should allow the user to suggest a word. upon clicking that link the back button should take you back to the game page with all progress saved. upon making a successful guess the word should be added to the next available guess line in the guess box starting at the top. It should also conditionally format the background of the box the letter is in depending on the accuracy of the letter. green means the letter is correct and in the correct place. Yellow means the letter is correct but in the wrong place. No colour means that the letter is not in the word at all. This also affects the keyboard as the keyboard will now display which letters are in the word which havent been tried and which have been tried and are incorrect. Making future guesses easier. The system will not allow repeat guesses and if the correct guess is made only the back button works from then on. Stopping users from guessing more and more and then losing due to the guesses running out. If the guesses run out the game will display a game over message and only back will work again.
 
 #### test cases
 
