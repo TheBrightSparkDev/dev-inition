@@ -461,19 +461,33 @@ The function of this page is to catch people who have manually typed in a bad ad
   - No errors were returned when using the official [W3C validator]()
  ## add_friends.html
   - No errors were returned when using the official [W3C validator]()
-  ## add_words_admin.html
+ ## add_words_admin.html
   - No errors were returned when using the official [W3C validator]()
-   ## add_words.html
+ ## add_words.html
   - No errors were returned when using the official [W3C validator]()
-   ## base.html
+ ## base.html
   - No errors were returned when using the official [W3C validator]()
-   ## challenges.html
+ ## challenges.html
   - No errors were returned when using the official [W3C validator]()
-   ## create_challenge.html
+ ## create_challenge.html
   - No errors were returned when using the official [W3C validator]()
-   ## edit_challenge.html
+ ## edit_challenge.html
   - No errors were returned when using the official [W3C validator]()
-   ## friend_picker.html
+ ## friend_picker.html
+  - No errors were returned when using the official [W3C validator]()
+ ## game.html
+  - No errors were returned when using the official [W3C validator]()
+ ## homepage.html
+  - No errors were returned when using the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fword-vs.herokuapp.com%2F)
+ ## oops.html
+  - No errors were returned when using the official [W3C validator]()
+ ## profile.html
+  - No errors were returned when using the official [W3C validator]()
+ ## sent_challenges.html
+  - No errors were returned when using the official [W3C validator]()
+ ## signin.html
+  - No errors were returned when using the official [W3C validator]()
+ ## signup.html
   - No errors were returned when using the official [W3C validator]()
 # CSS
  ## style.css
