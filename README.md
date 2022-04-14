@@ -393,25 +393,43 @@ usual behaviour for the friend picker page would be a list of friends you have p
 
 ### game.html <a name="game.html"></a>
 
-usual behaviour of this page would be to display a challenge you clicked on. It should then allow you to see previous guesses if any and also allow you to make new guesses. The page should only allow you (if using a keyboard) to type valid letters. It should also only allow valid word guesses if the guess is invalid it should allow the user to suggest a word. upon clicking that link the back button should take you back to the game page with all progress saved. upon making a successful guess the word should be added to the next available guess line in the guess box starting at the top. It should also conditionally format the background of the box the letter is in depending on the accuracy of the letter. green means the letter is correct and in the correct place. Yellow means the letter is correct but in the wrong place. No colour means that the letter is not in the word at all. This also affects the keyboard as the keyboard will now display which letters are in the word which havent been tried and which have been tried and are incorrect. Making future guesses easier. The system will not allow repeat guesses and if the correct guess is made only the back button works from then on. Stopping users from guessing more and more and then losing due to the guesses running out. If the guesses run out the game will display a game over message and only back will work again.
+Usual behaviour of this page would be to display a challenge you clicked on. It should then allow you to see previous guesses if any and also allow you to make new guesses. The page should only allow you (if using a keyboard) to type valid letters. It should also only allow valid word guesses if the guess is invalid it should allow the user to suggest a word. Upon clicking that link the back button should take you back to the game page with all progress saved. Upon making a successful guess the word should be added to the next available guess line in the guess box starting at the top. It should also conditionally format the background of the box the letter is in depending on the accuracy of the letter. Green means the letter is correct and in the correct place. Yellow means the letter is correct but in the wrong place. No colour means that the letter is not in the word at all. This also affects the keyboard as the keyboard will now display which letters are in the word which havent been tried and which have been tried and are incorrect. Making future guesses easier. The system will not allow repeat guesses and if the correct guess is made only the back button works from then on. Stopping users from guessing more and more and then losing due to the guesses running out. If the guesses run out the game will display a game over message and only back will work again. There is alot of logic when it comes to this page so I would suggest being creative to try and beat it.
 
 #### test cases
+
+- links to test
+ - back takes you back to the challenges page.
+ - suggest word should take you to the add words page and push through the referring page so when you press back on that page it should take you back to the challenge you were just on with all progress saved.
+
+- Other ways to try and break the page is to create a macro that types two words very quickly and see if you can force it to miss a word. I found typing 4 words in a second tends to miss the two middle words regularly. I don't see this as a bug though due to the fact that requires a typing speed of 173 words per minute the average . At a type speed of 172 words per second the system is able to pick up every letter at least on my testing runs.
+- Try to enter an invalid word
+- Try to access a challenge that's not for you
+- Try to access a challenge that's been given up on 
+- Try to access a challenge that has been completed or game over (this technically should still be possible but you should not be able to make any further guesses)
+
 
 ### oops.html <a name="oops.html"></a>
 
-usual behaviour
+usual behaviour is to display what went wrong and how to fix it with relevant links 
 
 #### test cases
 
+- links to test
+ - home - displays if you tried accessing something that wasnt meant for yourself (if youre logged in it will take you to profile if you're not logged in you'll be sent to the homepage)
+ - sign in - displays if youre trying to do something while not logged in
+ - sign up - displays if youre trying to do something while not logged in
+ - back - only displays if error occurs trying to challenge a friend thats not on your friends list
+
 ### 404.html <a name="404.html"></a>
 
-The function of this page is to catch people who have manually typed in a bad address
+The function of this page is to catch people who have manually typed in a bad address it has a link to the homepage and thats pretty much it 
 
 #### Test cases
 
-- type in a bad link 
-- if the 404 page displays then it's working correctly
-- 
+- Type in a bad link 
+- Ff the 404 page displays then it's working correctly
+- Click the link to see if it takes you to the homepage. 
+- Due to the logic on the homepage backend if you are already logged in it will send you through to the profile page instead. 
 ### big bugs
 
 ## bug tester Rachel 
