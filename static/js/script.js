@@ -1,7 +1,10 @@
 // declaring global variables
 let letters = [];
 let currentInputBox = "1";
-let length = document.getElementById("length").getAttribute("length");
+// for some reason you need to comment out this to get jest to work
+// let length = document.getElementById("length").getAttribute("length");
+// Please comment this out to test my jest code
+// putting two / before it will comment it out
 let correct = document.getElementsByClassName("complete");
 let currentWord = [];
 let keyBoardItems = document.getElementsByClassName("keyboard-square");
@@ -77,4 +80,3 @@ for (let item in keyBoardItems){
 }
 // creates event listener for keyboard presses and calls the keyboardClick function
 document.addEventListener("keydown", function(){keyboardClick(event);});
-module.exports = {length};
