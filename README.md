@@ -452,7 +452,9 @@ The function of this page is to catch people who have manually typed in a bad ad
 
 ### Automatic testing with Jest
 
+#### Attention important notes to use JEST
 
+- make sure you comment out the let length line in script.js for some reason (i'm yet to understand why) having this uncommented causes the test suite to fail I have made it very clear on the script.js and the script.test.js file what line it is. 
 
 ### Validator Testing 
 
