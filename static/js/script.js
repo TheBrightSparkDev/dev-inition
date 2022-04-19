@@ -2,7 +2,7 @@
 let letters = [];
 let currentInputBox = "1";
 // for some reason you need to comment out this to get jest to work
-// let length = document.getElementById("length").getAttribute("length");
+let length = document.getElementById("length").getAttribute("length");
 // Please comment this out to test my jest code
 // putting two / before it will comment it out
 let correct = document.getElementsByClassName("complete");

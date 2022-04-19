@@ -2,6 +2,8 @@
  * @jest-environment jsdom
  */
 
+// in order to test the script please go into the javascript and comment out the let length i've made it clear on the file itself also
+
 const {}= require("../script");
 
 beforeAll(() => {
