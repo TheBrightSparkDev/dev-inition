@@ -450,6 +450,10 @@ The function of this page is to catch people who have manually typed in a bad ad
  - also spotted a spelling mistake on the add words page
   - characters was spelled charecters
 
+### Automatic testing with Jest
+
+
+
 ### Validator Testing 
 
 # HTML

@@ -77,3 +77,4 @@ for (let item in keyBoardItems){
 }
 // creates event listener for keyboard presses and calls the keyboardClick function
 document.addEventListener("keydown", function(){keyboardClick(event);});
+module.exports = {length};
