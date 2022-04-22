@@ -32,7 +32,7 @@ So with the app anyone can challenge anyone everyday or even more than once ever
  - [frameworks](#frameworks)
  - [libraries](#libraries)
 6. [features left to implement](#features-left-to-implement)
-6. [testing](#testing)
+7. [manual testing](#testing)
  - [homepage.html](#homepage.html)
  - [signin.html](#signin.html)
  - [signup.html](#signup.html)
@@ -48,6 +48,11 @@ So with the app anyone can challenge anyone everyday or even more than once ever
  - [friend_picker.html](#friend-picker.html)
  - [game.html](#game.html)
  - [oops.html](#oops.html)
+8. [Manual public testing](#manual-public-testing)
+ - [big bugs](#big-bugs)
+ - [Rachel found](#rachel-found)
+ - [Sharron found](#sharron-found)
+ - [Rhi found](#rhi-found)
 
 desktop and background credit: [pixabay](https://pixabay.com/photos/apple-computer-desk-workspace-1868496/)
 
@@ -216,7 +221,7 @@ Theory above was absolutely correct and works perfectly.
 
 - free play mode
 
-## Testing <a name="testing"></a>
+## Manual testing <a name="testing"></a>
 
 ## individual pages
 
@@ -431,30 +436,51 @@ The function of this page is to catch people who have manually typed in a bad ad
 - Click the link to see if it takes you to the homepage. 
 - Due to the logic on the homepage backend if you are already logged in it will send you through to the profile page instead. 
 
-### big bugs
+### manual testing <a name="manual-public-testing"></a>
 
-## bug tester Rachel 
- - found a bug where if you add a space to the end of the create challenge page it doesnt allow you to send and reason is unclear
+### big bugs <a name="big-bugs"></a>
+
+## bug tester Rachel <a name="rachel-found"></a>
+ - found a bug where if you add a space to the end of the create challenge page it doesnt allow you to send and reason is unclear 
+    - this has not been fixed due to time running out on the project
  - pointed out the rules are too small to see on a small screen
-  - made font responsive
+    - Text was made larger and more responsive
 
-## bug tester Sharron
+## bug tester Sharron <a name="sharron-found"></a>
  - found a bug where you cannot add users that have a number in their name simply by creating a user name with a number in it that I couldnt add via app
   - removed validation rule to block numbers form add friends HTML page
 
-### small bugs
+### small bugs <a name="small-bugs"></a>
 
-## bug tester Rhi found:
- - display bug on challenges page back and no challenges found were displaying badly on the page
-  - corrected by making div responsive (flexbox) and centered the back button by removing a misplaced div end tag
- - also spotted a spelling mistake on the add words page
-  - characters was spelled charecters
+## bug tester Rhi found: <a name="rhi-found"></a>
+ - Display bug on challenges page back and no challenges found were displaying badly on the page
+   - corrected by making div responsive (flexbox) and centered the back button by removing a misplaced div end tag
+ - Also spotted a spelling mistake on the add words page
+   - characters was spelled charecters
 
-### Automatic testing with Jest
+### Automatic testing with Jest <a name="automatic-testing"></a>
 
 #### Attention important notes to use JEST
 
 - make sure you comment out the let length line in script.js for some reason (i'm yet to understand why) having this uncommented causes the test suite to fail I have made it very clear on the script.js and the script.test.js file what line it is. 
+
+### script.js <a name="script.js"></a>
+
+Notes - These test were difficult to implement because the game is generated entirely using logic which meant that testing needed to run in the flask environment which is either impossible or not possible given my current experience. So I copy and pasted the page after it was built removed all spaces and added it directly to the file as a workaround. Unfortunately I was coming across lots of issues. Code that works on the script and functions in manual testing was coming back as undefined in jest I'm still not sure why. The same with the code I have to comment out just to run a test. The javascript doesn't do much in terms of calculations and it all relies on info gathered from the dom which for some reason wasnt working correctly. 
+
+- Test 1
+  - 
+- Test 2
+  -
+- Test 3
+  -
+- Test 4
+  -
+### deleteitem.js <a name="deleteitem.js"></a>
+- Test 1
+  -
+- Test 2
+  -
 
 ### Validator Testing 
 
@@ -563,16 +589,20 @@ Backspace button image created by me using adobe illustrator.
 ### Almost no parts of the code on this website are copy and pasted 
 
 - If I was struggling with anything I would simply go to website that I have linked below and read up on how to use the specific code and then I would simply use the code correctly. 
+
 - websites I copy and pasted from:
-- [google fonts](https://fonts.google.com/)
+  - [google fonts](https://fonts.google.com/)
 - all websites used are linked below nothing was copy and pasted just checked:
-- [Werkzeug security](https://werkzeug.palletsprojects.com/en/2.0.x/utils/)
-- [Jinja cheatsheet](https://jinja.palletsprojects.com/en/3.0.x/templates/#variables)
-- [Converting cursor to dict](https://stackoverflow.com/questions/28968660/how-to-convert-a-pymongo-cursor-cursor-into-a-dict)
-- [How to add item to dict python](https://www.w3schools.com/python/python_dictionaries_add.asp)
-- [Best way to make responsive text](https://www.w3schools.com/howto/howto_css_responsive_text.asp)
-- [Changing the value of a form element](https://www.w3schools.com/howto/howto_css_responsive_text.asp)
-- [How to get length of cursor](https://stackoverflow.com/questions/35692719/how-to-get-the-length-of-a-cursor-from-mongodb-using-python)
+
+  - [Werkzeug security](https://werkzeug.palletsprojects.com/en/2.0.x/utils/)
+  - [Jinja cheatsheet](https://jinja.palletsprojects.com/en/3.0.x/templates/#variables)
+  - [Converting cursor to dict](https://stackoverflow.com/questions/28968660/how-to-convert-a-pymongo-cursor-cursor-into-a-dict)
+  - [How to add item to dict python](https://www.w3schools.com/python/python_dictionaries_add.asp)
+  - [Best way to make responsive text](https://www.w3schools.com/howto/howto_css_responsive_text.asp)
+  - [Changing the value of a form element](https://www.w3schools.com/howto/howto_css_responsive_text.asp)
+  - [How to get length of cursor](https://stackoverflow.com/questions/35692719/how-to-get-the-length-of-a-cursor-from-mongodb-using-python)
+  - [How to use try except in python3 correctly](https://www.flake8rules.com/rules/E722.html)
+  - [How to correctly use the hidden attribute](https://www.w3schools.com/tags/att_hidden.asp)
 - Code Institute mentor also sent me a link to a template of a README.md to create a structure I changed everything and kept structure apart from the steps to deploy as there isn't anything to change added a bit about making sure it was root as docs brings up an error message for me saying failed to build.
 
 ### Content 
