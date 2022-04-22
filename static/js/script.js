@@ -13,6 +13,7 @@ for (var element in correct){
     let attribute = correct[element].getAttribute("complete");
     if (attribute == "yes"){
         currentInputBox = "completed";
+        break
     }}
 }
 // submits and checks answer
@@ -29,7 +30,6 @@ function backspace(){
         let box = document.getElementById(currentInputBox);
         box.children[0].innerText="";
         currentWord = currentWord.slice(0,-1);
-        console.log(currentWord);
     }
 }
 // puts the letter in the correct box
@@ -41,7 +41,6 @@ function typeLetter(content){
         parseInt(currentInputBox);
         currentInputBox++;
         currentInputBox =currentInputBox.toString();
-        console.log(currentWord);
     }
     else {
         let box = document.getElementById(currentInputBox);
@@ -50,7 +49,6 @@ function typeLetter(content){
         currentInputBox = 0;
         currentInputBox =currentInputBox.toString();
         submitAnswer();
-        console.log(currentWord);
     }   
 }
 // determines what was clicked and if it's valid
@@ -73,6 +71,7 @@ function keyboardClick(event){
 // creates a string that includes available letters
 for (let item in keyBoardItems){
     let letterHolder = keyBoardItems[item];
+    console.log(letterHolder.innerText)
     if (letterHolder.innerText != undefined){
         let letter = letterHolder.innerText;
         letters += letter;
@@ -80,3 +79,4 @@ for (let item in keyBoardItems){
 }
 // creates event listener for keyboard presses and calls the keyboardClick function
 document.addEventListener("keydown", function(){keyboardClick(event);});
+module.exports= { currentInputBox, correct, typeLetter, clicked, letters, keyBoardItems, currentWord};
