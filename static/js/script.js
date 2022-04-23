@@ -13,7 +13,7 @@ for (var element in correct){
     let attribute = correct[element].getAttribute("complete");
     if (attribute == "yes"){
         currentInputBox = "completed";
-        break
+        break;
     }}
 }
 // calls all essential functions
