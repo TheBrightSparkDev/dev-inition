@@ -154,7 +154,7 @@ __profile admin page__<a name="add_words_page"></a>
 
 ### adobe XD<a name="interactive"></a>
 
-[interactive wireframe](https://xd.adobe.com/view/5fb66345-d813-4c0c-a24d-a927b8edc2d9-0ae5/)
+[interactive wireframe](https://xd.adobe.com/view/2e9841de-1df7-47ef-b4e9-515a7a005f1c-7bcb/)
 
 This is the best way other than using the site to get an idea of how everything works. There are no other wireframes created for this app as I went straight to a digital wireframe.
 
