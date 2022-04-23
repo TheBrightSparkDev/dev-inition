@@ -19,7 +19,6 @@ desktop and background credit: [pixabay](https://pixabay.com/photos/apple-comput
   - [Challenge a friend](#challenge_a_friend)
   - [Challenges page](#challenges_page)
   - [Sent challenges](#sent_challenges)
-  - [Freeplay](#freeplay)
   - [Add friend](#add_friend)
   - [Game page](#game_page)
 3.  [Wireframes](#wireframes)
