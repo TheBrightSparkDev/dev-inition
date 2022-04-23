@@ -43,7 +43,7 @@ desktop and background credit: [pixabay](https://pixabay.com/photos/apple-comput
   - [Add_words admin.html](#add-words-admin.html)
   - [Add_words.html](#add-words.html)
   - [Base.html](#base.html)
-  - [Challenges.html](#cahllenges.html)
+  - [Challenges.html](#challenges.html)
   - [Create_challenges.html](#create-challenges.html)
   - [Edit_challenges.html](#edit-challenges.html)
   - [Friend_picker.html](#friend-picker.html)
