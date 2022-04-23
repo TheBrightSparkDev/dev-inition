@@ -59,10 +59,11 @@ desktop and background credit: [pixabay](https://pixabay.com/photos/apple-comput
   - [Script.js](#script.js)
   - [deleteitem.js](#deleteitem.js)
 10. [validator testing](#validator-testing)
-11. [deployment](#deployment)
-12. [credits](#credits)
-13. [my to do list](#todolist)
-14. [notes for assessor](#notes-for-assessor)
+11. [unfixed-bugs](#unfixed-bugs)
+12. [deployment](#deployment)
+13. [credits](#credits)
+14. [my to do list](#todolist)
+15. [notes for assessor](#notes-for-assessor)
 
 ## User stories <a name="user_stories">
 
@@ -538,10 +539,16 @@ Notes - These test were difficult to implement because the game is generated ent
  ## script.js
  - No errors were found [JShint validator](https://jshint.com/) however two warnings were found neither of which I'm concerned about.
 
-### Unfixed Bugs
+### Unfixed Bugs <a name="unfixed-bugs"></a>
 
  - Adding a space after a word in create challenges can cause confusion.
    - Ran out of time to implement a fix sadly
+ - word_check is assigned but never used x 6
+   - This is not a bug but worth mentioning as python insists it is the word_check variable is used to throw an error if it fails indicating the word doesnt exist in the database that is it's use.
+ - env imported but never used 
+   - This is also not a bug but again mentioning it as its in both python files it allows me to pull info from my env.py file things like the mongo database name and admin name
+ - Using open without explicitly specifying an encoding 
+   - I probably could've fixed this but didn't I would just need to look into how it needs to be encoded and specify that which is really quite an easy fix.
 
 ## Deployment <a name="deployment"></a>
 
@@ -690,3 +697,5 @@ Backspace button image created by me using adobe illustrator.
    relationships => linking and embedding documents
   
   - Personally I just want my work to be marked regardless of the database I have used as I have made a working application put my all into it and dont want this to be ruined by Code Institutes decision to suddenly change it. It's also worth noting they promised a video to show how to migrate info which they have yet to deliver on coming up 2 weeks since saying they would do it at 4:30 on the day of releasing this news.
+
+PS: Also sorry my readme is so long.

@@ -264,16 +264,22 @@ def create_challenge(friend):
             )
     # If user doesn't match the "for" in the challenge redirects to oops
     check = mongo.db.users.find_one({"username": friend})
-    # Makes sure user exists 
+    # Makes sure user exists
     try:
         checklist = check.get("friends")
     except AttributeError:
-            return render_template(
-                "oops.html",
-                message="You can't create a challenge for someone who doesn't exist!",
-                advice="If you think the user exists double check their username or click their name on your friendslist",
-                links=['home']
-                )
+        return render_template(
+            "oops.html",
+            message=(
+                "You can't create a challenge for a user that doesn't "
+                "exist!"),
+            advice=(
+                "If you think the user exists,check their username, "
+                "click their name on your friendslist or make sure "
+                "they haven't requested their account get deleted"
+                ),
+            links=['home']
+            )
     user = session['user']
     i = 0
     for name in checklist:
@@ -619,7 +625,7 @@ def game(challenge):
                         if guess == "guess_6":
                             flash("Game over no more guesses left")
                             mongo.db.challenges.update_one(
-                            query, {'$set': {"state": "game over"}})
+                                query, {'$set': {"state": "game over"}})
                         break
                     # this checks if guess has already been guessed
                     elif challenge_to_update.get(guess) == word:
@@ -734,9 +740,10 @@ def add_words_admin():
 
 
 @app.errorhandler(404)
-def page_not_found(e):
+def page_not_found(unused_arguement):
     """
-    note that we set the 404 status explicitly
+    note that we set the 404 status explicitly I had no use for the e
+    but it is required
     """
     return render_template('404.html')
 

@@ -1,3 +1,7 @@
+"""
+This file was used to send my dictionary.json file to mongoDB
+"""
+
 import json
 import os
 from flask_pymongo import PyMongo
@@ -23,7 +27,7 @@ for words in dictionary:
                 print(words)
                 sent = {"word": words, "meaning": dictionary[words]}
                 print(sent)
-                mongo.db.wordlist.insert_one(sent)              
+                mongo.db.wordlist.insert_one(sent)
 
 
 f.close()
