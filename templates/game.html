@@ -82,7 +82,7 @@
                 <h3></h3>
             </div>
         {% endfor %}
-            <img id="backspace" letter="Backspace" onclick="clicked(this.getAttribute('letter'))" src="{{ url_for('static', filename='images/backspace.png')}}">
+            <img id="backspace" alt="backspace press this to delete the last letter you typed" letter="Backspace" onclick="clicked(this.getAttribute('letter'))" src="{{ url_for('static', filename='images/backspace.png')}}">
     </div>
     <!-- creates a box for every letter in the available letters forming a keyboard  -->
     <div class="rounded keyboard-bg">

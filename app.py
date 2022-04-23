@@ -25,6 +25,7 @@ ADMIN_REAL = os.environ.get("ADMIN_REAL")
 mongo = PyMongo(app)
 
 
+
 @app.route("/")
 def homepage():
     """
@@ -34,7 +35,8 @@ def homepage():
     user is already signed in to direct them to their profile page instead.
     """
     if 'user' in session:
-        return render_template("profile.html")
+        name = session["user"]
+        return render_template("profile.html", user=name)
     return render_template("homepage.html")
 
 
@@ -45,7 +47,9 @@ def signup():
     displays signup page and allows new users to create an acount to use the
     application
     """
-
+    if 'user' in session:
+        name = session["user"]
+        return render_template("profile.html", user=name)
     if request.method == "POST":
         # check if username in form element already exists in the database
         existing_user = mongo.db.users.find_one(
@@ -76,7 +80,9 @@ def signin():
     displays sign in and allows users to sign in to an account they
     have already created
     """
-
+    if 'user' in session:
+        name = session["user"]
+        return render_template("profile.html", user=name)
     if request.method == "POST":
         # check if usernmae in form element exists
         existing_user = mongo.db.users.find_one(
@@ -751,4 +757,4 @@ def page_not_found(unused_arguement):
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=True)
+            debug=False)

@@ -16,7 +16,7 @@
     <div class="rounded form-bg max-width">
         <form method="POST" action="{{ url_for('signup') }}">
             <div class="responsive-large">
-                <label for="username">Username</label>
+                <label for="username"><h5>Username</h5></label>
             </div>
             <div class="center rounded responsive-large dark">
                 <input class="center" id="username" type="text" name="username" pattern="^[a-zA-Z0-9]{5,11}$"
@@ -24,7 +24,7 @@
                 <h4 class="rules responsive-large">1. Needs to be between 5-11 characters long</h4>
             </div>
             <div class="responsive-large">
-                <label for="password">Password</label>
+                <label for="password"><h5>Password</h5></label>
             </div>
             <div class="center rounded responsive-large dark">
                 <input class="center" id="password" type="password" name="password" pattern="^[a-zA-Z0-9]{5,15}$"
@@ -33,8 +33,8 @@
                 <h4 class="rules responsive-large">2. Needs to be between 5-15 characters long</h4>
             </div>
             <div class="responsive-large" id="button-margins">
-                <button class="rounded small dark" type="submit">
-                    Sign up
+                <button class="rounded responsive-large dark" type="submit">
+                    <h5>Sign up</h5>
                 </button>
             </div>
         </form>
