@@ -62,7 +62,7 @@ desktop and background credit: [pixabay](https://pixabay.com/photos/apple-comput
 11. [deployment](#deployment)
 12. [credits](#credits)
 13. [my to do list](#todolist)
-
+14. [notes for assessor](#notes-for-assessor)
 
 ## User stories <a name="user_stories">
 
@@ -670,3 +670,23 @@ Backspace button image created by me using adobe illustrator.
    - pushy
    - icycle
   
+# notes for assessor <a name="notes-for-assessor"></a>
+
+# I have not used a sql database because when I started this project 27 days ago I was able to choose what sort of database to use
+
+ - Personal reasons as to my I didnt want to use a sql database 
+   - On this course the only sql database I was able to learn about was using a google api to communicate with a sheets document. This means having an account that has a 90 day free trial with access to sheets entirely possible admittedly but the issue is after 90 days I have to pay per access and this app makes alot of connections. I am aware there are other options but don't have time now after spending a month on this app to change it right at the end.
+   - I was more comfortable with mongoDB as this was covered in full with extensive tutorials on it during the program.
+   - I am aware that mySQL is used more in big application and so it would benefit me to have it as part of a future portfolio but I also have another milestone project to complete so implementing it there would show I am able to use noSQL and mySQL making me more valuable in my opinion. 
+   - The initial document I got that contained majority of the words for my app used a noSQL setting.
+   - I did end up using a relational sort of setup using MongoDB regardless by using the exact same setup for each user even if some parts where blank which is the same for challenges with each guess being blank by default but still present.
+
+ - Things I was told to say by code institute to explain to the assessor why my project doesn't fit the NEW UPDATED CRITERIA:
+   - For those who are at an advanced stage of development of their projects; and who have adopted the approach of using a non-SQL database platform to model all data we suggest, you add a note to your readme to demonstrate that you understand the design trade-off you are making and have an understanding of the mapping from one to another.  Please see the example note below.
+   - In this case, I have modeled my relational database on a non-relational database system., MongoDB. I have used the Mongodb best practice and guidance used when migrating relational database platforms to non-relational database platforms as my guide in this case.  I have used the following mapping 
+   table => collection
+   row => document
+   column => field
+   relationships => linking and embedding documents
+  
+  - Personally I just want my work to be marked regardless of the database I have used as I have made a working application put my all into it and dont want this to be ruined by Code Institutes decision to suddenly change it. It's also worth noting they promised a video to show how to migrate info which they have yet to deliver on coming up 2 weeks since saying they would do it at 4:30 on the day of releasing this news.
