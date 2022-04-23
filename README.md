@@ -143,7 +143,7 @@ __Add words admin page__<a name="add_words_page"></a>
 
 ![Add words admin page](static/images/admin-add-words.PNG)
 
-__profile admin page__<a name="add_words_page"></a>
+__Profile admin page__<a name="add_words_page"></a>
 
 - This is the admin version of the profile these are the only options an admin will have.
 - This makes sure that admins dont get distracted by challenges and its also impossible to add a admin.
@@ -152,7 +152,7 @@ __profile admin page__<a name="add_words_page"></a>
 
 # Wireframes<a name="wireframes"></a>
 
-### adobe XD<a name="interactive"></a>
+### Adobe XD<a name="interactive"></a>
 
 [interactive wireframe](https://xd.adobe.com/view/2e9841de-1df7-47ef-b4e9-515a7a005f1c-7bcb/)
 
@@ -235,7 +235,7 @@ Theory: If I add some condtional formatting to the html form to check if challen
 Theory above was absolutely correct and works perfectly.
 
 # Technology used<a name="technology_used"></a>
-## wireframes<a name="wireframes"></a>
+## Wireframes<a name="wireframes"></a>
 - adobe XD
 ## Frameworks<a name="frameworks"></a>
 - I used the Flask framework to deliver the app using it's templating abilities it wouldn't have been possible without it.
@@ -254,7 +254,7 @@ Theory above was absolutely correct and works perfectly.
 
 The correct function is just a page for users to decide if they need to sign in or out has no other functionality other than that.
 
-#### test cases
+#### Test cases
 
 - Links to check
   - sign in, sign up and guest mode
@@ -263,7 +263,7 @@ The correct function is just a page for users to decide if they need to sign in 
 
 The correct function for this site is to allow the user to sign in if the user doesn't have log ins then there is a link to go to the signup page
 
-#### test cases
+#### Test cases
 
 - Links to check
   - word vs links to the homepage
@@ -273,11 +273,11 @@ The correct function for this site is to allow the user to sign in if the user d
 - If the user exists it will allow them to log in if the password is incorrect 
 - The flash message should display the same message regardless of whether the password or the log in is incorrect
 
-### signup.html <a name="signup.html"></a>
+### Signup.html <a name="signup.html"></a>
 
 - The function of this page is to allow users to signup it doesnt differ much from the sign in page apart from the link at the bottom of the page is slightly different so the test cases are the same
 
-#### test cases
+#### Test cases
 
 - Links to check
   - word vs links to the homepage
@@ -287,11 +287,11 @@ The correct function for this site is to allow the user to sign in if the user d
 - Once the user submits it should load the profile page
 - The flash message should display the same message regardless of whether the password or the log in is incorrect
 
-### profile.html <a name="profile.html"></a>
+### Profile.html <a name="profile.html"></a>
 
 - Usual functionality would be to display three different versions of itself one version for logged in users, one version to users that chose the guest option and another for the admin.
 
-#### test cases
+#### Test cases
 
 - Links to check 
   - Sent-challenges
@@ -304,11 +304,11 @@ Ways to check all versions is to log in as admin/ a regular user and also clicki
 
 Unfortunately freeplay mode has not been added yet so that link is not active.
 
-### sent_challenges.html <a name="sent-challenges.html"></a>
+### Sent_challenges.html <a name="sent-challenges.html"></a>
 
 Normal functionality of this site is only to allow logged in users to use this site. Once a logged in user logs in it uses the session cookie's content to determine what challenges will be displayed. It should only display challenges that have been sent out by the current user. There are 4 different states that can be seen on this page created, started, completed and quit
 
-#### test cases
+#### Test cases
 
 - The links to check:
   - Back goes back to profile
@@ -318,7 +318,7 @@ Normal functionality of this site is only to allow logged in users to use this s
   - Created challenges have a link to edit the challenge.
   - Started challenges shouldn't have any links.
 
-### add_friends.html <a name="add-friends.html"></a>
+### Add_friends.html <a name="add-friends.html"></a>
 
 Normal functionality of this page would be for a logged in user only to be able to add users that exist adding a user that doesnt exist should not be possible.
 
@@ -330,7 +330,7 @@ Normal functionality of this page would be for a logged in user only to be able 
 
 The add friends button is a sumbit and it sends the username value to python to be checked if that user exists within the MongoDB database. This will display an error message if you add someone that doesnt exist.    
 
-### add_words_admin.html <a name="add-words-admin.html"></a>
+### Add_words_admin.html <a name="add-words-admin.html"></a>
 
 This page should not be accessible to regular users only one account has access to this so testing is impossible outside of development.
 Regardless one way it can still be tested is by trying to access the page. Usual functionality would be to display all of the suggstions that users have made and allow you to accept them.
@@ -343,7 +343,7 @@ Regardless one way it can still be tested is by trying to access the page. Usual
 
 The normal functionality is to send the word and definition from the word suggestion database to the word database. You can also add to the word or description currently there is no way to delete the suggestion other than on mongoDB currently so thats not a bug it's just yet to be implemented.
 
-### add_words.html <a name="add-words.html"></a>
+### Add_words.html <a name="add-words.html"></a>
 
 Normal functionality should be that this page should only be accessible by logged in users the users. The link to this page should only display when the user inputs a word that doesn't exist on either the challenge creation page or the game page. Depending on where you came from the back button will send you exactly where you came from. This is my way of making it easier for people to help out in developing the word base.
 
@@ -354,21 +354,21 @@ Normal functionality should be that this page should only be accessible by logge
   - The back button should take you back where you came from.
 
 
-### base.html <a name="base.html"></a>
+### Base.html <a name="base.html"></a>
 
 This simply acts as a placeholder for the content of each site it also holds the links to the css file it doesn't do an awful lot sadly and cant really be visualised apart from the background because that technically does come from the base
 
-#### test cases
+#### Test cases
 - Best way to test if the base is displaying and working correctly is if the content is centered on the screen.
 - Another way of checking it works is if anything on the screen has a style.
 - The third of many other ways of checking is if the background is coloured blue and black in a linear gradient.
 - It is very obvious if it's not working or displaying correctly
 
-### challenges.html <a name="challenges.html"></a>
+### Challenges.html <a name="challenges.html"></a>
 
 Usual behaviour is to display challenges that the current user has been sent by their friends. It displays differently depending on the state of the challenge. If the state is created it will go into the New challenges box. As soon as the challenge is started the challenge state changes to started. While the state is started the challenge goes into the already started box. The reason they are seperated is because the started state allows you to give up on the challenge. Whereas the challenges that haven't been attempted cannot be given up on. 
 
-#### test cases
+#### Test cases
 
 - links to test
   - Each challenge when clicked should take you to the game page for that particular challenge
@@ -379,11 +379,11 @@ Usual behaviour is to display challenges that the current user has been sent by 
 - Try accessing the page while not logged in it should send you to oops.html
 - Try to access a challenge that is currently being edited by the creator of the challenge it should stop the user from clicking on it.
 
-### create_challenges.html <a name="create-challenges.html"></a>
+### Create_challenges.html <a name="create-challenges.html"></a>
 
 Usual behaviour is to allow a user to send a challenge. Each create challenge page will be for a specific user. If there is no user selected the page will go through to the 404 page. If the user isn't in the database for example if you changed the name at the top of the page after create_challenges then it would send users to the oops.html page with a custom message. This is caught by a try except catch which if it is unable to find the user instead of crashing and saying it doesn't have a get method it instead displays the oops.html page.
 
-#### test cases
+#### Test cases
 
 - links to check
   - Send will send the challenge if the word is valid if not it will tell the user the word is invalid and give them the option to suggest the word
@@ -393,11 +393,11 @@ Usual behaviour is to allow a user to send a challenge. Each create challenge pa
 - Another way to try and challenge the page is to change the name in the web address to something different, change the name to a user thats not on the current users friends list and lastly removing the name altogether. The first two will give you oops.html the third will send you to 404.html.
 - The last way to test the page is to click the link to suggest a word then on that page press back and it should send you back to create_challenge with the correct name in the address and any challenges sent should go to the intended user.
 
-### edit_challenges.html <a name="edit-challenges.html"></a>
+### Edit_challenges.html <a name="edit-challenges.html"></a>
 
 usual behaviour would be to allow users to edit the challenge they sent their friend is maybe theyve changes their mind about the letters they want to send their friend or the word itself. There are some restrictions on what you can edit though. If the friend has already started the challenge then the person who made the challenge will be unable to edit it. 
 
-#### test cases
+#### Test cases
 
 - links to check
   - the word vs title will as usual send you back to the profile page
@@ -408,11 +408,11 @@ usual behaviour would be to allow users to edit the challenge they sent their fr
 - to see if you can edit a challenge that has already been started
 - to see if you can edit a challenge with a word that isn't valid or with letters that dont have the words letters in it 
 
-### friend_picker.html <a name="friend-picker.html"></a>
+### Friend_picker.html <a name="friend-picker.html"></a>
 
 usual behaviour for the friend picker page would be a list of friends you have previously added all with links that take you through to create a challenge. Underneath this is another section called requests. Adding one of these will add them to your friends list. The way the computer differentiates the two lists is it checks friends on your friends list first which is the friendslist it then checks other users that have your name mentioned on their friends list but arent present on yours. The other usual behaviour of this page is to have a link to add new friends to your friends list 
 
-#### test cases
+#### Test cases
 
 - links to check 
   - add friends link should take you to the add friends page 
@@ -421,11 +421,11 @@ usual behaviour for the friend picker page would be a list of friends you have p
   - back should take you to the profile page
   - word vs title will take you as usual to the profile page
 
-### game.html <a name="game.html"></a>
+### Game.html <a name="game.html"></a>
 
 Usual behaviour of this page would be to display a challenge you clicked on. It should then allow you to see previous guesses if any and also allow you to make new guesses. The page should only allow you (if using a keyboard) to type valid letters. It should also only allow valid word guesses if the guess is invalid it should allow the user to suggest a word. Upon clicking that link the back button should take you back to the game page with all progress saved. Upon making a successful guess the word should be added to the next available guess line in the guess box starting at the top. It should also conditionally format the background of the box the letter is in depending on the accuracy of the letter. Green means the letter is correct and in the correct place. Yellow means the letter is correct but in the wrong place. No colour means that the letter is not in the word at all. This also affects the keyboard as the keyboard will now display which letters are in the word which havent been tried and which have been tried and are incorrect. Making future guesses easier. The system will not allow repeat guesses and if the correct guess is made only the back button works from then on. Stopping users from guessing more and more and then losing due to the guesses running out. If the guesses run out the game will display a game over message and only back will work again. There is alot of logic when it comes to this page so I would suggest being creative to try and beat it.
 
-#### test cases
+#### Test cases
 
 - links to test
   - back takes you back to the challenges page.
@@ -438,11 +438,11 @@ Usual behaviour of this page would be to display a challenge you clicked on. It 
 - Try to access a challenge that has been completed or game over (this technically should still be possible but you should not be able to make any further guesses)
 
 
-### oops.html <a name="oops.html"></a>
+### Oops.html <a name="oops.html"></a>
 
 Usual behaviour is to display what went wrong and how to fix it with relevant links 
 
-#### test cases
+#### Test cases
 
 - links to test
   - home - displays if you tried accessing something that wasnt meant for yourself (if youre logged in it will take you to profile if you're not logged in you'll be sent to the homepage)
@@ -461,27 +461,27 @@ The function of this page is to catch people who have manually typed in a bad ad
 - Click the link to see if it takes you to the homepage. 
 - Due to the logic on the homepage backend if you are already logged in it will send you through to the profile page instead. 
 
-# manual testing <a name="manual-public-testing"></a>
+# Manual public testing <a name="manual-public-testing"></a>
 
-## big bugs <a name="big-bugs"></a>
+## Big bugs <a name="big-bugs"></a>
 
 ### I found <a name="daniel-found"></a>
  - The backspace doesn't delete the last letter on the currentWord variable which means the word either gets submmitted early after backspace or is a word that containns all the things you backspaced out the behaviour is only present in the keyboard controls and not the touch screen controls 
  - Bug was fixed by slicing currentWord (0,-1) which takes only the last letter off the word and reassigning the value to itself so currentWord = currentWord.slice(0,-1) 
 
-### bug tester Rachel <a name="rachel-found"></a>
+### Bug tester Rachel <a name="rachel-found"></a>
  - found a bug where if you add a space to the end of the create challenge page it doesnt allow you to send and reason is unclear 
     - this has not been fixed due to time running out on the project
  - pointed out the rules are too small to see on a small screen
     - Text was made larger and more responsive
 
-### bug tester Sharron <a name="sharron-found"></a>
+### Bug tester Sharron <a name="sharron-found"></a>
  - found a bug where you cannot add users that have a number in their name simply by creating a user name with a number in it that I couldnt add via app
   - removed validation rule to block numbers form add friends HTML page
 
-## small bugs <a name="small-bugs"></a>
+## Small bugs <a name="small-bugs"></a>
 
-### bug tester Rhi found: <a name="rhi-found"></a>
+### Bug tester Rhi found: <a name="rhi-found"></a>
  - Display bug on challenges page back and no challenges found were displaying badly on the page
    - corrected by making div responsive (flexbox) and centered the back button by removing a misplaced div end tag
  - Also spotted a spelling mistake on the add words page
@@ -493,7 +493,7 @@ The function of this page is to catch people who have manually typed in a bad ad
 
 - make sure you comment out the let length line in script.js for some reason (i'm yet to understand why) having this uncommented causes the test suite to fail I have made it very clear on the script.js and the script.test.js file what line it is. 
 
-## script.js <a name="script.js"></a>
+## Script.js <a name="script.js"></a>
 
 Notes - These test were difficult to implement because the game is generated entirely using logic which meant that testing needed to run in the flask environment which is either impossible or not possible given my current experience. So I copy and pasted the page after it was built created a file called testgame.html and deleteitem.html used that to do my jest tests. Unfortunately I was coming across lots of issues. Code that works on the script and functions in manual testing was coming back as undefined in jest I'm still not sure why. The same with the code I have to comment out just to run a test. The javascript doesn't do much in terms of calculations and it all relies on info gathered from the dom which for some reason wasn't working correctly. So my biggest takings from my experience with jest is that it's not delightful at all. I can imagine it's great when all the tests dont rely on the dom. In Short I'm not fond of JSdom but jest is good for non html reliant javascript.
 
@@ -506,7 +506,7 @@ Notes - These test were difficult to implement because the game is generated ent
 - Test 4
   - check if backspace works after struggling through all the issues on the previous test I thought this would be easy to implement but unfortunately importing the backspace() function makes the dom check for a box with the id of (n) and delete it's content's which is obviously what backspace does but because jsdom doesnt recognise it as an element getting or trying to access its inner html is 'not a function' this meant I had to comment out that part of the backspace code to test that it was correctly editing the current word. All other tests where done manually to check the delighful way which is by using lots of console.logs in the script file.
 
-## deleteitem.js <a name="deleteitem.js"></a>
+## Deleteitem.js <a name="deleteitem.js"></a>
 - Test 1
   - Check if dom is loaded - This was to make sure all other tests would be able to function theoretically. Unfortunately that's not the case because jest seems to do an awful job of mocking doms in my experience anyways.
 - Test 2
@@ -517,44 +517,44 @@ Notes - These test were difficult to implement because the game is generated ent
 ## HTML
  ### 404.html
   - No errors were returned when using the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fword-vs.herokuapp.com%2Fsent_challenge)
- ### add_friends.html
+ ### Add_friends.html
   - No errors were returned when using the official [W3C validator](https://validator.w3.org/nu/?doc=http%3A%2F%2Fword-vs.herokuapp.com%2Fadd_friend)
- ### add_words_admin.html
+ ### Add_words_admin.html
   - No errors were returned when using the official [W3C validator](https://validator.w3.org/nu/?doc=http%3A%2F%2Fword-vs.herokuapp.com%2Fadd_words_admin)
- ### add_words.html
+ ### Add_words.html
   - No errors were returned when using the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fword-vs.herokuapp.com%2Fadd_words_admin)
- ### base.html
+ ### Base.html
   - No errors were returned when using the official w3c validator all tests include the base.html so no direct link to this on its own.
- ### challenges.html
+ ### Challenges.html
   - No errors were returned when using the official [W3C validator](https://validator.w3.org/nu/?doc=http%3A%2F%2Fword-vs.herokuapp.com%2Fchallenges)
- ### create_challenge.html
+ ### Create_challenge.html
   - No errors were returned when using the official [W3C validator](https://validator.w3.org/nu/?doc=http%3A%2F%2Fword-vs.herokuapp.com%2Fcreate_challenge%2Fstuart)
- ### edit_challenge.html
+ ### Edit_challenge.html
   - No errors were returned when using the official [W3C validator]()
- ### friend_picker.html
+ ### Friend_picker.html
   - No errors were returned when using the official [W3C validator](https://validator.w3.org/nu/?doc=http%3A%2F%2Fword-vs.herokuapp.com%2Ffriend_picker)
- ### game.html
+ ### Game.html
   - No errors were returned when using the official [W3C validator](https://validator.w3.org/nu/?doc=http%3A%2F%2Fword-vs.herokuapp.com%2Fgame%2F6257ed0a29f7a799a025bcfa)
- ### homepage.html
+ ### Homepage.html
   - No errors were returned when using the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fword-vs.herokuapp.com%2F)
- ### oops.html
+ ### Oops.html
   - No errors were returned when using the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fword-vs.herokuapp.com%2Fadd_words_admin) 
   - The link here says add_words_admin but it's just becuase I triggered the oops page from that link is all. You can see what I mean here [admin add words page](https://word-vs.herokuapp.com/add_words_admin)
- ### profile.html
+ ### Profile.html
   - No errors were returned when using the official [W3C validator](https://validator.w3.org/nu/?doc=http%3A%2F%2Fword-vs.herokuapp.com%2Fprofile%2F%3Fusername%3Dstuart)
- ### sent_challenges.html
+ ### Sent_challenges.html
   - No errors were returned when using the official [W3C validator](https://validator.w3.org/nu/?doc=http%3A%2F%2Fword-vs.herokuapp.com%2Fsent_challenges)
- ### signin.html
+ ### Signin.html
   - No errors were returned when using the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fword-vs.herokuapp.com%2Fsignin)
- ### signup.html
+ ### Signup.html
   - No errors were returned when using the official [W3C validator](https://validator.w3.org/nu/?doc=https%3A%2F%2Fword-vs.herokuapp.com%2Fsignup)
 # CSS
- ### style.css
+ ### Style.css
   - No errors were found when using the official [(Jigsaw) validator](https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fword-vs.herokuapp.com%2F&profile=css3svg&usermedium=all&warning=1&vextwarning=&lang=en)
 # JS
- ### script.js
+ ### Script.js
  - No errors were found [JShint validator](https://jshint.com/) however two warnings were found neither of which I'm concerned about.
- ### deleteitem.js
+ ### Deleteitem.js
  - No errors were found [JShint validator](https://jshint.com/)
 
 # Unfixed Bugs <a name="unfixed-bugs"></a>
@@ -632,9 +632,9 @@ Backspace button image created by me using adobe illustrator.
 
 - If I was struggling with anything I would simply go to website that I have linked below and read up on how to use the specific code and then I would simply use the code correctly. 
 
-## websites I copy and pasted from:
+## Websites I copy and pasted from:
   - [google fonts](https://fonts.google.com/)
-## all websites used are linked below nothing was copy and pasted just checked:
+## All websites used are linked below nothing was copy and pasted just checked:
 
   - [Werkzeug security](https://werkzeug.palletsprojects.com/en/2.0.x/utils/)
   - [Jinja cheatsheet](https://jinja.palletsprojects.com/en/3.0.x/templates/#variables)
@@ -696,7 +696,7 @@ Backspace button image created by me using adobe illustrator.
    - pushy
    - icycle
   
-# notes for assessor <a name="notes-for-assessor"></a>
+# Notes for assessor <a name="notes-for-assessor"></a>
 
 # I have not used a sql database because when I started this project 27 days ago I was able to choose what sort of database to use
 
