@@ -158,7 +158,7 @@ __profile admin page__<a name="add_words_page"></a>
 
 This is the best way other than using the site to get an idea of how everything works. There are no other wireframes created for this app as I went straight to a digital wireframe.
 
-# Challenges overcome 
+# Challenges overcome <a name="challenges"></a>
 
 ## How many game boxes??<a name="challenge1"></a>
 
