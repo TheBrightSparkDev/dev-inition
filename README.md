@@ -29,7 +29,7 @@ desktop and background credit: [pixabay](https://pixabay.com/photos/apple-comput
   - [Last guess gone!](#challenge3)
   - [Why won't you break?](#challenge4)
 5.  [Technology used](#technology_used)
-  - [wireframe](#wireframe)
+  - [wireframes](#wireframes)
   - [frameworks](#frameworks)
   - [libraries](#libraries)
 6.  [features left to implement](#features-left-to-implement)
