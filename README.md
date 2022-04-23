@@ -7,54 +7,62 @@ The inspiration for this mostly came from the idea behind wordle one man wanted 
 So with the app anyone can challenge anyone everyday or even more than once everyday!
 
 <img src="responsive image" alt= "image of the website on various devices to show responsiveness" width="100%">
+desktop and background credit: [pixabay](https://pixabay.com/photos/apple-computer-desk-workspace-1868496/)
 
 # Table of contents
-1. [User stories](#user_stories)
-2. [Features](#Features)
- - [Main menu](#main_menu)
- - [Sign-in/Sign-up](#signin)
- - [Profile](#profile)
- - [Challenge a friend](#challenge_a_friend)
- - [Challenges page](#challenges_page)
- - [Sent challenges](#sent_challenges)
- - [Freeplay](#freeplay)
- - [Add friend](#add_friend)
- - [Game page](#game_page)
-3. [Wireframes](#wireframes)
- - [interactive](#interactive)
-4. [Challenges](#challenges)
- - [How many guess boxes?](#challenge1)
- - [Database troubles](#challenge2)
- - [Last guess gone!](#challenge3)
- - [Why won't you break?](#challenge4)
-5. [Technology used](#technology_used)
- - [wireframe](#wireframe)
- - [frameworks](#frameworks)
- - [libraries](#libraries)
-6. [features left to implement](#features-left-to-implement)
-7. [manual testing](#testing)
- - [homepage.html](#homepage.html)
- - [signin.html](#signin.html)
- - [signup.html](#signup.html)
- - [profile.html](#profile.html)
- - [sent_challenges.html](#sent-challenges.html)
- - [add_friends.html](#add-friends.html)
- - [add_words admin.html](#add-words-admin.html)
- - [add_words.html](#add-words.html)
- - [base.html](#base.html)
- - [challenges.html](#cahllenges.html)
- - [create_challenges.html](#create-challenges.html)
- - [edit_challenges.html](#edit-challenges.html)
- - [friend_picker.html](#friend-picker.html)
- - [game.html](#game.html)
- - [oops.html](#oops.html)
-8. [Manual public testing](#manual-public-testing)
- - [big bugs](#big-bugs)
- - [Rachel found](#rachel-found)
- - [Sharron found](#sharron-found)
- - [Rhi found](#rhi-found)
+1.  [User stories](#user_stories)
+2.  [Features](#Features)
+  - [Main menu](#main_menu)
+  - [Sign-in/Sign-up](#signin)
+  - [Profile](#profile)
+  - [Challenge a friend](#challenge_a_friend)
+  - [Challenges page](#challenges_page)
+  - [Sent challenges](#sent_challenges)
+  - [Freeplay](#freeplay)
+  - [Add friend](#add_friend)
+  - [Game page](#game_page)
+3.  [Wireframes](#wireframes)
+  - [interactive](#interactive)
+4.  [Challenges](#challenges)
+  - [How many guess boxes?](#challenge1)
+  - [Database troubles](#challenge2)
+  - [Last guess gone!](#challenge3)
+  - [Why won't you break?](#challenge4)
+5.  [Technology used](#technology_used)
+  - [wireframe](#wireframe)
+  - [frameworks](#frameworks)
+  - [libraries](#libraries)
+6.  [features left to implement](#features-left-to-implement)
+7.  [manual testing](#testing)
+  - [homepage.html](#homepage.html)
+  - [signin.html](#signin.html)
+  - [signup.html](#signup.html)
+  - [profile.html](#profile.html)
+  - [sent_challenges.html](#sent-challenges.html)
+  - [add_friends.html](#add-friends.html)
+  - [add_words admin.html](#add-words-admin.html)
+  - [add_words.html](#add-words.html)
+  - [base.html](#base.html)
+  - [challenges.html](#cahllenges.html)
+  - [create_challenges.html](#create-challenges.html)
+  - [edit_challenges.html](#edit-challenges.html)
+  - [friend_picker.html](#friend-picker.html)
+  - [game.html](#game.html)
+  - [oops.html](#oops.html)
+8.  [Manual public testing](#manual-public-testing)
+  - [big bugs](#big-bugs)
+  - [daniel found](#daniel-found)
+  - [Rachel found](#rachel-found)
+  - [Sharron found](#sharron-found)
+  - [Rhi found](#rhi-found)
+9.  [automatic testing with jest](#I-despise-JSdom)
+  - [Script.js](#script.js)
+  - [deleteitem.js](#deleteitem.js)
+10. [validator testing](#validator-testing)
+11. [deployment](#deployment)
+12. [credits](#credits)
+13. [my to do list](#todolist)
 
-desktop and background credit: [pixabay](https://pixabay.com/photos/apple-computer-desk-workspace-1868496/)
 
 ## User stories <a name="user_stories">
 
@@ -440,6 +448,10 @@ The function of this page is to catch people who have manually typed in a bad ad
 
 ### big bugs <a name="big-bugs"></a>
 
+## I found <a name="daniel-found">
+ - The backspace doesn't delete the last letter on the currentWord variable which means the word either gets submmitted early after backspace or is a word that containns all the things you backspaced out the behaviour is only present in the keyboard controls and not the touch screen controls 
+ - Bug was fixed by slicing currentWord (0,-1) which takes only the last letter off the word and reassigning the value to itself so currentWord = currentWord.slice(0,-1) 
+
 ## bug tester Rachel <a name="rachel-found"></a>
  - found a bug where if you add a space to the end of the create challenge page it doesnt allow you to send and reason is unclear 
     - this has not been fixed due to time running out on the project
@@ -458,7 +470,7 @@ The function of this page is to catch people who have manually typed in a bad ad
  - Also spotted a spelling mistake on the add words page
    - characters was spelled charecters
 
-### Automatic testing with Jest <a name="automatic-testing"></a>
+### Automatic testing with Jest <a name="I-despise-jsdom"></a>
 
 #### Attention important notes to use JEST
 
@@ -466,23 +478,24 @@ The function of this page is to catch people who have manually typed in a bad ad
 
 ### script.js <a name="script.js"></a>
 
-Notes - These test were difficult to implement because the game is generated entirely using logic which meant that testing needed to run in the flask environment which is either impossible or not possible given my current experience. So I copy and pasted the page after it was built removed all spaces and added it directly to the file as a workaround. Unfortunately I was coming across lots of issues. Code that works on the script and functions in manual testing was coming back as undefined in jest I'm still not sure why. The same with the code I have to comment out just to run a test. The javascript doesn't do much in terms of calculations and it all relies on info gathered from the dom which for some reason wasnt working correctly. 
+Notes - These test were difficult to implement because the game is generated entirely using logic which meant that testing needed to run in the flask environment which is either impossible or not possible given my current experience. So I copy and pasted the page after it was built created a file called testgame.html and deleteitem.html used that to do my jest tests. Unfortunately I was coming across lots of issues. Code that works on the script and functions in manual testing was coming back as undefined in jest I'm still not sure why. The same with the code I have to comment out just to run a test. The javascript doesn't do much in terms of calculations and it all relies on info gathered from the dom which for some reason wasn't working correctly. So my biggest takings from my experience with jest is that it's not delightful at all. I can imagine it's great when all the tests dont rely on the dom. In Short I'm not fond of JSdom but jest is good for non html reliant javascript.
 
 - Test 1
-  - 
+  - Check if dom is loaded - This was to make sure all other tests would be able to function theoretically. Unfortunately that's not the case because jest seems to do an awful job of mocking doms in my experience anyways.
 - Test 2
-  -
+  - Checks if the game locks up when game is complete - this was a difficult one to test as for some reason the jsdom was unable to view the elements as elements so getting the attribute from an element was impossible unless I was doing it inside the except tag which was confusing...
 - Test 3
-  -
+  - Tests if the system only accepts letters from the keyboard - This was impossible to test simply. For some reason no matter how many times you call the function in my script called letterspopulator() it doesn't change the value of the variable letters... Even though thats the only thing that function does so I had to manually enter the values. The function does work in manual tests and on heroku so I have no idea why it doesnt work on jest. Second issue was that I wanted to get the value of my currentWord after it had been edited by the clicked function but again no matter how many times I ran clicked it never edited the currentWord variable. So I had to create a new variable called currentWord and not bring the one in from my script which then worked.
 - Test 4
-  -
+  - check if backspace works after struggling through all the issues on the previous test I thought this would be easy to implement but unfortunately importing the backspace() function makes the dom check for a box with the id of (n) and delete it's content's which is obviously what backspace does but because jsdom doesnt recognise it as an element getting or trying to access its inner html is 'not a function' this meant I had to comment out that part of the backspace code to test that it was correctly editing the current word. All other tests where done manually to check the delighful way which is by using lots of console.logs in the script file.
+
 ### deleteitem.js <a name="deleteitem.js"></a>
 - Test 1
-  -
+  - Check if dom is loaded - This was to make sure all other tests would be able to function theoretically. Unfortunately that's not the case because jest seems to do an awful job of mocking doms in my experience anyways.
 - Test 2
-  -
+  - Checks if the class tag hide is added - This was to make sure it was correctly toggling the hide element consider the fact that the item in question after adding a hide tag running the function to toggle the calsslist again which in a normal circumstance would remove the class hide doesnt actually do anything in jsdom. No matter how many times you call the function it just adds one hide class and never removes it. This makes further tests impossible using jest so the test to see if it removes the class was done manually.
 
-### Validator Testing 
+### Validator Testing <a name="validator-testing"></a>
 
 # HTML
  ## 404.html
@@ -527,7 +540,10 @@ Notes - These test were difficult to implement because the game is generated ent
 
 ### Unfixed Bugs
 
-## Deployment
+ - Adding a space after a word in create challenges can cause confusion.
+   - Ran out of time to implement a fix sadly
+
+## Deployment <a name="deployment"></a>
 
 I was using github as the repository for the whole project so when I wanted to create a live page it was very easy to do.
 
@@ -580,7 +596,7 @@ wordlist should have the following keys (if adding your own word database)
 The live link can be found here - [Word Vs](http://word-vs.herokuapp.com/)
 
 
-## Credits 
+## Credits <a name="credits"></a>
 
 Below are the sources of all the media and content 
 
@@ -607,15 +623,17 @@ Backspace button image created by me using adobe illustrator.
 
 ### Content 
 
-
+- No content was used form external sources
 
 ### Media
+
+- No media was used from external sources the backspace.png was created by me in illustrator
 
  # More coming soon! 
  
  ### Follow me on github to stay upto date and message me for project ideas/pitches always ready to work with someone.
  
- # To do 
+ # To do <a name="Todolist"></a>
  only started noting things when I noticed I started forgetting things
 ## completed
   - make sure all pages go somewhere relevent when the title is clicked if title is present
@@ -641,6 +659,7 @@ Backspace button image created by me using adobe illustrator.
 ## not done yet
 - change code comments to this format
   - [Correct code docstring formats](https://sphinxcontrib-napoleon.readthedocs.io/en/latest/example_google.html)
+   - Reason I didn't do this is because the way the Python file is currently commented is alot easier to read than a docstring format although I did go through and add a general description to everyfile in a similar format to a docstring
 ## freeplay mode
 ### words to note for potential freeplay levels
    - lashed
@@ -650,8 +669,4 @@ Backspace button image created by me using adobe illustrator.
    - phony
    - pushy
    - icycle
-   
-# small bug fixes
-### backspace bug fix
- - the backspace doesn't delete the last letter on the currentWord variable which means the word either gets submmitted early after backspace or is a word that containns all the things you backspaced out the behaviour is only present in the keyboard controls and not the touch screen controls 
- - bug was fixed by slicing currentWord (0,-1) which takes only the last letter off the word and reassigning the value to itself so currentWord = currentWord.slice(0,-1) 
+  

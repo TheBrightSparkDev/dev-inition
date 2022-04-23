@@ -3,3 +3,4 @@ function check(challenge){
     dropdown = document.getElementById(challenge)
     dropdown.classList.toggle("hide");   
 }
+module.exports = check;

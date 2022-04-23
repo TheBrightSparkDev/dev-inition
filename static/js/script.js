@@ -16,6 +16,20 @@ for (var element in correct){
         break
     }}
 }
+// calls all essential functions
+function main(){
+    lettersPopulator();
+}
+// creates a string that includes available letters
+function lettersPopulator(){
+    for (let item in keyBoardItems){
+        let letterHolder = keyBoardItems[item];
+        if (letterHolder.innerText != undefined){
+            let letter = letterHolder.innerText;
+            letters += letter;
+        }
+    }
+}
 // submits and checks answer
 function submitAnswer(){
     document.getElementById("answer").value = currentWord;
@@ -67,16 +81,8 @@ function keyboardClick(event){
     let letter = event.key;
     clicked(letter);
 }
-
-// creates a string that includes available letters
-for (let item in keyBoardItems){
-    let letterHolder = keyBoardItems[item];
-    console.log(letterHolder.innerText)
-    if (letterHolder.innerText != undefined){
-        let letter = letterHolder.innerText;
-        letters += letter;
-    }
-}
+main();
 // creates event listener for keyboard presses and calls the keyboardClick function
 document.addEventListener("keydown", function(){keyboardClick(event);});
-module.exports= { currentInputBox, correct, typeLetter, clicked, letters, keyBoardItems, currentWord};
+// used for jest testing
+module.exports= { correct, typeLetter, clicked, keyBoardItems, lettersPopulator};
