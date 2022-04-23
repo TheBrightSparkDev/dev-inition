@@ -55,6 +55,7 @@ desktop and background credit: [pixabay](https://pixabay.com/photos/apple-comput
   - [Daniel found](#daniel-found)
   - [Rachel found](#rachel-found)
   - [Sharron found](#sharron-found)
+  - [Small bugs](#small-bugs)
   - [Rhi found](#rhi-found)
 9.  [Automatic testing with jest](#I-despise-JSdom)
   - [Script.js](#script.js)
