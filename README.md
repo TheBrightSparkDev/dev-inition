@@ -720,3 +720,7 @@ Backspace button image created by me using adobe illustrator.
   - Personally I just want my work to be marked regardless of the database I have used as I have made a working application put my all into it and don't want this to be ruined by Code Institutes decision to suddenly change the marking criteria. It's also worth noting they promised a video to show how to migrate info which they have yet to deliver on coming up 2 weeks since saying they would do it at 4:30 on the day of releasing this news.
 
 PS: Also sorry my readme is so long.
+
+Assessor only: Please email me for log in details for admin account if required or follow instructions to clone and deploy to heroku and set the ADMIN_REAL key to an account to see the admin page.
+thebrightspark1@gmail.com
+I will ask for proof your an assessor.
