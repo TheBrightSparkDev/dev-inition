@@ -24,7 +24,7 @@ desktop and background credit: [pixabay](https://pixabay.com/photos/apple-comput
 3.  [Wireframes](#wireframes)
   - [interactive](#interactive)
 4.  [Challenges](#challenges)
-  - [How many guess boxes?](#challenge1)
+  - [How many game boxes?](#challenge1)
   - [Database troubles](#challenge2)
   - [Last guess gone!](#challenge3)
   - [Why won't you break?](#challenge4)
