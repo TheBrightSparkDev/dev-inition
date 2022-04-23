@@ -49,6 +49,7 @@ desktop and background credit: [pixabay](https://pixabay.com/photos/apple-comput
   - [Friend_picker.html](#friend-picker.html)
   - [Game.html](#game.html)
   - [Oops.html](#oops.html)
+  - [404.html](#page-not-found)
 8.  [Manual public testing](#manual-public-testing)
   - [Big bugs](#big-bugs)
   - [Daniel found](#daniel-found)
@@ -450,7 +451,7 @@ Usual behaviour is to display what went wrong and how to fix it with relevant li
   - sign up - displays if youre trying to do something while not logged in
   - back - only displays if error occurs trying to challenge a friend thats not on your friends list
 
-### 404.html <a name="404.html"></a>
+### 404.html <a name="page-not-found"></a>
 
 The function of this page is to catch people who have manually typed in a bad address it has a link to the homepage and thats pretty much it 
 
