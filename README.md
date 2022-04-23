@@ -721,6 +721,6 @@ Backspace button image created by me using adobe illustrator.
 
 PS: Also sorry my readme is so long.
 
-Assessor only: Please email me for log in details for admin account if required or follow instructions to clone and deploy to heroku and set the ADMIN_REAL key to an account to see the admin page.
+Assessor only: Please email me for log in details for admin account if required or follow instructions to clone and deploy to heroku and set the ADMIN_REAL key to an account of your choosing to see the admin page.
 thebrightspark1@gmail.com
-I will ask for proof your an assessor.
+I will ask for proof you're an assessor.
