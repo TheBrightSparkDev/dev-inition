@@ -12,6 +12,7 @@ from flask import (
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
+from urllib.parse import quote_plus
 
 # this import is used regardless of the error message
 if os.path.exists("env.py"):
@@ -19,8 +20,11 @@ if os.path.exists("env.py"):
 
 app = Flask(__name__)
 # sets the permanent environ variables
+username = quote_plus('Thebrightspark')
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
-app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+password = os.environ.get("password")
+cluster = os.environ.get("cluster")
+app.config["MONGO_URI"] = "mongodb+srv://" + username + ":" + password + "@" + cluster + ".yego8.mongodb.net/wordvs?retryWrites=true&w=majority"
 app.secret_key = os.environ.get("SECRET_KEY")
 ADMIN_REAL = os.environ.get("ADMIN_REAL")
 mongo = PyMongo(app)

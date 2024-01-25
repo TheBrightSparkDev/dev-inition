@@ -590,7 +590,7 @@ I was using github as the repository for the whole project so when I wanted to c
 4. Choose your preferred method
 5. Choose the repository and deploy.
 6. Things you'll need to do to ensure your system deploys correctly is: 
-7. Create a procfile containing the follwoing text: 
+7. Create a procfile containing the following text: 
    - web: python app.py
 8. Create a requirements.txt with the following content:
    - click==8.0.4
