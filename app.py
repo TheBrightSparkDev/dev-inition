@@ -19,7 +19,6 @@ if os.path.exists("env.py"):
     import env
 
 app = Flask(__name__)
-app.run(debug=True)
 # sets the permanent environ variables
 username = quote_plus('Thebrightspark')
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
@@ -763,4 +762,4 @@ def page_not_found(unused_arguement):
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=False)
+            debug=True)
